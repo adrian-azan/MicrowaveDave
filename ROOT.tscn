@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlrnm07njy7eu"]
+
+[ext_resource type="Texture2D" uid="uid://c02eagfdmcw0s" path="res://ART/MasterSpriteSheet.png" id="1_o7y1i"]
+[ext_resource type="PackedScene" uid="uid://bxutuwxxgh43i" path="res://SCENES/Player.tscn" id="2_lauea"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0ruii"]
+friction = 0.0
+bounce = 0.5
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jg5gg"]
+texture = ExtResource("1_o7y1i")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 1)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_lt6o3"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_0ruii")
+physics_layer_1/collision_layer = 16
+physics_layer_1/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_jg5gg")
+
+[node name="ROOT" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_lt6o3")
+format = 2
+layer_0/tile_data = PackedInt32Array(65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, -262148, 65536, 0, -262147, 65536, 0, -262146, 65536, 0, -262145, 65536, 0, -327680, 65536, 0, -327679, 65536, 0, -327678, 65536, 0, -327677, 65536, 0, -327676, 65536, 0, -327675, 65536, 0, -327674, 65536, 0, -327673, 65536, 0, -327672, 65536, 0, -327671, 65536, 0, -327670, 65536, 0, -327669, 65536, 0, -327668, 65536, 0, -327667, 65536, 0, -327666, 65536, 0, -327665, 65536, 0, -327664, 65536, 0, -327663, 65536, 0, -327662, 65536, 0, -327661, 65536, 0, -327660, 65536, 0, -327659, 65536, 0, -327658, 65536, 0, -327657, 65536, 0, -327656, 65536, 0, -327655, 65536, 0, -327654, 65536, 0, -327653, 65536, 0, -327652, 65536, 0, -65517, 0, 1, -65516, 0, 1, -65515, 0, 1, -65514, 0, 1, -327651, 65536, 0, -327650, 65536, 0, -327649, 65536, 0, -327648, 65536, 0, -327647, 65536, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_lauea")]
+position = Vector2(0, -48.905)
+scale = Vector2(2, 2)

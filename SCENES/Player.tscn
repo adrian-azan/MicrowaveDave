@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxutuwxxgh43i"]
+
+[ext_resource type="Texture2D" uid="uid://dxyymvvwmgxxg" path="res://ART/Dave.png" id="1_ubbef"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsp4y"]
+
+[node name="Player" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 17
+gravity_scale = 0.25
+lock_rotation = true
+linear_velocity = Vector2(100, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_wsp4y")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_ubbef")
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+offset = Vector2(0, -55)
+zoom = Vector2(3, 3)
