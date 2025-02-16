@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwc5w70x6t7bx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0affl"]
+albedo_color = Color(0.393086, 0.393086, 0.393085, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xlkat"]
+material = SubResource("StandardMaterial3D_0affl")
+
+[node name="HallwayPiece" type="PathFollow3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 0.3, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_xlkat")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 4.13, 0, 0, 0, 2, -2.356, -0.178, 0)
+mesh = SubResource("BoxMesh_xlkat")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.02105, 0)
+light_color = Color(0.481455, 0.184187, 0.133307, 1)
+light_energy = 2.5
+omni_range = 2.575
+
+[node name="SpotLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.928587, 2.02105, 0)
+light_color = Color(0.481455, 0.184187, 0.133307, 1)
+light_energy = 2.5
+omni_range = 2.575
+
+[node name="SpotLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.848588, 2.02105, 0)
+light_color = Color(0.481455, 0.184187, 0.133307, 1)
+light_energy = 2.5
+omni_range = 2.575

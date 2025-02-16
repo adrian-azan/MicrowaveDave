@@ -1,24 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxutuwxxgh43i"]
+[gd_scene load_steps=7 format=3 uid="uid://dik1k7swwhj46"]
 
-[ext_resource type="Texture2D" uid="uid://dxyymvvwmgxxg" path="res://ART/Dave.png" id="1_ubbef"]
+[ext_resource type="Script" path="res://SCENES/Player.cs" id="1_w2256"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsp4y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14wnp"]
+albedo_color = Color(0.309305, 0.305548, 4.81308e-08, 1)
 
-[node name="Player" type="Node2D"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jpjkl"]
+material = SubResource("StandardMaterial3D_14wnp")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 2
-collision_mask = 17
-gravity_scale = 0.25
-lock_rotation = true
-linear_velocity = Vector2(100, 0)
+[sub_resource type="Animation" id="Animation_4mycl"]
+resource_name = "bounce"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CapsuleShape2D_wsp4y")
+[sub_resource type="Animation" id="Animation_i8xpx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("1_ubbef")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wevu"]
+_data = {
+"RESET": SubResource("Animation_i8xpx"),
+"bounce": SubResource("Animation_4mycl")
+}
 
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
-offset = Vector2(0, -55)
-zoom = Vector2(3, 3)
+[node name="Player" type="Node3D"]
+script = ExtResource("1_w2256")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_jpjkl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5wevu")
+}
