@@ -4,6 +4,8 @@ using System;
 
 public static class Tools
 {
+    public static RandomNumberGenerator rng = new RandomNumberGenerator();
+
     public static Node GetRoot(Node Source)
     {
         if (Source.Owner == null)

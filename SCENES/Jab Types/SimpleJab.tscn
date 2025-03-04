@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmetjfliwcsnp"]
 
-[ext_resource type="Texture2D" uid="uid://cprxm37hht5ui" path="res://ART/Blue.png" id="1_r7n66"]
-[ext_resource type="Script" path="res://SCENES/Jab Types/Jab.cs" id="1_tywvd"]
+[ext_resource type="Script" path="res://CODE/Jab.cs" id="1_nqwrs"]
+[ext_resource type="Texture2D" uid="uid://cprxm37hht5ui" path="res://ART/VISUALS/Blue.png" id="2_w2q2e"]
 
 [sub_resource type="Animation" id="Animation_bl6hu"]
 length = 0.001
@@ -44,10 +44,10 @@ _data = {
 radius = 6.1133
 
 [node name="SimpleJab" type="PathFollow2D"]
-script = ExtResource("1_tywvd")
+script = ExtResource("1_nqwrs")
 
 [node name="Jab" type="Sprite2D" parent="."]
-texture = ExtResource("1_r7n66")
+texture = ExtResource("2_w2q2e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

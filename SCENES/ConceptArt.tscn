@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://o3ocubhx4gec"]
 
-[ext_resource type="Texture2D" uid="uid://d11ok23lgihx5" path="res://ART/ConceptArt.jpg" id="1_aanms"]
-[ext_resource type="Texture2D" uid="uid://k41kel74nxx" path="res://ART/ConceptArt2.jpg" id="2_5haqf"]
+[ext_resource type="Texture2D" uid="uid://d11ok23lgihx5" path="res://DOCUMENTATION/ConceptArt.jpg" id="1_aanms"]
+[ext_resource type="Texture2D" uid="uid://k41kel74nxx" path="res://DOCUMENTATION/ConceptArt2.jpg" id="2_5haqf"]
 
 [node name="ConceptArt" type="Node2D"]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://dpacsgjoe3aq6"]
 
-[ext_resource type="Script" path="res://SCENES/Player.cs" id="1_4aqdb"]
-[ext_resource type="Script" path="res://SCENES/Intro.cs" id="1_loepd"]
-[ext_resource type="AudioStream" uid="uid://cvpyocyyabd4m" path="res://ART/Microwave Dave.mp3" id="2_otk4g"]
+[ext_resource type="Script" path="res://CODE/Player.cs" id="1_4aqdb"]
+[ext_resource type="Script" path="res://CODE/Intro.cs" id="1_loepd"]
+[ext_resource type="AudioStream" uid="uid://cvpyocyyabd4m" path="res://ART/SOUND/Microwave Dave.mp3" id="2_otk4g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14wnp"]
 albedo_color = Color(0.309305, 0.305548, 4.81308e-08, 1)
@@ -162,6 +162,7 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271507, 13.032)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_akwwn")

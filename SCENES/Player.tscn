@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dik1k7swwhj46"]
 
-[ext_resource type="Script" path="res://SCENES/Player.cs" id="1_w2256"]
+[ext_resource type="Script" path="res://CODE/Player.cs" id="1_wvomh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14wnp"]
 albedo_color = Color(0.309305, 0.305548, 4.81308e-08, 1)
@@ -56,7 +56,7 @@ point_count = 4
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_upicb"]
 
 [node name="Player" type="Node3D"]
-script = ExtResource("1_w2256")
+script = ExtResource("1_wvomh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jpjkl")
