@@ -30,36 +30,5 @@ public partial class Hallway : Node3D
         {
             piece.ProgressRatio += felta * _pace;
         }
-
-        //TODO: Turn this into not this
-        if (Input.IsActionJustPressed("IncreasePace") && _pace <= .5f)
-            _pace += .05f;
-
-        if (Input.IsActionJustPressed("DecreasePace") && _pace >= .1f)
-            _pace -= .05f;
-
-        if (Input.IsActionJustPressed("IncreaseDesk") && HallwayPiece._deskChance < 100)
-            HallwayPiece._deskChance += 10;
-
-        if (Input.IsActionJustPressed("DecreaseDesk") && HallwayPiece._deskChance > 0)
-            HallwayPiece._deskChance -= 10;
-
-        if (Input.IsActionJustPressed("IncreaseWater") && HallwayPiece._waterCoolerChance < 100)
-            HallwayPiece._waterCoolerChance += 10;
-
-        if (Input.IsActionJustPressed("DecreaseWater") && HallwayPiece._waterCoolerChance > 0)
-            HallwayPiece._waterCoolerChance -= 10;
-
-        if (Input.IsActionJustPressed("IncreaseLightFlicker") && HallwayPiece._lightFlickerChance < 100)
-            HallwayPiece._lightFlickerChance += 10;
-
-        if (Input.IsActionJustPressed("DecreaseLightFlicker") && HallwayPiece._lightFlickerChance > 0)
-            HallwayPiece._lightFlickerChance -= 10;
-
-        if (Input.IsActionJustPressed("IncreasePosters") && HallwayPiece._posterChance < 100)
-            HallwayPiece._posterChance += 10;
-
-        if (Input.IsActionJustPressed("DecreasePosters") && HallwayPiece._posterChance > 0)
-            HallwayPiece._posterChance -= 10;
     }
 }
