@@ -21,6 +21,8 @@ public partial class ChanceTracker : VBoxContainer
         GetNode<Sprite2D>("Sprite2D2").Position = new Vector2(GetNode<Sprite2D>("Sprite2D2").Position.X,
                                                                 currentFocus.Position.Y + currentFocus.Size.Y * .5f);
 
+        GetNode<Sprite2D>("Controls").Visible = GetNode<CheckButton>("CheckButton").ButtonPressed;
+
         if (Input.IsActionJustPressed("Increase"))
         {
             switch (currentFocus.Name.ToString())
@@ -70,6 +72,11 @@ public partial class ChanceTracker : VBoxContainer
                     HallwayPiece._posterChance -= HallwayPiece._posterChance > 0 ? 10 : 0;
                     break;
             }
+        }
+        //TODO: FIX Swapping control view
+        if ((Input.IsActionJustPressed("Increase") || Input.IsActionJustPressed("Decrease")) && currentFocus == GetNode("CheckButton"))
+        {
+            (currentFocus as CheckButton).ButtonPressed = !(currentFocus as CheckButton).ButtonPressed;
         }
     }
 }
