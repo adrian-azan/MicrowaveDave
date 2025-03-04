@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dik1k7swwhj46"]
+[gd_scene load_steps=9 format=3 uid="uid://dik1k7swwhj46"]
 
 [ext_resource type="Script" path="res://SCENES/Player.cs" id="1_w2256"]
 
@@ -7,6 +7,21 @@ albedo_color = Color(0.309305, 0.305548, 4.81308e-08, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jpjkl"]
 material = SubResource("StandardMaterial3D_14wnp")
+
+[sub_resource type="Animation" id="Animation_i8xpx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4mycl"]
 resource_name = "bounce"
@@ -25,26 +40,20 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_i8xpx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5wevu"]
 _data = {
 "RESET": SubResource("Animation_i8xpx"),
 "bounce": SubResource("Animation_4mycl")
 }
+
+[sub_resource type="Curve3D" id="Curve3D_d0ig5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 1.1, 0, 0, 1.295, 0, 0, -1.185, 0, 0, 0, 1.46189, -0.0702386, 1.42242, 0, 0, 1.22, 0, 0, -1.17, 2.405, 0, 1.025, 0, 0, 0, 0, 0, 0, 3.47471, 0.0510368, 1.22136),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_upicb"]
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_w2256")
@@ -56,3 +65,34 @@ mesh = SubResource("CapsuleMesh_jpjkl")
 libraries = {
 "": SubResource("AnimationLibrary_5wevu")
 }
+
+[node name="Path3D" type="Path3D" parent="."]
+visible = false
+curve = SubResource("Curve3D_d0ig5")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.983034, 0.000815063, -0.183411, -0.000815063, 0.999959, 0.00881225, 0.183411, 0.00881225, -0.982995, 0.0106775, -0.000513015, 1.43013)
+progress = 0.134371
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(0.02, 0, 0, 0, -0.0130526, -0.0495722, 0, 0.0991445, -0.00652631, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_upicb")
+skeleton = NodePath("../../..")
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.813609, 0.00895528, -0.581339, -0.00895528, 0.999566, 0.0279313, 0.581338, 0.0279312, -0.813179, 0.0491845, -0.00236314, 1.55612)
+progress = 0.266635
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D2"]
+transform = Transform3D(0.02, 0, 0, 0, -0.0130526, -0.0495722, 0, 0.0991445, -0.00652631, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_upicb")
+skeleton = NodePath("../../..")
+
+[node name="PathFollow3D3" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.983034, 0.000815063, -0.183411, -0.000815063, 0.999959, 0.00881225, 0.183411, 0.00881225, -0.982995, 0.0106775, -0.000513015, 1.43013)
+progress = 0.134371
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D3"]
+transform = Transform3D(0.02, 0, 0, 0, -0.0130526, -0.0495722, 0, 0.0991445, -0.00652631, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_upicb")
+skeleton = NodePath("../../..")

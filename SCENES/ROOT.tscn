@@ -1,16 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://jp2mlfj28jfu"]
+[gd_scene load_steps=6 format=3 uid="uid://jp2mlfj28jfu"]
 
+[ext_resource type="Script" path="res://SCENES/ROOT.cs" id="1_184dk"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/Hallway.tscn" id="1_p0nm0"]
 [ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/HallwayPiece.tscn" id="2_l5o0n"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/Player.tscn" id="3_3yvfb"]
 
+[sub_resource type="Environment" id="Environment_biiyu"]
+background_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+
 [node name="Root" type="Node3D"]
+script = ExtResource("1_184dk")
 
 [node name="Hallway" parent="." instance=ExtResource("1_p0nm0")]
 piece = ExtResource("2_l5o0n")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -0.236671, 1.9875, 8.11105)
+transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -1.38427, 1.3078, 6.94366)
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-0.0597767, 0, -0.998212, 0, 1, 0, 0.998212, 0, -0.0597767, -15.4387, -0.211323, 0.567746)
+cull_mask = 1048573
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92065, 3.0807)
@@ -23,4 +33,7 @@ visible = false
 light_color = Color(0.466629, 0.325109, 0.0810879, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_3yvfb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35873, 0.952001, 4.35294)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_biiyu")

@@ -1,0 +1,197 @@
+[gd_scene load_steps=18 format=3 uid="uid://dpacsgjoe3aq6"]
+
+[ext_resource type="Script" path="res://SCENES/Player.cs" id="1_4aqdb"]
+[ext_resource type="Script" path="res://SCENES/Intro.cs" id="1_loepd"]
+[ext_resource type="AudioStream" uid="uid://cvpyocyyabd4m" path="res://ART/Microwave Dave.mp3" id="2_otk4g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14wnp"]
+albedo_color = Color(0.309305, 0.305548, 4.81308e-08, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jpjkl"]
+material = SubResource("StandardMaterial3D_14wnp")
+
+[sub_resource type="Animation" id="Animation_i8xpx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4mycl"]
+resource_name = "bounce"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wevu"]
+_data = {
+"RESET": SubResource("Animation_i8xpx"),
+"bounce": SubResource("Animation_4mycl")
+}
+
+[sub_resource type="Environment" id="Environment_akwwn"]
+background_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ybpa"]
+albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_01hnt"]
+material = SubResource("StandardMaterial3D_6ybpa")
+
+[sub_resource type="Animation" id="Animation_ghicf"]
+resource_name = "INTRO"
+length = 95.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 84.5, 86.1, 86.2, 87.1, 87.2, 88, 88.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.271507, 13.032), Vector3(0, 0.27, 4), Vector3(0, 0.27, 4), Vector3(0, 0.27, 2), Vector3(0, 0.27, 2), Vector3(0, 0.27, 1.5), Vector3(0, 0.27, 1.5), Vector3(0, 0.45, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10.4, 85.4, 86, 86.4, 87, 87.5, 87.9, 88.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, true, false, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpotLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 85.4, 86, 86.4, 87, 87.5, 87.9, 88.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(90.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ExitIntro"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_facrw"]
+_data = {
+"INTRO": SubResource("Animation_ghicf")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtsyi"]
+animation = &"INTRO"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_562tf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6127p"]
+reset = false
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7eomo"]
+states/INTRO/node = SubResource("AnimationNodeAnimation_gtsyi")
+states/INTRO/position = Vector2(317, 93)
+transitions = ["Start", "INTRO", SubResource("AnimationNodeStateMachineTransition_562tf"), "INTRO", "End", SubResource("AnimationNodeStateMachineTransition_6127p")]
+
+[node name="Intro" type="Node3D"]
+script = ExtResource("1_loepd")
+
+[node name="Player" type="Node3D" parent="."]
+script = ExtResource("1_4aqdb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_jpjkl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+active = false
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_5wevu")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_akwwn")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00246537, 0.500153, 2.45131)
+visible = false
+light_color = Color(0.37998, 0.797468, 0.34741, 1)
+light_energy = 4.34
+spot_angle = 17.3728
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.241922, 0.970296, 0, -0.970296, 0.241922, 0.00246537, 3.36363, 1.10864)
+visible = false
+light_color = Color(0.717881, 0.763177, 0.3405, 1)
+light_energy = 4.34
+spot_angle = 17.3728
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(12.81, 0, 0, 0, 1, 0, 0, 0, 9.28, 0, -1.28779, 0)
+mesh = SubResource("BoxMesh_01hnt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_facrw")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_otk4g")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_7eomo")
+anim_player = NodePath("../AnimationPlayer")

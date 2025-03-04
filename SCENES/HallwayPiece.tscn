@@ -1,4 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwc5w70x6t7bx"]
+[gd_scene load_steps=15 format=3 uid="uid://dwc5w70x6t7bx"]
+
+[ext_resource type="Script" path="res://SCENES/HallwayPiece.cs" id="1_c151d"]
+[ext_resource type="PackedScene" uid="uid://b4vc6nfe4xvog" path="res://ART/office_desk/scene.gltf" id="1_wdnau"]
+[ext_resource type="Texture2D" uid="uid://cys1x2h1bial6" path="res://ART/Poster1.jpg" id="3_kljcg"]
+[ext_resource type="Texture2D" uid="uid://cixaaqgewm507" path="res://ART/Poster3.jpg" id="4_yk2v6"]
+[ext_resource type="Texture2D" uid="uid://dmes22d1jwrk2" path="res://ART/Poster2.jpg" id="5_jxneg"]
+[ext_resource type="PackedScene" uid="uid://tyfdi7biyedg" path="res://ART/water_cooler_8mb/scene.gltf" id="6_nki2i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0affl"]
 albedo_color = Color(0.393086, 0.393086, 0.393085, 1)
@@ -6,30 +13,167 @@ albedo_color = Color(0.393086, 0.393086, 0.393085, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_xlkat"]
 material = SubResource("StandardMaterial3D_0affl")
 
+[sub_resource type="Animation" id="Animation_0dbe5"]
+resource_name = "Flicker"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0mfn"]
+_data = {
+"Flicker": SubResource("Animation_0dbe5")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a66lt"]
+albedo_texture = ExtResource("3_kljcg")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nm40y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srjd2"]
+albedo_texture = ExtResource("4_yk2v6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5acft"]
+albedo_texture = ExtResource("5_jxneg")
+
 [node name="HallwayPiece" type="PathFollow3D"]
+script = ExtResource("1_c151d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 0.3, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_xlkat")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 4.13, 0, 0, 0, 2, -2.356, -0.178, 0)
+transform = Transform3D(0.4, 0, 0, 0, 4.13, 0, 0, 0, 2, -2.356, 1.29314, 0)
 mesh = SubResource("BoxMesh_xlkat")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.28113, 0, 0)
+layers = 2
+aabb = AABB(-6.74344, -0.524651, -0.422642, 13.4869, 1.0493, 0.845284)
 
 [node name="SpotLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.02105, 0)
-light_color = Color(0.481455, 0.184187, 0.133307, 1)
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
 light_energy = 2.5
 omni_range = 2.575
 
 [node name="SpotLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.928587, 2.02105, 0)
-light_color = Color(0.481455, 0.184187, 0.133307, 1)
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
 light_energy = 2.5
 omni_range = 2.575
 
 [node name="SpotLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.848588, 2.02105, 0)
-light_color = Color(0.481455, 0.184187, 0.133307, 1)
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
 light_energy = 2.5
 omni_range = 2.575
+
+[node name="Desk" parent="." instance=ExtResource("1_wdnau")]
+transform = Transform3D(-0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, -1.77965, 0.196629, -0.0797247)
+
+[node name="WaterCooler" parent="." instance=ExtResource("6_nki2i")]
+transform = Transform3D(-4.37114e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, -4.37114e-10, 2.27136, -0.0414876, 0.466255)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n0mfn")
+}
+
+[node name="Posters" type="Node3D" parent="."]
+
+[node name="Poster1" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 1.9286, -0.51201)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster5" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 2.71479, -0.732567)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster2" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 1.91607, 0.489499)
+material_override = SubResource("StandardMaterial3D_srjd2")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster3" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.10177, 2.68846, 0.69204)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster4" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.10177, 2.34817, -0.0353112)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster6" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 1.18168, -0.51201)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster7" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 1.96788, -0.732567)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster8" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 1.16915, 0.489499)
+material_override = SubResource("StandardMaterial3D_srjd2")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster9" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.10177, 1.94155, 0.69204)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster10" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.10177, 1.60125, -0.0353112)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[connection signal="screen_exited" from="MeshInstance3D2/VisibleOnScreenNotifier3D" to="." method="SetPiece"]
