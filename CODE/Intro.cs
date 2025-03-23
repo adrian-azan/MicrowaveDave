@@ -10,6 +10,11 @@ public partial class Intro : Node3D
         if (Input.IsActionJustPressed("Skip"))
         { skip++; }
 
+        for (int i = 0; i < skip && i < 3; i++)
+        {
+            Tools.GetChildren<ColorRect>(this)[i].Color = new Color(1, 1, 1, .8f);
+        }
+
         if (skip == 3)
             ExitIntro();
     }
