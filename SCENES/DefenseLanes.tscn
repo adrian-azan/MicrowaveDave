@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnjrctxs7ry16"]
+
+[ext_resource type="Script" path="res://CODE/DefenseLanes.cs" id="1_fqdil"]
+[ext_resource type="PackedScene" uid="uid://bmetjfliwcsnp" path="res://SCENES/Jab Types/SimpleJab.tscn" id="2_f046k"]
+[ext_resource type="Texture2D" uid="uid://bpj3dambev85e" path="res://ART/VISUALS/Red.png" id="3_s6grc"]
+[ext_resource type="Texture2D" uid="uid://d1nf4cwg42tn1" path="res://ART/VISUALS/Green.png" id="4_rr2ms"]
+
+[sub_resource type="Curve2D" id="Curve2D_4naxs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 210, 30, 0, 0, 0, 0, 210, 600)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8migc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 110, 30, 0, 0, 0, 0, 110, 600)
+}
+point_count = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_ul6xi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jifnr"]
+size = Vector2(239, 13)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1a845"]
+albedo_color = Color(0.869934, 0.000667477, 0.880759, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_swdnd"]
+material = SubResource("StandardMaterial3D_1a845")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcno8"]
+size = Vector2(239, 41)
+
+[sub_resource type="Curve2D" id="Curve2D_e5h12"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 30, 0, 0, 0, 0, 10, 600)
+}
+point_count = 2
+
+[node name="DefenseLanes" type="Node2D"]
+rotation = 3.14159
+script = ExtResource("1_fqdil")
+_JabScene = ExtResource("2_f046k")
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4naxs")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8migc")
+
+[node name="PlayerHeart" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(110, 30)
+rotates = false
+cubic_interp = false
+
+[node name="PlayerHeart" type="Area2D" parent="Path2D2/PlayerHeart"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Path2D2/PlayerHeart/PlayerHeart"]
+position = Vector2(1.49998, 0)
+scale = Vector2(233, 31.58)
+mesh = SubResource("QuadMesh_ul6xi")
+texture = ExtResource("3_s6grc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PlayerHeart/PlayerHeart"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_jifnr")
+
+[node name="PlayerDefense" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(110, 172.5)
+progress = 142.5
+rotates = false
+cubic_interp = false
+
+[node name="PlayerDefense" type="Area2D" parent="Path2D2/PlayerDefense"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Path2D2/PlayerDefense/PlayerDefense"]
+position = Vector2(-6.83388, -0.441286)
+scale = Vector2(297.29, 52.4127)
+mesh = SubResource("QuadMesh_swdnd")
+texture = ExtResource("4_rr2ms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PlayerDefense/PlayerDefense"]
+position = Vector2(0, -0.734985)
+shape = SubResource("RectangleShape2D_fcno8")
+
+[node name="Path2D" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_e5h12")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Path2D2/PlayerHeart/PlayerHeart" to="." method="CollisionWithHeart"]
+[connection signal="timeout" from="Timer" to="." method="CreateJabs"]

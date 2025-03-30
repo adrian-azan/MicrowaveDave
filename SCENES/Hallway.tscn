@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3jd26bajpr0v"]
+
+[ext_resource type="Script" path="res://CODE/Hallway.cs" id="1_a0i1s"]
+
+[sub_resource type="Curve3D" id="Curve3D_nfwm7"]
+bake_interval = 0.05
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5.25, 12.01, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, -3.09, 0, 0, -0.555, -13.915, 0, 0, 0, 0, 0, -5.115, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Hallway" type="Node3D"]
+script = ExtResource("1_a0i1s")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_nfwm7")
