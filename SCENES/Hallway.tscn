@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3jd26bajpr0v"]
 
-[ext_resource type="Script" path="res://CODE/Hallway.cs" id="1_a0i1s"]
+[ext_resource type="Script" uid="uid://c6jgrkfblv5oe" path="res://CODE/Hallway.cs" id="1_a0i1s"]
 
 [sub_resource type="Curve3D" id="Curve3D_nfwm7"]
 bake_interval = 0.05

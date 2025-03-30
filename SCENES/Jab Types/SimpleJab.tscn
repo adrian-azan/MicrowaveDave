@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmetjfliwcsnp"]
 
-[ext_resource type="Script" path="res://CODE/Jab.cs" id="1_nqwrs"]
+[ext_resource type="Script" uid="uid://dbdf7wl2ss67u" path="res://CODE/Jab.cs" id="1_nqwrs"]
 [ext_resource type="Texture2D" uid="uid://cprxm37hht5ui" path="res://ART/VISUALS/Blue.png" id="2_w2q2e"]
 
 [sub_resource type="Animation" id="Animation_bl6hu"]
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ioia7"]
 _data = {
-"RESET": SubResource("Animation_bl6hu"),
-"root": SubResource("Animation_1tx8f")
+&"RESET": SubResource("Animation_bl6hu"),
+&"root": SubResource("Animation_1tx8f")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n074q"]

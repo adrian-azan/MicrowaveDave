@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dwc5w70x6t7bx"]
 
-[ext_resource type="Script" path="res://CODE/HallwayPiece.cs" id="1_ehqql"]
+[ext_resource type="Script" uid="uid://ghja167poi2h" path="res://CODE/HallwayPiece.cs" id="1_ehqql"]
 [ext_resource type="PackedScene" uid="uid://b4vc6nfe4xvog" path="res://ART/MODELS/office_desk/scene.gltf" id="2_fd4xs"]
 [ext_resource type="PackedScene" uid="uid://tyfdi7biyedg" path="res://ART/MODELS/water_cooler_8mb/scene.gltf" id="3_4ylqs"]
 [ext_resource type="Texture2D" uid="uid://cys1x2h1bial6" path="res://ART/VISUALS/Poster1.jpg" id="4_0v1he"]
@@ -55,7 +55,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n0mfn"]
 _data = {
-"Flicker": SubResource("Animation_0dbe5")
+&"Flicker": SubResource("Animation_0dbe5")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a66lt"]

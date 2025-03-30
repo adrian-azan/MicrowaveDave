@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://jp2mlfj28jfu"]
 
-[ext_resource type="Script" path="res://CODE/ROOT.cs" id="1_184dk"]
+[ext_resource type="Script" uid="uid://ba8nbe1pttdt" path="res://CODE/ROOT.cs" id="1_184dk"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/Hallway.tscn" id="1_p0nm0"]
 [ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/HallwayPiece.tscn" id="2_l5o0n"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/Player.tscn" id="3_3yvfb"]

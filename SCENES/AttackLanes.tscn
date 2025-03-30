@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqkeiphae5300"]
 
-[ext_resource type="Script" path="res://CODE/AttackLanes.cs" id="1_fwcxl"]
+[ext_resource type="Script" uid="uid://bo4ucpir3eh12" path="res://CODE/AttackLanes.cs" id="1_fwcxl"]
 [ext_resource type="PackedScene" uid="uid://bmetjfliwcsnp" path="res://SCENES/Jab Types/SimpleJab.tscn" id="2_aallg"]
 [ext_resource type="Texture2D" uid="uid://bpj3dambev85e" path="res://ART/VISUALS/Red.png" id="3_7xifn"]
 
