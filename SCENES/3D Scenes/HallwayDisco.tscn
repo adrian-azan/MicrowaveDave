@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhgvixhfx4f3g"]
+
+[ext_resource type="Script" uid="uid://binuagdarrvjo" path="res://CODE/HallwayDisco.cs" id="1_41mtu"]
+[ext_resource type="PackedScene" uid="uid://c2eew5vje8xc4" path="res://SCENES/3D Scenes/HallwayPieceDisco.tscn" id="2_fxm5y"]
+
+[sub_resource type="Curve3D" id="Curve3D_nfwm7"]
+bake_interval = 0.05
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5.25, 12.01, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, -3.09, 0, 0, -0.555, -13.915, 0, 0, 0, 0, 0, -5.115, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="HallwayDisco" type="Node3D"]
+script = ExtResource("1_41mtu")
+_secondaryColor = 2
+_lightingStyle = 3
+piece = ExtResource("2_fxm5y")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_nfwm7")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="TheBeat"]

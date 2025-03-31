@@ -184,7 +184,7 @@ mesh = SubResource("CapsuleMesh_jpjkl")
 active = false
 reset_on_save = false
 libraries = {
-"": SubResource("AnimationLibrary_5wevu")
+&"": SubResource("AnimationLibrary_5wevu")
 }
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -213,7 +213,7 @@ mesh = SubResource("BoxMesh_01hnt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_facrw")
+&"": SubResource("AnimationLibrary_facrw")
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

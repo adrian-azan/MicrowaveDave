@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dik1k7swwhj46"]
 
-[ext_resource type="Script" uid="uid://bqf4ga76nty75" path="res://CODE/Player.cs" id="1_wvomh"]
+[ext_resource type="Script" uid="uid://bqf4ga76nty75" path="res://CODE/Player.cs" id="1_jnmn6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14wnp"]
 albedo_color = Color(0.309305, 0.305548, 4.81308e-08, 1)
@@ -56,14 +56,14 @@ point_count = 4
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_upicb"]
 
 [node name="Player" type="Node3D"]
-script = ExtResource("1_wvomh")
+script = ExtResource("1_jnmn6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jpjkl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5wevu")
+&"": SubResource("AnimationLibrary_5wevu")
 }
 
 [node name="Path3D" type="Path3D" parent="."]
