@@ -42,19 +42,10 @@ texture = ExtResource("3_e6j18")
 
 [node name="Pace" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../LightingStyle")
-focus_neighbor_bottom = NodePath("../Desk")
+focus_neighbor_top = NodePath("../CheckButton")
 focus_mode = 2
-text = "Desks: "
+text = "Pace: "
 metadata/chance = 0
-
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../Level")
-focus_neighbor_bottom = NodePath("../LightingStyle")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-text = "Show Controls"
 
 [node name="Desk" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -69,7 +60,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Desk")
 focus_neighbor_bottom = NodePath("../Light")
 focus_mode = 2
-text = "Desks: "
+text = "Water: "
 metadata/chance = 0
 
 [node name="Light" type="Label" parent="VBoxContainer"]
@@ -77,15 +68,22 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Water")
 focus_neighbor_bottom = NodePath("../Posters")
 focus_mode = 2
-text = "Desks: "
+text = "Light: "
 metadata/chance = 0
 
 [node name="Posters" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Light")
-focus_neighbor_bottom = NodePath("../Level")
 focus_mode = 2
-text = "Desks: "
+text = "Posters: "
+metadata/chance = 0
+
+[node name="LightingStyle" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+focus_neighbor_top = NodePath("../Light")
+focus_mode = 2
+text = "LightingStyle: "
 metadata/chance = 0
 
 [node name="Level" type="Label" parent="VBoxContainer"]
@@ -93,15 +91,19 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Posters")
 focus_neighbor_bottom = NodePath("../CheckButton")
 focus_mode = 2
-text = "Level: "
+text = "Level: Hallway"
 metadata/chance = 0
 
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Level")
+focus_neighbor_bottom = NodePath("../Pace")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Show Controls"
+
 [node name="Controls" type="Sprite2D" parent="VBoxContainer"]
+visible = false
 position = Vector2(496, 368)
 scale = Vector2(0.345, 0.345)
 texture = ExtResource("5_1y7r2")
-
-[node name="LightingStyle" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../CheckButton")
-focus_neighbor_bottom = NodePath("../Pace")

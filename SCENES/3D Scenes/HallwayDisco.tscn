@@ -14,7 +14,6 @@ point_count = 5
 [node name="HallwayDisco" type="Node3D"]
 script = ExtResource("1_41mtu")
 _secondaryColor = 2
-_lightingStyle = 3
 piece = ExtResource("2_fxm5y")
 
 [node name="Path3D" type="Path3D" parent="."]
