@@ -70,21 +70,18 @@ aabb = AABB(-6.74344, -0.524651, -0.422642, 13.4869, 1.0493, 0.845284)
 
 [node name="SpotLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.02105, 0)
-visible = false
 light_color = Color(0.984186, 0.941792, 0.824593, 1)
 light_energy = 2.5
 omni_range = 2.575
 
 [node name="SpotLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.928587, 2.02105, 0)
-visible = false
 light_color = Color(0.984186, 0.941792, 0.824593, 1)
 light_energy = 2.5
 omni_range = 2.575
 
 [node name="SpotLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.848588, 2.02105, 0)
-visible = false
 light_color = Color(0.984186, 0.941792, 0.824593, 1)
 light_energy = 2.5
 omni_range = 2.575
@@ -144,48 +141,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.78)
 
 [node name="DiscoFloorPiece16" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, -0.649574)
+visible = false
 
 [node name="DiscoFloorPiece17" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, -0.649574)
+visible = false
 
 [node name="DiscoFloorPiece18" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, -0.649574)
+visible = false
 
 [node name="DiscoFloorPiece19" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, -0.649574)
+visible = false
 
 [node name="DiscoFloorPiece20" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, -0.649574)
+visible = false
 
 [node name="DiscoFloorPiece21" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, 0.0677746)
+visible = false
 
 [node name="DiscoFloorPiece22" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, 0.0677746)
+visible = false
 
 [node name="DiscoFloorPiece23" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, 0.0677746)
+visible = false
 
 [node name="DiscoFloorPiece24" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, 0.0677746)
+visible = false
 
 [node name="DiscoFloorPiece25" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, 0.0677746)
+visible = false
 
 [node name="DiscoFloorPiece26" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, 0.78)
+visible = false
 
 [node name="DiscoFloorPiece27" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, 0.78)
+visible = false
 
 [node name="DiscoFloorPiece28" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, 0.78)
+visible = false
 
 [node name="DiscoFloorPiece29" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, 0.78)
+visible = false
 
 [node name="DiscoFloorPiece30" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, 0.78)
+visible = false
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
 transform = Transform3D(-4.30135e-08, -0.177978, 0.984034, -7.77966e-09, 0.984034, 0.177978, -1, 0, -4.37114e-08, 3.02128, 2.59486, 0)

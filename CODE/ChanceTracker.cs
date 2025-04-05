@@ -12,6 +12,7 @@ public partial class ChanceTracker : VBoxContainer
     public override void _Ready()
     {
         GetNode<Label>("Pace").GrabFocus();
+
         _options = new Dictionary<string, Array<Control>>();
 
         _options.Add("Level1", new Array<Control>());
@@ -23,6 +24,9 @@ public partial class ChanceTracker : VBoxContainer
         _options["Level1"].Add(GetNode<Label>("Posters"));
 
         _options["Level2"].Add(GetNode<Label>("LightingStyle"));
+        _options["Level2"].Add(GetNode<CheckButton>("ShowTop"));
+
+        SwitchLevel();
     }
 
     public override void _Process(double delta)
@@ -70,6 +74,12 @@ public partial class ChanceTracker : VBoxContainer
                     HallwayDisco._lightingStyle = (HallwayDisco.LightingStyle)(((int)HallwayDisco._lightingStyle) % 4);
                     GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.UpdateLightsSignal);
 
+                    break;
+
+                case "ShowTop":
+                    CheckButton checkButton = GetNode<CheckButton>("ShowTop");
+                    checkButton.ButtonPressed = !checkButton.ButtonPressed;
+                    GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.UpdateShowTopSignal, checkButton.ButtonPressed);
                     break;
 
                 //TODO: Fix switching between the levels and showing appropriate labels
@@ -130,12 +140,12 @@ public partial class ChanceTracker : VBoxContainer
 
         if (levels[_levelTracker].Name == "HallwayDisco")
         {
-            foreach (Label property in _options["Level1"])
+            foreach (Control property in _options["Level1"])
             {
                 property.Visible = false;
             }
 
-            foreach (Label property in _options["Level2"])
+            foreach (Control property in _options["Level2"])
             {
                 property.Visible = true;
             }
@@ -152,12 +162,12 @@ public partial class ChanceTracker : VBoxContainer
 
         if (levels[_levelTracker].Name == "Hallway")
         {
-            foreach (Label property in _options["Level1"])
+            foreach (Control property in _options["Level1"])
             {
                 property.Visible = true;
             }
 
-            foreach (Label property in _options["Level2"])
+            foreach (Control property in _options["Level2"])
             {
                 property.Visible = false;
             }

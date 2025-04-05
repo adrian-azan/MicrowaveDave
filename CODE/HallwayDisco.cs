@@ -11,6 +11,10 @@ public partial class HallwayDisco : Hallway
 
     public Timer _theBeat;
 
+    public bool _showTop;
+
+    private RandomNumberGenerator rng = new RandomNumberGenerator();
+
     [Export]
     public DiscoFloorPiece.COLOR _primaryColor;
 
@@ -52,6 +56,9 @@ public partial class HallwayDisco : Hallway
         }
 
         GetNode<CustomSignals>("/root/CustomSignals").UpdateLightsSignal += UpdateLights;
+        GetNode<CustomSignals>("/root/CustomSignals").UpdateShowTopSignal += UpdateTop;
+
+        UpdateLights();
     }
 
     public void UpdateLights()
@@ -73,6 +80,35 @@ public partial class HallwayDisco : Hallway
             case LightingStyle.TWOLANES:
                 TwoLanes();
                 break;
+        }
+    }
+
+    public void UpdateTop(bool visible)
+    {
+        foreach (Array<DiscoFloorPiece> piece in _topLights)
+        {
+            foreach (DiscoFloorPiece light in piece)
+            {
+                if (visible == true)
+                {
+                    var tween = GetTree().CreateTween();
+                    tween.SetTrans(Tween.TransitionType.Bounce);
+
+                    light.Visible = true;
+                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), 0);
+                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), rng.RandfRange(1, 2));
+                    //tween.TweenProperty(light, "visible", true, 1.5);
+                }
+                else
+                {
+                    var tween = GetTree().CreateTween();
+                    tween.SetTrans(Tween.TransitionType.Bounce);
+
+                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), 0);
+                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), rng.RandfRange(1, 2));
+                    tween.TweenProperty(light, "visible", false, 2);
+                }
+            }
         }
     }
 

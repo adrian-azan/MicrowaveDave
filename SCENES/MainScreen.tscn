@@ -86,6 +86,15 @@ focus_mode = 2
 text = "LightingStyle: "
 metadata/chance = 0
 
+[node name="ShowTop" type="CheckButton" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+focus_neighbor_top = NodePath("../LightingStyle")
+focus_neighbor_bottom = NodePath("../Level")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Show Top"
+
 [node name="Level" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Posters")

@@ -7,7 +7,9 @@
 
 [sub_resource type="Environment" id="Environment_biiyu"]
 background_mode = 1
+fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.2
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_184dk")
