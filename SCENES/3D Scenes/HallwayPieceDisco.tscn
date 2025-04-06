@@ -202,10 +202,10 @@ visible = false
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
 transform = Transform3D(-4.30135e-08, -0.177978, 0.984034, -7.77966e-09, 0.984034, 0.177978, -1, 0, -4.37114e-08, 3.02128, 2.59486, 0)
 light_color = Color(0.707266, 0.000393228, 0.710804, 1)
-light_energy = 10.469
+light_energy = 16.0
 light_specular = 1.262
-spot_range = 5.62884
-spot_attenuation = -1.31
+spot_range = 6.303
+spot_attenuation = -0.15
 spot_angle = 17.5188
 
 [connection signal="screen_exited" from="MeshInstance3D2/VisibleOnScreenNotifier3D" to="." method="SetPiece"]

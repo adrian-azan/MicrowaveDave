@@ -77,6 +77,10 @@ public partial class ChanceTracker : VBoxContainer
                     break;
 
                 case "ShowTop":
+                    if (GetNode<HallwayDisco>("../SubViewportContainer/SubViewport/Root/HallwayDisco").Busy())
+                    {
+                        break;
+                    }
                     CheckButton checkButton = GetNode<CheckButton>("ShowTop");
                     checkButton.ButtonPressed = !checkButton.ButtonPressed;
                     GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.UpdateShowTopSignal, checkButton.ButtonPressed);

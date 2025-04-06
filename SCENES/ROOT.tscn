@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://jp2mlfj28jfu"]
+[gd_scene load_steps=9 format=3 uid="uid://jp2mlfj28jfu"]
 
 [ext_resource type="Script" uid="uid://ba8nbe1pttdt" path="res://CODE/ROOT.cs" id="1_184dk"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/Hallway.tscn" id="1_p0nm0"]
@@ -9,7 +9,18 @@
 background_mode = 1
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
-fog_density = 0.2
+fog_density = 0.3
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oao7i"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_ihl0d"]
+noise = SubResource("FastNoiseLite_oao7i")
+
+[sub_resource type="FogMaterial" id="FogMaterial_oao7i"]
+albedo = Color(0.552956, 0.552956, 0.552956, 1)
+density_texture = SubResource("NoiseTexture3D_ihl0d")
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_184dk")
@@ -41,3 +52,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_biiyu")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(4.66721, 0, 0, 0, -0.0948728, 0.99549, 0, -0.99549, -0.0948728, -0.851705, -0.183042, -3.60156)
+size = Vector3(2, 19.14, 0.63)
+shape = 2
+material = SubResource("FogMaterial_oao7i")

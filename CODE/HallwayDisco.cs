@@ -15,6 +15,8 @@ public partial class HallwayDisco : Hallway
 
     private RandomNumberGenerator rng = new RandomNumberGenerator();
 
+    private Array<Tween> _tweens;
+
     [Export]
     public DiscoFloorPiece.COLOR _primaryColor;
 
@@ -41,6 +43,7 @@ public partial class HallwayDisco : Hallway
         _pieces = Tools.GetChildren<PathFollow3D>(this);
         _bottomLights = new Array<Array<DiscoFloorPiece>>();
         _topLights = new Array<Array<DiscoFloorPiece>>();
+        _tweens = new Array<Tween>();
 
         foreach (Node3D piece in _pieces)
         {
@@ -59,6 +62,11 @@ public partial class HallwayDisco : Hallway
         GetNode<CustomSignals>("/root/CustomSignals").UpdateShowTopSignal += UpdateTop;
 
         UpdateLights();
+    }
+
+    public bool Busy()
+    {
+        return _tweens.Count > 0;
     }
 
     public void UpdateLights()
@@ -98,15 +106,21 @@ public partial class HallwayDisco : Hallway
                     tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), 0);
                     tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), rng.RandfRange(1, 2));
                     //tween.TweenProperty(light, "visible", true, 1.5);
+
+                    _tweens.Add(tween);
+                    tween.TweenCallback(Callable.From(() => _tweens.Remove(tween)));
                 }
                 else
                 {
                     var tween = GetTree().CreateTween();
-                    tween.SetTrans(Tween.TransitionType.Bounce);
+                    tween.SetTrans(Tween.TransitionType.Circ);
 
                     tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), 0);
                     tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), rng.RandfRange(1, 2));
                     tween.TweenProperty(light, "visible", false, 2);
+
+                    _tweens.Add(tween);
+                    tween.TweenCallback(Callable.From(() => _tweens.Remove(tween)));
                 }
             }
         }

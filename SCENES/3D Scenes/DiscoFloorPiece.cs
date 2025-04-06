@@ -5,7 +5,7 @@ using System;
 
 public partial class DiscoFloorPiece : Node3D
 {
-    public OmniLight3D _light;
+    public Light3D _light;
     public MeshInstance3D _mesh;
 
     private static Dictionary<string, string> _colors;
@@ -21,7 +21,7 @@ public partial class DiscoFloorPiece : Node3D
     {
         currentColor = COLOR.BLUE;
         _mesh = GetNode<MeshInstance3D>("Floor");
-        _light = GetNode<OmniLight3D>("Light");
+        _light = GetNode<Light3D>("Light");
     }
 
     public bool Equals(COLOR color)
