@@ -31,25 +31,19 @@ public partial class DiscoFloorPiece : Node3D
 
     public void Change(COLOR color)
     {
-        string meshPath = "";
+        ShaderMaterial coloredMesh = null;
         currentColor = color;
         switch (color)
         {
             case COLOR.RED:
-                meshPath = "res://SCENES/3D Scenes/RedFloorMesh.tres";
+                coloredMesh = ResourceLoader.Load<ShaderMaterial>("res://ART/MATERIALS AND MESHES/neonRed.tres");
                 break;
 
             case COLOR.BLUE:
-                meshPath = "res://SCENES/3D Scenes/BlueFloorMesh.tres";
+                coloredMesh = ResourceLoader.Load<ShaderMaterial>("res://ART/MATERIALS AND MESHES/neonBlue.tres");
                 break;
         }
 
-        BoxMesh coloredMesh = ResourceLoader.Load<BoxMesh>(meshPath);
-
-        if (coloredMesh == null)
-            return;
-
-        _light.LightColor = (coloredMesh.Material as StandardMaterial3D).AlbedoColor;
-        _mesh.Mesh = coloredMesh;
+        _mesh.SetSurfaceOverrideMaterial(0, coloredMesh);
     }
 }

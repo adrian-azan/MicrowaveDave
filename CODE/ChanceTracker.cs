@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System;
 using static CustomSignals;
 
 public partial class ChanceTracker : VBoxContainer
@@ -8,6 +7,7 @@ public partial class ChanceTracker : VBoxContainer
     public int _levelTracker;
 
     public Dictionary<string, Array<Control>> _options;
+    private WorldEnvironment _environment;
 
     public override void _Ready()
     {
@@ -26,6 +26,8 @@ public partial class ChanceTracker : VBoxContainer
         _options["Level2"].Add(GetNode<Label>("LightingStyle"));
         _options["Level2"].Add(GetNode<CheckButton>("ShowTop"));
 
+        _environment = GetNode<WorldEnvironment>("../WorldEnvironment");
+
         SwitchLevel();
     }
 
@@ -33,12 +35,12 @@ public partial class ChanceTracker : VBoxContainer
     {
         Control currentFocus = GetViewport().GuiGetFocusOwner();
 
-        GetNode<Label>("Desk").Text = String.Format("Desks: {0}%", HallwayPiece._deskChance);
-        GetNode<Label>("Water").Text = String.Format("Water: {0}%", HallwayPiece._waterCoolerChance);
-        GetNode<Label>("Light").Text = String.Format("Light: {0}%", HallwayPiece._lightFlickerChance);
-        GetNode<Label>("Posters").Text = String.Format("Poster: {0}%", Math.Round((double)HallwayPiece._posterChance, 0));
-        GetNode<Label>("Pace").Text = String.Format("Pace: {0}x", Math.Round(Hallway._pace * 10, 1));
-        GetNode<Label>("LightingStyle").Text = String.Format("LightingStyle: {0}", HallwayDisco._lightingStyle);
+        GetNode<Label>("Desk").Text = System.String.Format("Desks: {0}%", HallwayPiece._deskChance);
+        GetNode<Label>("Water").Text = System.String.Format("Water: {0}%", HallwayPiece._waterCoolerChance);
+        GetNode<Label>("Light").Text = System.String.Format("Light: {0}%", HallwayPiece._lightFlickerChance);
+        GetNode<Label>("Posters").Text = System.String.Format("Poster: {0}%", System.Math.Round((double)HallwayPiece._posterChance, 0));
+        GetNode<Label>("Pace").Text = System.String.Format("Pace: {0}x", System.Math.Round(Hallway._pace * 10, 1));
+        GetNode<Label>("LightingStyle").Text = System.String.Format("LightingStyle: {0}", HallwayDisco._lightingStyle);
 
         GetNode<Sprite2D>("Sprite2D2").Position = new Vector2(GetNode<Sprite2D>("Sprite2D2").Position.X,
                                                                 currentFocus.Position.Y + currentFocus.Size.Y * .5f);
@@ -162,6 +164,7 @@ public partial class ChanceTracker : VBoxContainer
 
             _options["Level2"][0].FocusNeighborTop = pace.GetPath();
             _options["Level2"][_options["Level2"].Count - 1].FocusNeighborBottom = level.GetPath();
+            _environment.Environment = ResourceLoader.Load<Environment>("res://ART/DiscoEnvironment.tres");
         }
 
         if (levels[_levelTracker].Name == "Hallway")
@@ -184,6 +187,7 @@ public partial class ChanceTracker : VBoxContainer
 
             _options["Level1"][0].FocusNeighborTop = pace.GetPath();
             _options["Level1"][_options["Level1"].Count - 1].FocusNeighborBottom = level.GetPath();
+            _environment.Environment = ResourceLoader.Load<Environment>("res://ART/WorldEnvironment.tres");
         }
     }
 }

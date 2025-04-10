@@ -1,0 +1,6 @@
+[gd_resource type="BoxMesh" load_steps=2 format=3 uid="uid://cmw0lkuyy2btq"]
+
+[ext_resource type="Material" uid="uid://bk54vwutnsrxk" path="res://ART/MATERIALS AND MESHES/neonBlue.tres" id="1_df3ef"]
+
+[resource]
+material = ExtResource("1_df3ef")

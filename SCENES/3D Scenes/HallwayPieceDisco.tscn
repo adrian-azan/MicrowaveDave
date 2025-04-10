@@ -95,108 +95,108 @@ libraries = {
 transform = Transform3D(1.195, 0, 0, 0, 1, 0, 0, 0, 0.92, -0.465, 0, -0.049)
 
 [node name="DiscoFloorPiece" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -0.649574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 2, 0, -0.597)
 
 [node name="DiscoFloorPiece2" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.649574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 1, 0, -0.597)
 
 [node name="DiscoFloorPiece3" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.649574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 0, 0, -0.597)
 
 [node name="DiscoFloorPiece4" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.649574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, -1, 0, -0.597)
 
 [node name="DiscoFloorPiece5" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -0.649574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, -2, 0, -0.597)
 
 [node name="DiscoFloorPiece6" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 2, 0, 0.0677746)
 
 [node name="DiscoFloorPiece7" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 1, 0, 0.0677746)
 
 [node name="DiscoFloorPiece8" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 0, 0, 0.0677746)
 
 [node name="DiscoFloorPiece9" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, -1, 0, 0.0677746)
 
 [node name="DiscoFloorPiece10" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, -2, 0, 0.74)
 
 [node name="DiscoFloorPiece11" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.78)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 2, 0, 0.74)
 
 [node name="DiscoFloorPiece12" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.78)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 1, 0, 0.74)
 
 [node name="DiscoFloorPiece13" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.78)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, 0, 0, 0.74)
 
 [node name="DiscoFloorPiece14" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.78)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, -1, 0, 0.74)
 
 [node name="DiscoFloorPiece15" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.78)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.15, -2, 0, 0.74)
 
 [node name="DiscoFloorPiece16" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, -0.649574)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 2, 3.13569, -0.6)
 visible = false
 
 [node name="DiscoFloorPiece17" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, -0.649574)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 1, 3.13569, -0.6)
 visible = false
 
 [node name="DiscoFloorPiece18" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, -0.649574)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 0, 3.13569, -0.6)
 visible = false
 
 [node name="DiscoFloorPiece19" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, -0.649574)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, -1, 3.13569, -0.6)
 visible = false
 
 [node name="DiscoFloorPiece20" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, -0.649574)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, -2, 3.13569, -0.6)
 visible = false
 
 [node name="DiscoFloorPiece21" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 2, 3.13569, 0.0677746)
 visible = false
 
 [node name="DiscoFloorPiece22" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 1, 3.13569, 0.0677746)
 visible = false
 
 [node name="DiscoFloorPiece23" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 0, 3.13569, 0.0677746)
 visible = false
 
 [node name="DiscoFloorPiece24" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, -1, 3.13569, 0.0677746)
 visible = false
 
 [node name="DiscoFloorPiece25" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, 0.0677746)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, -2, 3.13569, 0.74)
 visible = false
 
 [node name="DiscoFloorPiece26" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, 0.78)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 2, 3.13569, 0.74)
 visible = false
 
 [node name="DiscoFloorPiece27" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, 0.78)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 1, 3.13569, 0.74)
 visible = false
 
 [node name="DiscoFloorPiece28" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, 0.78)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, 0, 3.13569, 0.74)
 visible = false
 
 [node name="DiscoFloorPiece29" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, 0.78)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, -1, 3.13569, 0.74)
 visible = false
 
 [node name="DiscoFloorPiece30" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, 0.78)
+transform = Transform3D(1, 0, 0, 0, -1, 1.73645e-07, 0, -1.50996e-07, -1.15, -2, 3.13569, 0.74)
 visible = false
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
