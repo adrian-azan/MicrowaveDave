@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bk54vwutnsrxk"]
 
-[ext_resource type="Shader" uid="uid://bsqltnfo0rsfb" path="res://CODE/DiscoFloorPiece.gdshader" id="1_1bpwn"]
+[ext_resource type="Shader" uid="uid://bsqltnfo0rsfb" path="res://CODE/SHADERS/DiscoFloorPiece.gdshader" id="1_1bpwn"]
 
 [resource]
 render_priority = 0

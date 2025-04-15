@@ -80,7 +80,7 @@ mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.813609, 0.00895528, -0.581339, -0.00895528, 0.999566, 0.0279313, 0.581338, 0.0279312, -0.813179, 0.0491845, -0.00236314, 1.55612)
+transform = Transform3D(-0.813609, 0.00895528, -0.581339, -0.00895528, 0.999566, 0.0279313, 0.581339, 0.0279312, -0.813179, 0.0491845, -0.00236314, 1.55612)
 progress = 0.266635
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D2"]

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stage Light Foot Flood
+* source:	https://sketchfab.com/3d-models/stage-light-foot-flood-75a016ff59134af9bf8199e5633d08ec
+* author:	Mike Rowley (https://sketchfab.com/scrumpy26)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stage Light Foot Flood" (https://sketchfab.com/3d-models/stage-light-foot-flood-75a016ff59134af9bf8199e5633d08ec) by Mike Rowley (https://sketchfab.com/scrumpy26) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

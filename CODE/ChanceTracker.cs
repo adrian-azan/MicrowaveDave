@@ -24,6 +24,7 @@ public partial class ChanceTracker : VBoxContainer
         _options["Level1"].Add(GetNode<Label>("Posters"));
 
         _options["Level2"].Add(GetNode<Label>("LightingStyle"));
+        _options["Level2"].Add(GetNode<Label>("DiscoLight"));
         _options["Level2"].Add(GetNode<CheckButton>("ShowTop"));
 
         _environment = GetNode<WorldEnvironment>("../WorldEnvironment");
@@ -41,6 +42,7 @@ public partial class ChanceTracker : VBoxContainer
         GetNode<Label>("Posters").Text = System.String.Format("Poster: {0}%", System.Math.Round((double)HallwayPiece._posterChance, 0));
         GetNode<Label>("Pace").Text = System.String.Format("Pace: {0}x", System.Math.Round(Hallway._pace * 10, 1));
         GetNode<Label>("LightingStyle").Text = System.String.Format("LightingStyle: {0}", HallwayDisco._lightingStyle);
+        GetNode<Label>("DiscoLight").Text = System.String.Format("Disco Light: {0}", HallwayDisco._discoLightFlickerChance);
 
         GetNode<Sprite2D>("Sprite2D2").Position = new Vector2(GetNode<Sprite2D>("Sprite2D2").Position.X,
                                                                 currentFocus.Position.Y + currentFocus.Size.Y * .5f);
@@ -75,6 +77,10 @@ public partial class ChanceTracker : VBoxContainer
                     HallwayDisco._lightingStyle++;
                     HallwayDisco._lightingStyle = (HallwayDisco.LightingStyle)(((int)HallwayDisco._lightingStyle) % 4);
                     GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.UpdateLightsSignal);
+                    break;
+
+                case "DiscoLight":
+                    HallwayDisco._discoLightFlickerChance += HallwayDisco._discoLightFlickerChance < 100 ? 10 : 0;
 
                     break;
 
@@ -116,6 +122,11 @@ public partial class ChanceTracker : VBoxContainer
 
                 case "Posters":
                     HallwayPiece._posterChance -= HallwayPiece._posterChance > 0 ? 10 : 0;
+                    break;
+
+                case "DiscoLight":
+                    HallwayDisco._discoLightFlickerChance -= HallwayDisco._discoLightFlickerChance > 0 ? 10 : 0;
+
                     break;
 
                 case "LightingStyle":

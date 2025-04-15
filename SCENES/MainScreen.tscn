@@ -83,14 +83,23 @@ metadata/chance = 0
 visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath("../Light")
+focus_neighbor_bottom = NodePath("../DiscoLight")
 focus_mode = 2
 text = "LightingStyle: "
+metadata/chance = 0
+
+[node name="DiscoLight" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LightingStyle")
+focus_neighbor_bottom = NodePath("../ShowTop")
+focus_mode = 2
+text = "Light: "
 metadata/chance = 0
 
 [node name="ShowTop" type="CheckButton" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
-focus_neighbor_top = NodePath("../LightingStyle")
+focus_neighbor_top = NodePath("../DiscoLight")
 focus_neighbor_bottom = NodePath("../Level")
 shortcut_feedback = false
 shortcut_in_tooltip = false

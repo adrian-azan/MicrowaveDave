@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq6woi6michm7"]
+
+[ext_resource type="Texture2D" uid="uid://dbsa63e6adrq6" path="res://ART/VISUALS/Manager.png" id="1_1st3m"]
+[ext_resource type="PackedScene" uid="uid://b770g014jgqtr" path="res://ART/MODELS/yamaha_keyboard/scene.gltf" id="2_nwob1"]
+[ext_resource type="PackedScene" uid="uid://bm00ywbgkp7at" path="res://ART/MODELS/stage_light_foot_flood/scene.gltf" id="3_nwob1"]
+
+[node name="Manager" type="Sprite3D"]
+layers = 16
+gi_mode = 2
+shaded = true
+texture = ExtResource("1_1st3m")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_nwob1")]
+transform = Transform3D(-1.99595, 0, -0.396765, 0, 2.035, 0, 0.396765, 0, -1.99595, -1.13954, -1.84472, 0.848753)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_nwob1")]
+transform = Transform3D(-0.107167, 0, 0.162911, 0, 0.195, 0, -0.162911, 0, -0.107167, 1.57653, -0.812772, 2.70015)
+
+[node name="Sketchfab_Scene3" parent="." instance=ExtResource("3_nwob1")]
+transform = Transform3D(0.0693699, 0, 0.182244, 0, 0.195, 0, -0.182244, 0, 0.0693699, -2.81671, -0.812772, 2.70015)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.672957, 0.506574, -0.538992, -0.732979, 0.554575, -0.39394, 0.099352, 0.660174, 0.744513, -2.80084, -0.7942, 2.51338)
+layers = 16
+light_color = Color(0.669069, 0.741586, 0.789981, 1)
+light_energy = 16.0
+light_cull_mask = 4293918736
+spot_range = 24.563
+spot_attenuation = 0.45
+spot_angle = 15.7
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.611333, 0.468384, 0.83559, -0.626509, 0.945352, -0.0715455, -0.724625, -0.422194, 0.766807, 1.53706, -0.7942, 2.51338)
+layers = 16
+light_color = Color(0.669069, 0.741586, 0.789981, 1)
+light_energy = 16.0
+light_cull_mask = 4293918736
+spot_range = 24.563
+spot_attenuation = 0.45
+spot_angle = 15.7
