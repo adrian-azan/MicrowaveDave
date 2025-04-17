@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://jp2mlfj28jfu"]
 
-[ext_resource type="Script" path="res://CODE/ROOT.cs" id="1_184dk"]
-[ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/Hallway.tscn" id="1_p0nm0"]
-[ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/HallwayPiece.tscn" id="2_l5o0n"]
-[ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/Player.tscn" id="3_3yvfb"]
+[ext_resource type="Script" uid="uid://ba8nbe1pttdt" path="res://CODE/ROOT.cs" id="1_184dk"]
+[ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/Hallway.tscn" id="1_p0nm0"]
+[ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="3_3yvfb"]
+[ext_resource type="PackedScene" uid="uid://dhgvixhfx4f3g" path="res://SCENES/3D Scenes/HallwayDisco.tscn" id="3_oao7i"]
 
 [sub_resource type="Environment" id="Environment_biiyu"]
 background_mode = 1
@@ -13,7 +13,9 @@ fog_light_color = Color(0, 0, 0, 1)
 script = ExtResource("1_184dk")
 
 [node name="Hallway" parent="." instance=ExtResource("1_p0nm0")]
-piece = ExtResource("2_l5o0n")
+
+[node name="HallwayDisco" parent="." instance=ExtResource("3_oao7i")]
+visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -1.38427, 1.3078, 6.94366)
