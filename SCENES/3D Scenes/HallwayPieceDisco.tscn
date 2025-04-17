@@ -1,0 +1,199 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2eew5vje8xc4"]
+
+[ext_resource type="PackedScene" uid="uid://dncvqg3krv65g" path="res://SCENES/3D Scenes/DiscoFloorPiece.tscn" id="1_jbjk6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0affl"]
+albedo_color = Color(0.169245, 0.169245, 0.169245, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xlkat"]
+material = SubResource("StandardMaterial3D_0affl")
+
+[sub_resource type="Animation" id="Animation_0dbe5"]
+resource_name = "Flicker"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0mfn"]
+_data = {
+&"Flicker": SubResource("Animation_0dbe5")
+}
+
+[node name="HallwayPieceDisco" type="PathFollow3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 0.3, 0, 0, 0, 2, 0, -0.263225, 0)
+mesh = SubResource("BoxMesh_xlkat")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 4.13, 0, 0, 0, 2, -2.356, 1.29314, 0)
+mesh = SubResource("BoxMesh_xlkat")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.28113, 0, 0)
+layers = 2
+aabb = AABB(-6.74344, -0.524651, -0.422642, 13.4869, 1.0493, 0.845284)
+
+[node name="SpotLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.02105, 0)
+visible = false
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
+light_energy = 2.5
+omni_range = 2.575
+
+[node name="SpotLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.928587, 2.02105, 0)
+visible = false
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
+light_energy = 2.5
+omni_range = 2.575
+
+[node name="SpotLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.848588, 2.02105, 0)
+visible = false
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
+light_energy = 2.5
+omni_range = 2.575
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n0mfn")
+}
+
+[node name="FloorTiles" type="Node3D" parent="."]
+transform = Transform3D(1.195, 0, 0, 0, 1, 0, 0, 0, 0.92, -0.465, 0, -0.049)
+
+[node name="DiscoFloorPiece" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -0.649574)
+
+[node name="DiscoFloorPiece2" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.649574)
+
+[node name="DiscoFloorPiece3" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.649574)
+
+[node name="DiscoFloorPiece4" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.649574)
+
+[node name="DiscoFloorPiece5" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -0.649574)
+
+[node name="DiscoFloorPiece6" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.0677746)
+
+[node name="DiscoFloorPiece7" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.0677746)
+
+[node name="DiscoFloorPiece8" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0677746)
+
+[node name="DiscoFloorPiece9" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.0677746)
+
+[node name="DiscoFloorPiece10" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.0677746)
+
+[node name="DiscoFloorPiece11" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.78)
+
+[node name="DiscoFloorPiece12" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.78)
+
+[node name="DiscoFloorPiece13" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.78)
+
+[node name="DiscoFloorPiece14" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.78)
+
+[node name="DiscoFloorPiece15" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.78)
+
+[node name="DiscoFloorPiece16" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, -0.649574)
+
+[node name="DiscoFloorPiece17" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, -0.649574)
+
+[node name="DiscoFloorPiece18" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, -0.649574)
+
+[node name="DiscoFloorPiece19" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, -0.649574)
+
+[node name="DiscoFloorPiece20" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, -0.649574)
+
+[node name="DiscoFloorPiece21" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, 0.0677746)
+
+[node name="DiscoFloorPiece22" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, 0.0677746)
+
+[node name="DiscoFloorPiece23" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, 0.0677746)
+
+[node name="DiscoFloorPiece24" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, 0.0677746)
+
+[node name="DiscoFloorPiece25" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, 0.0677746)
+
+[node name="DiscoFloorPiece26" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 3.13569, 0.78)
+
+[node name="DiscoFloorPiece27" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 3.13569, 0.78)
+
+[node name="DiscoFloorPiece28" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.13569, 0.78)
+
+[node name="DiscoFloorPiece29" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1, 3.13569, 0.78)
+
+[node name="DiscoFloorPiece30" parent="FloorTiles" instance=ExtResource("1_jbjk6")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 3.13569, 0.78)
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.30135e-08, -0.177978, 0.984034, -7.77966e-09, 0.984034, 0.177978, -1, 0, -4.37114e-08, 3.02128, 2.59486, 0)
+light_color = Color(0.707266, 0.000393228, 0.710804, 1)
+light_energy = 10.469
+light_specular = 1.262
+spot_range = 5.62884
+spot_attenuation = -1.31
+spot_angle = 17.5188
+
+[connection signal="screen_exited" from="MeshInstance3D2/VisibleOnScreenNotifier3D" to="." method="SetPiece"]
