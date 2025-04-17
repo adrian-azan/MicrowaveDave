@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4t872bv708hj"]
+[gd_scene load_steps=8 format=3 uid="uid://c4t872bv708hj"]
 
-[ext_resource type="Script" uid="uid://m8h1vb2ldngo" path="res://SCENES/MainScreen.cs" id="1_fd2mp"]
+[ext_resource type="Script" uid="uid://m8h1vb2ldngo" path="res://CODE/MainScreen.cs" id="1_fd2mp"]
 [ext_resource type="PackedScene" uid="uid://jp2mlfj28jfu" path="res://SCENES/ROOT.tscn" id="1_wph3u"]
 [ext_resource type="Texture2D" uid="uid://bcwvjkq0miyd6" path="res://ART/VISUALS/Arrow.png" id="3_e6j18"]
 [ext_resource type="Script" uid="uid://bikv08x76kkeg" path="res://CODE/ChanceTracker.cs" id="4_4a0tm"]
 [ext_resource type="Texture2D" uid="uid://1vvdf8h78dle" path="res://ART/VISUALS/Controller Outline.png" id="5_1y7r2"]
 [ext_resource type="PackedScene" uid="uid://o3ocubhx4gec" path="res://SCENES/ConceptArt.tscn" id="5_lf6qd"]
+[ext_resource type="Environment" uid="uid://sb3sj7qlcab2" path="res://ART/DiscoEnvironment.tres" id="7_sqmv7"]
 
 [node name="MainScreen" type="Node2D"]
 script = ExtResource("1_fd2mp")
@@ -82,9 +83,27 @@ metadata/chance = 0
 visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath("../Light")
+focus_neighbor_bottom = NodePath("../DiscoLight")
 focus_mode = 2
 text = "LightingStyle: "
 metadata/chance = 0
+
+[node name="DiscoLight" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LightingStyle")
+focus_neighbor_bottom = NodePath("../ShowTop")
+focus_mode = 2
+text = "Light: "
+metadata/chance = 0
+
+[node name="ShowTop" type="CheckButton" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+focus_neighbor_top = NodePath("../DiscoLight")
+focus_neighbor_bottom = NodePath("../Level")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Show Top"
 
 [node name="Level" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -107,3 +126,6 @@ visible = false
 position = Vector2(496, 368)
 scale = Vector2(0.345, 0.345)
 texture = ExtResource("5_1y7r2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("7_sqmv7")

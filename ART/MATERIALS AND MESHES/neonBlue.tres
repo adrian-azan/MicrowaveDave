@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bk54vwutnsrxk"]
+
+[ext_resource type="Shader" uid="uid://bsqltnfo0rsfb" path="res://CODE/SHADERS/DiscoFloorPiece.gdshader" id="1_1bpwn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1bpwn")
+shader_parameter/neon_color = Color(0.192157, 0.380392, 0.835294, 1)
+shader_parameter/intensity = 1.928
+shader_parameter/glow_threshold = 0.173
