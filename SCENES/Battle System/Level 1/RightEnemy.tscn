@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://boh2h2txd52qo"]
+
+[ext_resource type="Script" uid="uid://ptd01timd6sx" path="res://CODE/COMBAT/ENEMIES/Level1_Basic.cs" id="1_4q1n1"]
+[ext_resource type="Material" uid="uid://ds1juextwgcss" path="res://ART/MATERIALS AND MESHES/Red.tres" id="2_4q1n1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2tw5h"]
+material = ExtResource("2_4q1n1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4q1n1"]
+size = Vector3(1, 1.6626, 1)
+
+[node name="MiddleEnemy" type="PathFollow3D" groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+script = ExtResource("1_4q1n1")
+_designatedLane = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_2tw5h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.191581, 0)
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849834, 0)
+shape = SubResource("BoxShape3D_4q1n1")
+
+[connection signal="timeout" from="Timer" to="." method="StartAttack"]
+[connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

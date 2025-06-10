@@ -31,6 +31,11 @@ window/stretch/mode="viewport"
 
 project/assembly_name="MicrowaveDave"
 
+[global_group]
+
+Enemy=""
+Piece=""
+
 [input]
 
 ui_up={
@@ -100,3 +105,4 @@ SwitchCamera={
 2d_physics/layer_2="EnemyJab"
 2d_physics/layer_3="Goal"
 2d_physics/layer_5="Destroyer"
+3d_physics/layer_16="SIGNALS"

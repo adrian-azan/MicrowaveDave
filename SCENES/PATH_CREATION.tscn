@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://df5ui27c81u4x"]
+
+[ext_resource type="Curve2D" uid="uid://871ceit4kn85" path="res://SCENES/Battle System/Jab Types/HICCUP.tres" id="1_3h4th"]
+
+[node name="PathCreation" type="Path2D"]
+curve = ExtResource("1_3h4th")

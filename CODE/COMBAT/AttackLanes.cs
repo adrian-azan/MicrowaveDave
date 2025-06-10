@@ -3,15 +3,11 @@ using Godot.Collections;
 
 public partial class AttackLanes : Node2D
 {
-    private Array<Path2D> _Lanes;
-
-    [Export]
-    private PackedScene _JabScene;
+    private Array<Path2D> _lanes;
 
     public override void _Ready()
     {
-        _Lanes = Tools.GetChildren<Path2D>(this);
-        //  (GetNode("Timer") as Timer).Start();
+        _lanes = Tools.GetChildren<Path2D>(this);
     }
 
     public override void _Process(double delta)
@@ -19,18 +15,15 @@ public partial class AttackLanes : Node2D
         float felta = (float)delta;
     }
 
-    public void CreateJabs()
+    public void AddAttackToLane(Attack attack, int lane)
     {
-        var newJab = _JabScene.Instantiate();
-        newJab.GetNode<AnimationPlayer>("AnimationPlayer").Play("root");
-        newJab.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, true);
-        newJab.GetNode<Area2D>("Area2D").SetCollisionLayerValue(1, false);
-        newJab.GetNode<Area2D>("Area2D").SetCollisionMaskValue(1, false);
-        newJab.GetNode<Area2D>("Area2D").SetCollisionMaskValue(2, false);
+        GD.Print("Creating an Attack");
+        _lanes[lane].AddChild(attack);
+    }
 
-        GetChild(0).AddChild(newJab);
-
-        GetNode<Timer>("Timer").WaitTime = new RandomNumberGenerator().RandfRange(1, 3);
+    public int Count()
+    {
+        return _lanes == null ? 0 : _lanes.Count;
     }
 
     public void CollisionWithHeart(Area2D incomingAttack)

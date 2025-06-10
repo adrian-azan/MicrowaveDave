@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1vsyl04g2e8x"]
+
+[ext_resource type="Script" uid="uid://dbdf7wl2ss67u" path="res://CODE/COMBAT/Attack.cs" id="1_ggykg"]
+[ext_resource type="Texture2D" uid="uid://cprxm37hht5ui" path="res://ART/VISUALS/Blue.png" id="2_ax5jw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n074q"]
+radius = 6.1133
+
+[node name="Attack" type="PathFollow2D"]
+scale = Vector2(0.5, 0.5)
+loop = false
+script = ExtResource("1_ggykg")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ax5jw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(3.92, 3.92)
+shape = SubResource("CircleShape2D_n074q")
+
+[connection signal="area_entered" from="Area2D" to="." method="CollisionWithIncomingJab"]

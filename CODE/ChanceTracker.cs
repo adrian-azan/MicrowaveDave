@@ -28,7 +28,7 @@ public partial class ChanceTracker : VBoxContainer
         _options["Level2"].Add(GetNode<CheckButton>("ShowTop"));
 
         _environment = GetNode<WorldEnvironment>("../WorldEnvironment");
-
+        _levelTracker = _options.Count - 1;
         SwitchLevel();
     }
 

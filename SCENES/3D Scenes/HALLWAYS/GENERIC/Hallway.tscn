@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3jd26bajpr0v"]
+[gd_scene load_steps=14 format=3 uid="uid://c3jd26bajpr0v"]
 
 [ext_resource type="Script" uid="uid://c6jgrkfblv5oe" path="res://CODE/HALLWAYS/Generic/Hallway.cs" id="1_ufto0"]
 [ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/HallwayPiece.tscn" id="2_ktj3d"]
+[ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/LeftEnemy.tscn" id="3_1iwh6"]
+[ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/MiddleEnemy.tscn" id="4_k671h"]
+[ext_resource type="PackedScene" uid="uid://boh2h2txd52qo" path="res://SCENES/Battle System/Level 1/RightEnemy.tscn" id="5_4tegq"]
 
 [sub_resource type="Curve3D" id="Curve3D_nfwm7"]
 bake_interval = 0.05
@@ -11,9 +14,91 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Animation" id="Animation_lx1gt"]
+resource_name = "TIME_LINE"
+length = 300.0
+loop_mode = 1
+markers = [{
+"color": Color(1, 0, 0, 1),
+"name": &"new_marker",
+"time": 15.0
+}]
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 14.0667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"PhaseOne"
+}, {
+"args": [],
+"method": &"PhaseTwo"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cgec"]
+_data = {
+&"TIME_LINE": SubResource("Animation_lx1gt")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1iwh6"]
+animation = &"TIME_LINE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k671h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4tegq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fkpxk"]
+states/End/position = Vector2(452, 95)
+states/TIME_LINE/node = SubResource("AnimationNodeAnimation_1iwh6")
+states/TIME_LINE/position = Vector2(330, 95)
+transitions = ["Start", "TIME_LINE", SubResource("AnimationNodeStateMachineTransition_k671h"), "TIME_LINE", "End", SubResource("AnimationNodeStateMachineTransition_4tegq")]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1iwh6"]
+size = Vector3(4.15828, 1.34427, 0.290527)
+
 [node name="Hallway" type="Node3D"]
 script = ExtResource("1_ufto0")
 piece = ExtResource("2_ktj3d")
+LEFT_ENEMY = ExtResource("3_1iwh6")
+MIDDLE_ENEMY = ExtResource("4_k671h")
+RIGHT_ENEMY = ExtResource("5_4tegq")
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_nfwm7")
+
+[node name="MiddleLane" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.103, -1.53167)
+curve = SubResource("Curve3D_nfwm7")
+
+[node name="RightLane" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38287, 1.103, -2.6579)
+curve = SubResource("Curve3D_nfwm7")
+
+[node name="LeftLane" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81201, 1.103, -2.4861)
+curve = SubResource("Curve3D_nfwm7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6cgec")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_fkpxk")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32768
+collision_mask = 65535
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10273, 1.60704, -6.12414)
+shape = SubResource("BoxShape3D_1iwh6")
