@@ -15,10 +15,13 @@ public partial class Attack : PathFollow2D
     public float health;
     public float attack;
 
+    public float _pace;
+
     public bool countering;
     public Style _style;
 
-    public Tween IN_PROGRESS;
+    public Tween PROGRESS_TWEEN;
+    public Tween PACE_TWEEN;
 
     [Export]
     private PackedScene _AttackScene;
@@ -27,11 +30,20 @@ public partial class Attack : PathFollow2D
     {
         health = 1.0f;
         attack = 0.34f;
+        _pace = 1;
     }
 
     public void Set(float duration, int lane)
     {
         _lane = lane;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (PROGRESS_TWEEN == null || !PROGRESS_TWEEN.IsValid())
+        {
+            ProgressRatio += (float)delta * _pace;
+        }
     }
 
     public void CollisionWithIncomingJab(Area2D incomingAttack)

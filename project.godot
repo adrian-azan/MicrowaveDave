@@ -35,6 +35,7 @@ project/assembly_name="MicrowaveDave"
 
 Enemy=""
 Piece=""
+AttackLane=""
 
 [input]
 

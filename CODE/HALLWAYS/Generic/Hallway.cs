@@ -33,7 +33,7 @@ public partial class Hallway : Node3D
         }
 
         var timeline = GetNode<AnimationPlayer>("AnimationPlayer");
-        timeline?.Play("TIME_LINE");
+        //timeline?.Play("TIME_LINE");
     }
 
     public override void _Process(double delta)

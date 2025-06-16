@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://vyg3yckmd1pf"]
 
-[ext_resource type="Script" uid="uid://ptd01timd6sx" path="res://CODE/COMBAT/ENEMIES/Level1_Basic.cs" id="1_5ueog"]
-[ext_resource type="Material" uid="uid://b8jc0x88ttulp" path="res://ART/MATERIALS AND MESHES/Orange.tres" id="2_alxvc"]
+[ext_resource type="Script" uid="uid://cpfnpicb24t1p" path="res://CODE/COMBAT/ENEMIES/Level 1/SimpleCurve.cs" id="1_jrvfs"]
+[ext_resource type="Material" uid="uid://b8jc0x88ttulp" path="res://ART/MATERIALS AND MESHES/Orange.tres" id="2_ypqha"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2tw5h"]
-material = ExtResource("2_alxvc")
+material = ExtResource("2_ypqha")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2vks"]
 size = Vector3(1, 0.693115, 1)
 
-[node name="MiddleEnemy" type="PathFollow3D" groups=["Enemy"]]
+[node name="SimpleCurve" type="PathFollow3D" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017941, 0.2, 0.00980091)
-script = ExtResource("1_5ueog")
+script = ExtResource("1_jrvfs")
 _designatedLane = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -19,6 +19,7 @@ mesh = SubResource("CapsuleMesh_2tw5h")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.114129, 0)

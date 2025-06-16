@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://df5ui27c81u4x"]
+[gd_scene load_steps=3 format=3 uid="uid://df5ui27c81u4x"]
 
-[ext_resource type="Curve2D" uid="uid://871ceit4kn85" path="res://SCENES/Battle System/Jab Types/HICCUP.tres" id="1_3h4th"]
+[ext_resource type="Curve2D" uid="uid://8crqshcnux1q" path="res://SCENES/Battle System/Jab Types/SimpleCrissCross.tres" id="1_acgnw"]
+[ext_resource type="PackedScene" uid="uid://c1vsyl04g2e8x" path="res://SCENES/Battle System/Jab Types/Attack.tscn" id="2_acgnw"]
 
 [node name="PathCreation" type="Path2D"]
-curve = ExtResource("1_3h4th")
+curve = ExtResource("1_acgnw")
+
+[node name="Attack" parent="." instance=ExtResource("2_acgnw")]
+position = Vector2(0.91202, 301.14)
+rotation = 0.896055
+progress = 301.47

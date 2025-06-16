@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm411x4pif1dy"]
+
+[ext_resource type="Script" uid="uid://caftlb5er53nf" path="res://CODE/COMBAT/ENEMIES/Level 1/SimpleBounce.cs" id="1_lcoq0"]
+[ext_resource type="Material" uid="uid://i6hpiuvt78ta" path="res://ART/MATERIALS AND MESHES/Purple.tres" id="2_lcoq0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2tw5h"]
+material = ExtResource("2_lcoq0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_apfny"]
+
+[node name="SimpleBounce" type="PathFollow3D" groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+script = ExtResource("1_lcoq0")
+_designatedLane = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_2tw5h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.255291, 0)
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.809063, 0)
+shape = SubResource("BoxShape3D_apfny")
+
+[connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]
