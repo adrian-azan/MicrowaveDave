@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://nvl3a2y8ex8j"]
 
-[ext_resource type="Script" uid="uid://b3wxb0cfx1l7w" path="res://CODE/DEBUG TOOLS/EnemyTracker.cs" id="1_lnrfh"]
+[ext_resource type="Script" uid="uid://dctsehedgt6vo" path="res://CODE/DEBUG TOOLS/EnemyTracker.cs" id="1_lnrfh"]
 [ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/SimpleStraight.tscn" id="2_im1sq"]
 [ext_resource type="Texture2D" uid="uid://bcwvjkq0miyd6" path="res://ART/VISUALS/Arrow.png" id="2_mwqly"]
 [ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="3_dqwch"]
