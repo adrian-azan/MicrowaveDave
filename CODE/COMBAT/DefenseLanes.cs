@@ -1,29 +1,45 @@
 using Godot;
 using Godot.Collections;
+using System.Collections;
+using System.Security.Cryptography;
 
-public partial class DefenseLanes : Node2D
+public partial class DefenseLanes : Lanes
 {
-    private Array<Path2D> _Lanes;
-
-    [Export]
-    private PackedScene _JabScene;
-
-    public override void _Ready()
-    {
-        _Lanes = Tools.GetChildren<Path2D>(this);
-        (GetNode("Timer") as Timer).Start();
-    }
-
     public override void _Process(double delta)
     {
         float felta = (float)delta;
 
         if (Input.IsActionJustPressed("LeftAttack"))
         {
-            PathFollow2D defenseJab = _JabScene.Instantiate<PathFollow2D>();
-            defenseJab.GetNode<AnimationPlayer>("AnimationPlayer").Play("root");
+            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+            var attackInstance = attackScene.Instantiate<Attack>();
+            attackInstance._pace = .4f;
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
 
-            _Lanes[0].AddChild(defenseJab);
+            AddAttackToLane(attackInstance, LANES.LEFT);
+        }
+
+        if (Input.IsActionJustPressed("MiddleAttack"))
+        {
+            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+            var attackInstance = attackScene.Instantiate<Attack>();
+            attackInstance._pace = .4f;
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+
+            AddAttackToLane(attackInstance, LANES.MIDDLE);
+        }
+
+        if (Input.IsActionJustPressed("RightAttack"))
+        {
+            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+            var attackInstance = attackScene.Instantiate<Attack>();
+            attackInstance._pace = .4f;
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+
+            AddAttackToLane(attackInstance, LANES.RIGHT);
         }
     }
 

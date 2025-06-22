@@ -16,19 +16,20 @@ script = ExtResource("1_sreci")
 position = Vector2(111.155, 34.725)
 
 [node name="Path2D3" type="Path2D" parent="Paths"]
-position = Vector2(-80, 0)
+position = Vector2(-110, 0)
 curve = ExtResource("2_sreci")
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
 curve = ExtResource("2_sreci")
 
 [node name="Path2D4" type="Path2D" parent="Paths"]
-position = Vector2(80, 0)
+position = Vector2(110, 0)
 curve = ExtResource("2_sreci")
 
 [node name="EnemyHeart" type="Area2D" parent="."]
 position = Vector2(110.99, 33.74)
 collision_layer = 0
+collision_mask = 32
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="EnemyHeart"]
 position = Vector2(1.49998, 0)
@@ -43,6 +44,7 @@ shape = SubResource("RectangleShape2D_wphtl")
 [node name="EnemyTarget" type="Area2D" parent="."]
 position = Vector2(110.99, 625.75)
 collision_layer = 0
+collision_mask = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="EnemyTarget"]
 position = Vector2(1.49998, 0)
@@ -54,4 +56,5 @@ texture = ExtResource("3_6xn0v")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_wphtl")
 
+[connection signal="area_entered" from="EnemyHeart" to="." method="AttackedByPlayer"]
 [connection signal="area_entered" from="EnemyTarget" to="." method="CollisionWithHeart"]

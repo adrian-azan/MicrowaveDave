@@ -30,7 +30,6 @@ public partial class Attack : PathFollow2D
     {
         health = 1.0f;
         attack = 0.34f;
-        _pace = 1;
     }
 
     public void Set(float duration, int lane)

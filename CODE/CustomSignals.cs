@@ -8,4 +8,7 @@ public partial class CustomSignals : Node
 
     [Signal]
     public delegate void UpdateShowTopSignalEventHandler(bool visible);
+
+    [Signal]
+    public delegate void SuccesfulAttackSignalEventHandler(int amount);
 }

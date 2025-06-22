@@ -15,8 +15,10 @@ script = ExtResource("1_ggykg")
 texture = ExtResource("2_ax5jw")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
+collision_layer = 2
+collision_mask = 0
 input_pickable = false
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(3.92, 3.92)

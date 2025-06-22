@@ -29,4 +29,6 @@ collision_mask = 32768
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.809063, 0)
 shape = SubResource("BoxShape3D_apfny")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

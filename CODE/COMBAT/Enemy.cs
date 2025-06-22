@@ -11,14 +11,14 @@ public partial class Enemy : PathFollow3D
     };
 
     [Export]
-    protected AttackLanes.LANES _designatedLane;
+    public AttackLanes.LANES _designatedLane;
 
     public STATE _state;
 
     protected AttackLanes _attackLanes;
     protected Array<Attack> _inFlightAttacks;
 
-    private int _health;
+    protected int _health;
     public float _pace;
 
     protected Tween PROGRESS_TWEEN;
@@ -50,6 +50,11 @@ public partial class Enemy : PathFollow3D
     public bool Dead()
     {
         return _health <= 0;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        _health -= amount;
     }
 
     public void EnterBattle(Area3D area)
