@@ -14,13 +14,13 @@ texture = ExtResource("1_1st3m")
 transform = Transform3D(-1.99595, 0, -0.396765, 0, 2.035, 0, 0.396765, 0, -1.99595, -1.13954, -1.84472, 0.848753)
 
 [node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_nwob1")]
-transform = Transform3D(-0.107167, 0, 0.162911, 0, 0.195, 0, -0.162911, 0, -0.107167, 1.57653, -0.812772, 2.70015)
+transform = Transform3D(-0.107167, 0, 0.162911, 0, 0.195, 0, -0.162911, 0, -0.107167, 0.149665, -1.43509, 2.43566)
 
 [node name="Sketchfab_Scene3" parent="." instance=ExtResource("3_nwob1")]
-transform = Transform3D(0.0693699, 0, 0.182244, 0, 0.195, 0, -0.182244, 0, 0.0693699, -2.81671, -0.812772, 2.70015)
+transform = Transform3D(0.0693699, 0, 0.182244, 0, 0.195, 0, -0.182244, 0, 0.0693699, -2.03302, -1.4816, 2.58708)
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(0.672957, 0.506574, -0.538992, -0.732979, 0.554575, -0.39394, 0.099352, 0.660174, 0.744513, -2.80084, -0.7942, 2.51338)
+transform = Transform3D(0.884686, 0.283886, -0.369784, -0.455479, 0.695399, -0.555842, 0.099352, 0.660174, 0.744513, -2.06032, -1.29425, 2.51338)
 layers = 16
 light_color = Color(0.669069, 0.741586, 0.789981, 1)
 light_energy = 16.0
@@ -30,7 +30,7 @@ spot_attenuation = 0.45
 spot_angle = 15.7
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
-transform = Transform3D(0.611333, 0.468384, 0.83559, -0.626509, 0.945352, -0.0715455, -0.724625, -0.422194, 0.766807, 1.53706, -0.7942, 2.51338)
+transform = Transform3D(0.0814897, 0.838547, 0.538701, -0.765987, 0.398502, -0.50444, -0.63767, -0.371531, 0.67479, 0.206784, -1.43669, 2.50918)
 layers = 16
 light_color = Color(0.669069, 0.741586, 0.789981, 1)
 light_energy = 16.0

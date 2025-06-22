@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MicrowaveDave"
-run/main_scene="uid://c4t872bv708hj"
+run/main_scene="uid://ccleun8d6k5qw"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dpacsgjoe3aq6"]
 
 [ext_resource type="Script" uid="uid://bqf4ga76nty75" path="res://CODE/Player.cs" id="1_4aqdb"]
-[ext_resource type="Script" uid="uid://d0lxtpibsp3lo" path="res://CODE/Intro.cs" id="1_loepd"]
+[ext_resource type="Script" uid="uid://d0lxtpibsp3lo" path="res://CODE/CutScenes/Intro.cs" id="1_loepd"]
 [ext_resource type="AudioStream" uid="uid://cvpyocyyabd4m" path="res://ART/SOUND/Microwave Dave.mp3" id="2_otk4g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14wnp"]
