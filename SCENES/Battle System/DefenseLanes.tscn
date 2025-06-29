@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnjrctxs7ry16"]
+[gd_scene load_steps=12 format=3 uid="uid://bc0j61p1hduja"]
 
 [ext_resource type="Script" uid="uid://df5wsmghi2whr" path="res://CODE/COMBAT/DefenseLanes.cs" id="1_fqdil"]
 [ext_resource type="Curve2D" uid="uid://d25xd7btt6pdw" path="res://SCENES/Battle System/DefenseLaneCurve.tres" id="2_g6rlh"]
 [ext_resource type="Texture2D" uid="uid://bpj3dambev85e" path="res://ART/VISUALS/Red.png" id="3_s6grc"]
 [ext_resource type="Texture2D" uid="uid://d1nf4cwg42tn1" path="res://ART/VISUALS/Green.png" id="4_rr2ms"]
+[ext_resource type="Texture2D" uid="uid://cprxm37hht5ui" path="res://ART/VISUALS/Blue.png" id="5_yd8l4"]
 
 [sub_resource type="Curve2D" id="Curve2D_8migc"]
 _data = {
@@ -23,7 +24,7 @@ albedo_color = Color(0.869934, 0.000667477, 0.880759, 1)
 material = SubResource("StandardMaterial3D_1a845")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcno8"]
-size = Vector2(239, 41)
+size = Vector2(239, 44.1624)
 
 [node name="DefenseLanes" type="Node2D"]
 rotation = 3.14159
@@ -65,27 +66,60 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_jifnr")
 
 [node name="PlayerDefense" type="PathFollow2D" parent="Core"]
-position = Vector2(110, 172.5)
-progress = 142.5
+position = Vector2(110, 144)
+progress = 114.0
 rotates = false
 cubic_interp = false
 
 [node name="PlayerDefense" type="Area2D" parent="Core/PlayerDefense"]
-collision_layer = 4
-collision_mask = 3
+scale = Vector2(1, 1.97)
+collision_layer = 256
+collision_mask = 32
+input_pickable = false
+monitorable = false
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerDefense/PlayerDefense"]
-z_index = -500
-position = Vector2(-6.83388, -0.441286)
-scale = Vector2(297.29, 52.4127)
+position = Vector2(0, -0.337807)
+scale = Vector2(297.29, 42.2782)
 mesh = SubResource("QuadMesh_swdnd")
 texture = ExtResource("4_rr2ms")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerDefense/PlayerDefense"]
+position = Vector2(1.52588e-05, -1.2689)
+shape = SubResource("RectangleShape2D_fcno8")
+
+[node name="PlayerCounter" type="PathFollow2D" parent="Core"]
+position = Vector2(110, 309.3)
+progress = 279.3
+rotates = false
+cubic_interp = false
+
+[node name="PlayerCounter" type="Area2D" parent="Core/PlayerCounter"]
+collision_layer = 512
+collision_mask = 32
+input_pickable = false
+monitorable = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerCounter/PlayerCounter"]
+scale = Vector2(297.29, 52.4127)
+mesh = SubResource("QuadMesh_swdnd")
+texture = ExtResource("5_yd8l4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerCounter/PlayerCounter"]
 position = Vector2(0, -0.734985)
 shape = SubResource("RectangleShape2D_fcno8")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -71.0001
+offset_top = 57.9998
+offset_right = 1.99986
+offset_bottom = 80.9998
+rotation = 3.14159
+text = "Stamina: "
 
 [connection signal="area_entered" from="Core/PlayerHeart/PlayerHeart" to="." method="CollisionWithHeart"]
-[connection signal="timeout" from="Timer" to="." method="CreateJabs"]
+[connection signal="timeout" from="Timer" to="." method="RecoverStamina"]

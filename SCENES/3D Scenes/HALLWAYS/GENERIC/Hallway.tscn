@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3jd26bajpr0v"]
+[gd_scene load_steps=12 format=3 uid="uid://c3jd26bajpr0v"]
 
 [ext_resource type="Script" uid="uid://c6jgrkfblv5oe" path="res://CODE/HALLWAYS/Generic/Hallway.cs" id="1_ufto0"]
 [ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/HallwayPiece.tscn" id="2_ktj3d"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="4_k671h"]
 [ext_resource type="PackedScene" uid="uid://boh2h2txd52qo" path="res://SCENES/Battle System/Level 1/SimpleCrisCross.tscn" id="5_4tegq"]
 [ext_resource type="PackedScene" uid="uid://cm411x4pif1dy" path="res://SCENES/Battle System/Level 1/SimpleBounce.tscn" id="5_k671h"]
-[ext_resource type="AudioStream" uid="uid://d3t1adii3mabh" path="res://ART/SOUND/Grunt1.mp3" id="7_4tegq"]
 
 [sub_resource type="Curve3D" id="Curve3D_nfwm7"]
 bake_interval = 0.05
@@ -26,11 +25,11 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.03333),
+"times": PackedFloat32Array(50.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"PhaseOne"
+"method": &"PhaseThree"
 }]
 }
 
@@ -67,21 +66,6 @@ _data = {
 &"TIME_LINE": SubResource("Animation_lx1gt")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1iwh6"]
-animation = &"TIME_LINE"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k671h"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4tegq"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fkpxk"]
-states/End/position = Vector2(452, 95)
-states/TIME_LINE/node = SubResource("AnimationNodeAnimation_1iwh6")
-states/TIME_LINE/position = Vector2(330, 95)
-transitions = ["Start", "TIME_LINE", SubResource("AnimationNodeStateMachineTransition_k671h"), "TIME_LINE", "End", SubResource("AnimationNodeStateMachineTransition_4tegq")]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_1iwh6"]
 size = Vector3(4.15828, 1.34427, 0.290527)
 
@@ -111,10 +95,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_6cgec")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_fkpxk")
-anim_player = NodePath("../AnimationPlayer")
-
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 32768
 collision_mask = 65535
@@ -123,5 +103,6 @@ collision_mask = 65535
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10273, 1.60704, -6.12414)
 shape = SubResource("BoxShape3D_1iwh6")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_4tegq")
+[node name="Label" type="Label" parent="."]
+offset_right = 190.0
+offset_bottom = 46.0

@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class Enemy : PathFollow3D
 {
@@ -32,6 +33,8 @@ public partial class Enemy : PathFollow3D
         _pace = Tools.rng.RandfRange(.03f, .05f);
         _state = STATE.IDLE;
 
+        _health = 1000;
+
         Bounce();
     }
 
@@ -44,7 +47,9 @@ public partial class Enemy : PathFollow3D
     {
         base._ExitTree();
 
-        _attackLanes.ClearLanes();
+        _attackLanes.ClearLanes(this);
+
+        AudioManager._Instance.EnemyDeath();
     }
 
     public bool Dead()
@@ -55,12 +60,25 @@ public partial class Enemy : PathFollow3D
     public void TakeDamage(int amount)
     {
         _health -= amount;
+        AudioManager._Instance.EnemyDeath();
     }
 
     public void EnterBattle(Area3D area)
     {
         GD.Print("ATTACKING");
         _state = STATE.ATTACKING;
+    }
+
+    public Attack AttackPlayer()
+    {
+        var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+
+        var attackInstance = attackScene.Instantiate<Attack>();
+        attackInstance.Attacker = this;
+
+        _attackLanes.AddAttackToLane(attackInstance, _designatedLane);
+
+        return attackInstance;
     }
 
     public void Bounce()

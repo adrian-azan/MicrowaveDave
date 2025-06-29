@@ -1,12 +1,12 @@
 using Godot;
-using System;
-using System.Threading.Tasks;
 
 public partial class SimpleCurve : Enemy
 {
     public override void _Ready()
     {
         base._Ready();
+
+        _health = 100;
     }
 
     public override void _Process(double delta)
@@ -15,22 +15,15 @@ public partial class SimpleCurve : Enemy
 
         if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
         {
-            StartAttack();
+            AttackPlayer();
             GetNode<Timer>("Timer").Start();
         }
     }
 
-    public async void StartAttack()
+    public new void AttackPlayer()
     {
-        await AttackPlayer();
-    }
+        Attack attackInstance = base.AttackPlayer();
 
-    public async Task AttackPlayer()
-    {
-        var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
-
-        var attackInstance = attackScene.Instantiate<Attack>();
-        _attackLanes.AddAttackToLane(attackInstance, _designatedLane);
         _attackLanes.SetLaneCurve(_designatedLane, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/SimpleCurve.tres"));
 
         attackInstance.PACE_TWEEN = CreateTween();

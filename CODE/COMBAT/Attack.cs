@@ -1,41 +1,23 @@
 using Godot;
-using Godot.Collections;
-using System;
-using System.IO;
-using System.Linq;
 
 public partial class Attack : PathFollow2D
 {
+    [Export]
+    private PackedScene _AttackScene;
+
     public enum Style
     {
-        OFFENSIVE, DEFENSIVE
+        OFFENSIVE, DEFENSIVE, COUNTERING
     }
-
-    public int _lane;
-    public float health;
-    public float attack;
 
     public float _pace;
 
-    public bool countering;
     public Style _style;
 
     public Tween PROGRESS_TWEEN;
     public Tween PACE_TWEEN;
 
-    [Export]
-    private PackedScene _AttackScene;
-
-    public override void _Ready()
-    {
-        health = 1.0f;
-        attack = 0.34f;
-    }
-
-    public void Set(float duration, int lane)
-    {
-        _lane = lane;
-    }
+    public Node Attacker;
 
     public override void _Process(double delta)
     {
@@ -43,31 +25,44 @@ public partial class Attack : PathFollow2D
         {
             ProgressRatio += (float)delta * _pace;
         }
+
+        if (_style == Style.OFFENSIVE)
+        {
+            GetNode<Sprite2D>("Sprite").Texture = ResourceLoader.Load<Texture2D>("res://ART/VISUALS/Red.png");
+        }
+        if (_style == Style.DEFENSIVE)
+        {
+            GetNode<Sprite2D>("Sprite").Texture = ResourceLoader.Load<Texture2D>("res://ART/VISUALS/Blue.png");
+        }
+        if (_style == Style.COUNTERING)
+        {
+            GetNode<Sprite2D>("Sprite").Texture = ResourceLoader.Load<Texture2D>("res://ART/VISUALS/Green.png");
+        }
     }
 
-    public void CollisionWithIncomingJab(Area2D incomingAttack)
+    public void ChangeStyle(Area2D collidingAttack)
     {
-        //if (countering)
-        //{
-        //    incomingAttack.GetParent().QueueFree();
-        //    return;
-        //}
+        if (collidingAttack.GetCollisionLayerValue(2) && !collidingAttack.IsQueuedForDeletion())
+        {
+            if (_style == Style.DEFENSIVE)
+            {
+                collidingAttack.GetParent().QueueFree();
+                if (!IsQueuedForDeletion())
+                    QueueFree();
+            }
 
-        //Attack incomingJab = incomingAttack.GetParent<Attack>();
+            if (_style == Style.COUNTERING)
+            {
+                collidingAttack.GetParent().QueueFree();
+                CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.SuccesfulAttackSignal, 10);
+                CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverStaminaSignal);
+            }
 
-        //health -= incomingJab.attack;
-        //incomingJab.health -= attack;
-
-        //GetNode<Sprite2D>("Sprite").Scale = new Vector2(Mathf.Max(.25f, health), Mathf.Max(.25f, health));
-        //incomingJab.GetNode<Sprite2D>("Sprite").Scale = new Vector2(Mathf.Max(.25f, incomingJab.health), Mathf.Max(.25f, incomingJab.health));
-
-        ////   animationPlayer.SpeedScale = Scale.X;
-        ////   incomingJab.animationPlayer.SpeedScale = incomingJab.Scale.X;
-
-        //if (health <= 0)
-        //    QueueFree();
-
-        //if (incomingJab.health <= 0)
-        //    incomingJab.QueueFree();
+            if (_style == Style.OFFENSIVE)
+            {
+                if (!IsQueuedForDeletion())
+                    QueueFree();
+            }
+        }
     }
 }

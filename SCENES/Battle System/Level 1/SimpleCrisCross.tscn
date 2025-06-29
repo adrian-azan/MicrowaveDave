@@ -30,5 +30,4 @@ shape = SubResource("BoxShape3D_4q1n1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="timeout" from="Timer" to="." method="StartAttack"]
 [connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

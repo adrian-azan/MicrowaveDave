@@ -30,6 +30,8 @@ public partial class SimpleBounce : Enemy
         var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
 
         var attackInstance = attackScene.Instantiate<Attack>();
+        attackInstance.Attacker = this;
+
         _attackLanes.AddAttackToLane(attackInstance, AttackLanes.LANES.MIDDLE);
         _attackLanes.SetLaneCurve(AttackLanes.LANES.MIDDLE, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/DEFAULT.tres"));
 

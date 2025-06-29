@@ -76,7 +76,7 @@ public partial class ChanceTracker : VBoxContainer
                 case "LightingStyle":
                     HallwayDisco._lightingStyle++;
                     HallwayDisco._lightingStyle = (HallwayDisco.LightingStyle)(((int)HallwayDisco._lightingStyle) % 4);
-                    GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.UpdateLightsSignal);
+                    CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.UpdateLightsSignal);
                     break;
 
                 case "DiscoLight":
@@ -91,7 +91,7 @@ public partial class ChanceTracker : VBoxContainer
                     }
                     CheckButton checkButton = GetNode<CheckButton>("ShowTop");
                     checkButton.ButtonPressed = !checkButton.ButtonPressed;
-                    GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.UpdateShowTopSignal, checkButton.ButtonPressed);
+                    CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.UpdateShowTopSignal, checkButton.ButtonPressed);
                     break;
 
                 //TODO: Fix switching between the levels and showing appropriate labels
@@ -132,7 +132,7 @@ public partial class ChanceTracker : VBoxContainer
                 case "LightingStyle":
                     HallwayDisco._lightingStyle--;
                     HallwayDisco._lightingStyle = HallwayDisco._lightingStyle < 0 ? (HallwayDisco.LightingStyle)3 : (HallwayDisco.LightingStyle)((int)HallwayDisco._lightingStyle);
-                    GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.UpdateLightsSignal);
+                    CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.UpdateLightsSignal);
                     break;
             }
         }

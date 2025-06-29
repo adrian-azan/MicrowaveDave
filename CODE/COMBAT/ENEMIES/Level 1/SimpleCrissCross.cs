@@ -31,6 +31,8 @@ public partial class SimpleCrissCross : Enemy
         var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
 
         var attackInstance = attackScene.Instantiate<Attack>();
+        attackInstance.Attacker = this;
+
         _attackLanes.AddAttackToLane(attackInstance, AttackLanes.LANES.LEFT);
         _attackLanes.SetLaneCurve(AttackLanes.LANES.LEFT, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/SimpleCrissCross.tres"));
 

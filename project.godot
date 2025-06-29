@@ -21,7 +21,8 @@ buses/default_bus_layout=""
 
 [autoload]
 
-CustomSignals="*res://CODE/CustomSignals.cs"
+CustomSignals="*res://CODE/TOOLS/CustomSignals.cs"
+AudioManager="*res://CODE/TOOLS/AudioManager.cs"
 
 [display]
 
@@ -112,4 +113,6 @@ RightAttack={
 2d_physics/layer_3="Goal"
 2d_physics/layer_5="Destroyer"
 2d_physics/layer_6="PlayerJab"
+2d_physics/layer_9="DefenseField"
+2d_physics/layer_10="CounterField"
 3d_physics/layer_16="SIGNALS"

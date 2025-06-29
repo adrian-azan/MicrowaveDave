@@ -14,14 +14,6 @@ public partial class AttackLanes : Lanes
         float felta = (float)delta;
     }
 
-    public new void ClearLanes()
-    {
-        _lanes.ToList().ForEach(lane =>
-            lane.GetChildren()
-            .ToList().ForEach(attack => attack.QueueFree())
-            );
-    }
-
     public void CollisionWithHeart(Area2D incomingAttack)
     {
         incomingAttack.GetParent().QueueFree();
@@ -31,6 +23,6 @@ public partial class AttackLanes : Lanes
     {
         incomingAttack.GetParent().QueueFree();
 
-        GetNode("/root/CustomSignals").EmitSignal(CustomSignals.SignalName.SuccesfulAttackSignal, 25);
+        CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.SuccesfulAttackSignal, 25);
     }
 }

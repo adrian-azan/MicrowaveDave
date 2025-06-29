@@ -37,8 +37,27 @@ public partial class Lanes : Node2D
 
     public void ClearLanes()
     {
-        _lanes.ToList().ForEach(lane => lane.GetChildren().ToList()
-        .ForEach(attack => attack.QueueFree()));
+        foreach (var lane in _lanes)
+        {
+            foreach (Attack attack in lane.GetChildren())
+            {
+                attack.QueueFree();
+            }
+        }
+    }
+
+    public void ClearLanes(Node attacker)
+    {
+        foreach (var lane in _lanes)
+        {
+            foreach (Attack attack in lane.GetChildren())
+            {
+                if (attack.Attacker == attacker)
+                {
+                    attack.QueueFree();
+                }
+            }
+        }
     }
 
     public void SetLaneCurve(LANES lane, Curve2D curve)
