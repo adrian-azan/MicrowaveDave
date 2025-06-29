@@ -161,7 +161,7 @@ public partial class Hallway : Node3D
         simpleCurve._designatedLane = Lanes.LANES.LEFT;
         simpleStraight_2._designatedLane = Lanes.LANES.RIGHT;
 
-        _lanes[0].AddChild(simpleStraight);
+        _lanes[0].AddChild(simpleCurve);
         _lanes[1].AddChild(simpleCurve);
         _lanes[2].AddChild(simpleStraight_2);
     }
