@@ -28,10 +28,5 @@ public partial class ROOT : Node3D
                 }
             }
         }
-
-        if (Input.IsActionPressed("ShowArt"))
-            GetNode<Node2D>("../../../ConceptArt").Visible = true;
-        else
-            GetNode<Node2D>("../../../ConceptArt").Visible = false;
     }
 }

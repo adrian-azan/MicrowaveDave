@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MicrowaveDave"
-run/main_scene="uid://bgm81ocbpelar"
+run/main_scene="uid://c4t872bv708hj"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -37,6 +37,7 @@ project/assembly_name="MicrowaveDave"
 Enemy=""
 Piece=""
 AttackLane=""
+DefenseLane=""
 
 [input]
 

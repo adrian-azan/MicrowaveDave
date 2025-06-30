@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://m8h1vb2ldngo" path="res://CODE/MainScreen.cs" id="1_fd2mp"]
 [ext_resource type="PackedScene" uid="uid://cweaov8emfthw" path="res://SCENES/LEVEL_1 Root.tscn" id="2_fd2mp"]
 [ext_resource type="PackedScene" uid="uid://o3ocubhx4gec" path="res://SCENES/DEBUGING/ConceptArt.tscn" id="5_lf6qd"]
-[ext_resource type="PackedScene" uid="uid://cnjrctxs7ry16" path="res://SCENES/Battle System/DefenseLanes.tscn" id="6_fd2mp"]
+[ext_resource type="PackedScene" uid="uid://bc0j61p1hduja" path="res://SCENES/Battle System/DefenseLanes.tscn" id="6_fd2mp"]
 [ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="7_etmws"]
 [ext_resource type="PackedScene" uid="uid://cqkeiphae5300" path="res://SCENES/Battle System/AttackLanes.tscn" id="8_etmws"]
 

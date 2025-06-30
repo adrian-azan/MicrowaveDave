@@ -12,12 +12,11 @@ public partial class Enemy : PathFollow3D
     };
 
     [Export]
-    public AttackLanes.LANES _designatedLane;
+    public Lanes.LANES _designatedLane;
 
     public STATE _state;
 
     protected AttackLanes _attackLanes;
-    protected Array<Attack> _inFlightAttacks;
 
     protected int _health;
     public float _pace;
@@ -27,8 +26,7 @@ public partial class Enemy : PathFollow3D
 
     public override void _Ready()
     {
-        _attackLanes = GetNode<AttackLanes>("../../../../../../AttackLanes");
-        _inFlightAttacks = new Array<Attack>();
+        _attackLanes = GetTree().GetFirstNodeInGroup("AttackLane") as AttackLanes;
         ProgressRatio = Tools.rng.RandfRange(.50f, .65f);
         _pace = Tools.rng.RandfRange(.03f, .05f);
         _state = STATE.IDLE;
@@ -65,7 +63,6 @@ public partial class Enemy : PathFollow3D
 
     public void EnterBattle(Area3D area)
     {
-        GD.Print("ATTACKING");
         _state = STATE.ATTACKING;
     }
 
@@ -74,6 +71,7 @@ public partial class Enemy : PathFollow3D
         var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
 
         var attackInstance = attackScene.Instantiate<Attack>();
+
         attackInstance.Attacker = this;
 
         _attackLanes.AddAttackToLane(attackInstance, _designatedLane);

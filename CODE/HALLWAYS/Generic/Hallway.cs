@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 
 public partial class Hallway : Node3D
 {
@@ -38,10 +39,7 @@ public partial class Hallway : Node3D
         _lanes.Add(GetNode<Path3D>("MiddleLane"));
         _lanes.Add(GetNode<Path3D>("RightLane"));
 
-        var timeline = GetNode<AnimationPlayer>("AnimationPlayer");
-        timeline?.Play("LEVEL_ONE");
-
-        GetNode<CustomSignals>("/root/CustomSignals").SuccesfulAttackSignal += DamageEnemy;
+        CustomSignals._Instance.SuccesfulAttackSignal += DamageEnemy;
     }
 
     public override void _Process(double delta)
@@ -59,8 +57,6 @@ public partial class Hallway : Node3D
 
             enemy.ProgressRatio += felta * enemy._pace * _DEBUG_enemyPaceMultiplyer;
         }
-
-        GetNode<Label>("Label").Text = Math.Round(GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimationPosition).ToString();
     }
 
     /*
@@ -70,8 +66,8 @@ public partial class Hallway : Node3D
     public void DamageEnemy(int amount)
     {
         Array<Enemy> enemiesInLanes = new Array<Enemy>();
-        enemiesInLanes.Add(_lanes[0].GetChildCount() > 0 ? _lanes[0].GetChild<Enemy>(0) : null);
         enemiesInLanes.Add(_lanes[1].GetChildCount() > 0 ? _lanes[1].GetChild<Enemy>(0) : null);
+        enemiesInLanes.Add(_lanes[0].GetChildCount() > 0 ? _lanes[0].GetChild<Enemy>(0) : null);
         enemiesInLanes.Add(_lanes[2].GetChildCount() > 0 ? _lanes[2].GetChild<Enemy>(0) : null);
 
         enemiesInLanes = new Array<Enemy>(enemiesInLanes.Where(enemy => enemy != null && enemy.ProgressRatio > .05f && enemy.ProgressRatio < .12));
@@ -162,7 +158,7 @@ public partial class Hallway : Node3D
         simpleStraight_2._designatedLane = Lanes.LANES.RIGHT;
 
         _lanes[0].AddChild(simpleCurve);
-        _lanes[1].AddChild(simpleCurve);
+        _lanes[1].AddChild(simpleStraight);
         _lanes[2].AddChild(simpleStraight_2);
     }
 }

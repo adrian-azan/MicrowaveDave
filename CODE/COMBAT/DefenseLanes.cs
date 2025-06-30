@@ -11,11 +11,11 @@ public partial class DefenseLanes : Lanes
 
         CustomSignals._Instance.RecoverStaminaSignal += RecoverStamina;
 
-        GetNode<Area2D>("Core/PlayerDefense/PlayerDefense").AreaEntered += DefensiveStyle;
-        GetNode<Area2D>("Core/PlayerDefense/PlayerDefense").AreaExited += DefaultStyle;
+        GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaEntered += DefensiveStyle;
+        GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaExited += DefaultStyle;
 
-        GetNode<Area2D>("Core/PlayerCounter/PlayerCounter").AreaEntered += CounterStyle;
-        GetNode<Area2D>("Core/PlayerCounter/PlayerCounter").AreaExited += DefaultStyle;
+        GetNode<Area2D>("Core/PlayerCounter/Area2D").AreaEntered += CounterStyle;
+        GetNode<Area2D>("Core/PlayerCounter/Area2D").AreaExited += DefaultStyle;
     }
 
     public override void _Process(double delta)

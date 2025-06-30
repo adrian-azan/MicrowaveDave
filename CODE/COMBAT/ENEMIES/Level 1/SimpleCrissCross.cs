@@ -7,6 +7,7 @@ public partial class SimpleCrissCross : Enemy
     public override void _Ready()
     {
         base._Ready();
+        _health = 100;
     }
 
     public override void _Process(double delta)
@@ -15,25 +16,15 @@ public partial class SimpleCrissCross : Enemy
 
         if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
         {
-            StartAttack();
+            AttackPlayer();
             GetNode<Timer>("Timer").Start();
-            GetNode<Timer>("Timer").Autostart = false;
         }
     }
 
-    public async void StartAttack()
+    public new void AttackPlayer()
     {
-        await AttackPlayer();
-    }
+        Attack attackInstance = base.AttackPlayer();
 
-    public async Task AttackPlayer()
-    {
-        var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
-
-        var attackInstance = attackScene.Instantiate<Attack>();
-        attackInstance.Attacker = this;
-
-        _attackLanes.AddAttackToLane(attackInstance, AttackLanes.LANES.LEFT);
         _attackLanes.SetLaneCurve(AttackLanes.LANES.LEFT, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/SimpleCrissCross.tres"));
 
         attackInstance.PROGRESS_TWEEN = CreateTween();

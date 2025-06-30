@@ -42,16 +42,7 @@ public partial class EnemyTracker : VBoxContainer
         _enemyTracker += 1;
         _enemyTracker = _enemyTracker >= enemies.Count() ? 0 : _enemyTracker;
 
-        var lane = GetNode("/root/MainScreen/SubViewportContainer/SubViewport/Root/Hallway/MiddleLane");
-
-        lane.GetChildren().ToList().ForEach(attack => attack.QueueFree());
-        var newEnemy = enemies[_enemyTracker].Instantiate<Enemy>();
-
-        var tween = CreateTween();
-        tween.TweenProperty(newEnemy, "progress_ratio", .97, .1).SetDelay(.1);
-        lane.AddChild(newEnemy);
-
-        tween.TweenCallback(Callable.From(() => newEnemy.EnterBattle(null))).SetDelay(.1);
+        CreateEnemy();
     }
 
     public void Left()
@@ -59,6 +50,11 @@ public partial class EnemyTracker : VBoxContainer
         _enemyTracker -= 1;
         _enemyTracker = _enemyTracker < 0 ? enemies.Count() - 1 : _enemyTracker;
 
+        CreateEnemy();
+    }
+
+    public void CreateEnemy()
+    {
         var lane = GetNode("/root/MainScreen/SubViewportContainer/SubViewport/Root/Hallway/MiddleLane");
 
         lane.GetChildren().ToList().ForEach(attack => attack.QueueFree());

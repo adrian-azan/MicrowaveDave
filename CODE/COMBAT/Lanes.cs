@@ -20,11 +20,6 @@ public partial class Lanes : Node2D
             .ToArray());
     }
 
-    public override void _Process(double delta)
-    {
-        float felta = (float)delta;
-    }
-
     public Array<Node> EnemiesInLane(LANES lane)
     {
         return _lanes[((int)lane)].GetChildren();

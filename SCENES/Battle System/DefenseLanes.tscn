@@ -26,7 +26,7 @@ material = SubResource("StandardMaterial3D_1a845")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcno8"]
 size = Vector2(239, 44.1624)
 
-[node name="DefenseLanes" type="Node2D"]
+[node name="DefenseLanes" type="Node2D" groups=["DefenseLane"]]
 rotation = 3.14159
 script = ExtResource("1_fqdil")
 
@@ -71,20 +71,20 @@ progress = 114.0
 rotates = false
 cubic_interp = false
 
-[node name="PlayerDefense" type="Area2D" parent="Core/PlayerDefense"]
+[node name="Area2D" type="Area2D" parent="Core/PlayerDefense"]
 scale = Vector2(1, 1.97)
 collision_layer = 256
 collision_mask = 32
 input_pickable = false
 monitorable = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerDefense/PlayerDefense"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerDefense/Area2D"]
 position = Vector2(0, -0.337807)
 scale = Vector2(297.29, 42.2782)
 mesh = SubResource("QuadMesh_swdnd")
 texture = ExtResource("4_rr2ms")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerDefense/PlayerDefense"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerDefense/Area2D"]
 position = Vector2(1.52588e-05, -1.2689)
 shape = SubResource("RectangleShape2D_fcno8")
 
@@ -94,18 +94,18 @@ progress = 279.3
 rotates = false
 cubic_interp = false
 
-[node name="PlayerCounter" type="Area2D" parent="Core/PlayerCounter"]
+[node name="Area2D" type="Area2D" parent="Core/PlayerCounter"]
 collision_layer = 512
 collision_mask = 32
 input_pickable = false
 monitorable = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerCounter/PlayerCounter"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerCounter/Area2D"]
 scale = Vector2(297.29, 52.4127)
 mesh = SubResource("QuadMesh_swdnd")
 texture = ExtResource("5_yd8l4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerCounter/PlayerCounter"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerCounter/Area2D"]
 position = Vector2(0, -0.734985)
 shape = SubResource("RectangleShape2D_fcno8")
 

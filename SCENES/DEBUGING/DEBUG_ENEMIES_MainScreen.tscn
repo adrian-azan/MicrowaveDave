@@ -35,3 +35,7 @@ environment = ExtResource("5_5yfui")
 
 [node name="AttackLanes" parent="." instance=ExtResource("6_ajgya")]
 position = Vector2(105, 0)
+
+[editable path="SubViewportContainer/SubViewport/Root"]
+[editable path="SubViewportContainer/SubViewport/Root/Hallway"]
+[editable path="SubViewportContainer/SubViewport/Root/HallwayDisco"]

@@ -15,24 +15,15 @@ public partial class SimpleBounce : Enemy
 
         if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
         {
-            StartAttack();
+            AttackPlayer();
             GetNode<Timer>("Timer").Start();
         }
     }
 
-    public async void StartAttack()
+    public new void AttackPlayer()
     {
-        await AttackPlayer();
-    }
+        Attack attackInstance = base.AttackPlayer();
 
-    public async Task AttackPlayer()
-    {
-        var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
-
-        var attackInstance = attackScene.Instantiate<Attack>();
-        attackInstance.Attacker = this;
-
-        _attackLanes.AddAttackToLane(attackInstance, AttackLanes.LANES.MIDDLE);
         _attackLanes.SetLaneCurve(AttackLanes.LANES.MIDDLE, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/DEFAULT.tres"));
 
         attackInstance.PACE_TWEEN = CreateTween();
