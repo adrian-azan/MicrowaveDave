@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -40,6 +41,8 @@ public partial class Hallway : Node3D
         _lanes.Add(GetNode<Path3D>("RightLane"));
 
         CustomSignals._Instance.SuccesfulAttackSignal += DamageEnemy;
+
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("LEVEL_ONE");
     }
 
     public override void _Process(double delta)
@@ -50,12 +53,24 @@ public partial class Hallway : Node3D
             piece.ProgressRatio += felta * _pace;
         }
 
-        foreach (Enemy enemy in GetTree().GetNodesInGroup("Enemy"))
+        Array<Enemy> MiddleLaneEnemies = Tools.GetChildren<Enemy>(_lanes[1]);
+        Array<Enemy> LeftLaneEnemies = Tools.GetChildren<Enemy>(_lanes[0]);
+        Array<Enemy> RightLaneEnemies = Tools.GetChildren<Enemy>(_lanes[2]);
+
+        /* foreach (Enemy enemy in MiddleLaneEnemies)
+         {
+             if (enemy.ProgressRatio > .07 && enemy.ProgressRatio < .1)
+                 continue;
+
+             enemy.ProgressRatio += felta * enemy._pace * _DEBUG_enemyPaceMultiplyer;
+         }*/
+
+        for (int i = 0; i < MiddleLaneEnemies.Count; i++)
         {
-            if (enemy.ProgressRatio > .07 && enemy.ProgressRatio < .1)
+            if (MiddleLaneEnemies[i].ProgressRatio > .9 - (i * .1) && MiddleLaneEnemies[i].ProgressRatio < .95 - (i * .1))
                 continue;
 
-            enemy.ProgressRatio += felta * enemy._pace * _DEBUG_enemyPaceMultiplyer;
+            MiddleLaneEnemies[i].ProgressRatio += felta * MiddleLaneEnemies[i]._pace * _DEBUG_enemyPaceMultiplyer;
         }
     }
 
@@ -70,7 +85,7 @@ public partial class Hallway : Node3D
         enemiesInLanes.Add(_lanes[0].GetChildCount() > 0 ? _lanes[0].GetChild<Enemy>(0) : null);
         enemiesInLanes.Add(_lanes[2].GetChildCount() > 0 ? _lanes[2].GetChild<Enemy>(0) : null);
 
-        enemiesInLanes = new Array<Enemy>(enemiesInLanes.Where(enemy => enemy != null && enemy.ProgressRatio > .05f && enemy.ProgressRatio < .12));
+        enemiesInLanes = new Array<Enemy>(enemiesInLanes.Where(enemy => enemy != null));
 
         if (enemiesInLanes.Count == 0)
             return;
@@ -121,6 +136,11 @@ public partial class Hallway : Node3D
         simpleStraight._designatedLane = Lanes.LANES.MIDDLE;
 
         _lanes[1].AddChild(simpleStraight);
+
+        var simpleStraight2 = _availableEnemies[0].Instantiate<Enemy>();
+        simpleStraight2._designatedLane = Lanes.LANES.MIDDLE;
+
+        _lanes[1].AddChild(simpleStraight2);
     }
 
     public void PhaseTwo()

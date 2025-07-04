@@ -61,7 +61,7 @@ public partial class EnemyTracker : VBoxContainer
 
         var newEnemy = enemies[_enemyTracker].Instantiate<Enemy>();
         var tween = CreateTween();
-        tween.TweenProperty(newEnemy, "progress_ratio", .97, .1).SetDelay(.1);
+        tween.TweenProperty(newEnemy, "progress_ratio", .55, .1).SetDelay(.1);
         lane.AddChild(newEnemy);
 
         tween.TweenCallback(Callable.From(() => newEnemy.EnterBattle(null))).SetDelay(.1);
