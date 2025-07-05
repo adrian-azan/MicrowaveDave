@@ -69,11 +69,9 @@ public partial class Enemy : PathFollow3D
     public Attack AttackPlayer()
     {
         var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
-
         var attackInstance = attackScene.Instantiate<Attack>();
 
         attackInstance.Attacker = this;
-
         _attackLanes.AddAttackToLane(attackInstance, _designatedLane);
 
         return attackInstance;

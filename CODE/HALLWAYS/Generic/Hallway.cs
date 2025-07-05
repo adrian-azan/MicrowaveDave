@@ -1,7 +1,6 @@
 using Godot;
 using Godot.Collections;
 using System;
-using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -53,24 +52,20 @@ public partial class Hallway : Node3D
             piece.ProgressRatio += felta * _pace;
         }
 
-        Array<Enemy> MiddleLaneEnemies = Tools.GetChildren<Enemy>(_lanes[1]);
-        Array<Enemy> LeftLaneEnemies = Tools.GetChildren<Enemy>(_lanes[0]);
-        Array<Enemy> RightLaneEnemies = Tools.GetChildren<Enemy>(_lanes[2]);
+        Array<Array<Enemy>> Lanes = new Array<Array<Enemy>>();
+        Lanes.Add(Tools.GetChildren<Enemy>(_lanes[1]));
+        Lanes.Add(Tools.GetChildren<Enemy>(_lanes[0]));
+        Lanes.Add(Tools.GetChildren<Enemy>(_lanes[2]));
 
-        /* foreach (Enemy enemy in MiddleLaneEnemies)
-         {
-             if (enemy.ProgressRatio > .07 && enemy.ProgressRatio < .1)
-                 continue;
-
-             enemy.ProgressRatio += felta * enemy._pace * _DEBUG_enemyPaceMultiplyer;
-         }*/
-
-        for (int i = 0; i < MiddleLaneEnemies.Count; i++)
+        foreach (Array<Enemy> lane in Lanes)
         {
-            if (MiddleLaneEnemies[i].ProgressRatio > .9 - (i * .1) && MiddleLaneEnemies[i].ProgressRatio < .95 - (i * .1))
-                continue;
+            for (int i = 0; i < lane.Count; i++)
+            {
+                if (lane[i].ProgressRatio > .9 - (i * .1) && lane[i].ProgressRatio < .95 - (i * .1))
+                    continue;
 
-            MiddleLaneEnemies[i].ProgressRatio += felta * MiddleLaneEnemies[i]._pace * _DEBUG_enemyPaceMultiplyer;
+                lane[i].ProgressRatio += felta * lane[i]._pace * _DEBUG_enemyPaceMultiplyer;
+            }
         }
     }
 
