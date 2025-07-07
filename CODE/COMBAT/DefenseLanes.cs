@@ -1,30 +1,91 @@
 using Godot;
-using Godot.Collections;
 
-public partial class DefenseLanes : Node2D
+public partial class DefenseLanes : Lanes
 {
-    private Array<Path2D> _Lanes;
-
-    [Export]
-    private PackedScene _JabScene;
+    public int _stamina;
 
     public override void _Ready()
     {
-        _Lanes = Tools.GetChildren<Path2D>(this);
-        (GetNode("Timer") as Timer).Start();
+        base._Ready();
+        _stamina = 3;
+
+        CustomSignals._Instance.RecoverStaminaSignal += RecoverStamina;
+
+        GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaEntered += DefensiveStyle;
+        GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaExited += DefaultStyle;
+
+        GetNode<Area2D>("Core/PlayerCounter/Area2D").AreaEntered += CounterStyle;
+        GetNode<Area2D>("Core/PlayerCounter/Area2D").AreaExited += DefaultStyle;
     }
 
     public override void _Process(double delta)
     {
         float felta = (float)delta;
 
-        if (Input.IsActionJustPressed("LeftAttack"))
-        {
-            PathFollow2D defenseJab = _JabScene.Instantiate<PathFollow2D>();
-            defenseJab.GetNode<AnimationPlayer>("AnimationPlayer").Play("root");
+        GetNode<Label>("Label").Text = $"Stamina: {_stamina}";
 
-            _Lanes[0].AddChild(defenseJab);
+        if (Input.IsActionJustPressed("LeftAttack") && _stamina > 0)
+        {
+            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+            var attackInstance = attackScene.Instantiate<Attack>();
+
+            attackInstance._pace = .4f;
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+
+            AddAttackToLane(attackInstance, LANES.LEFT);
+
+            _stamina -= 1;
         }
+
+        if (Input.IsActionJustPressed("MiddleAttack") && _stamina > 0)
+        {
+            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+            var attackInstance = attackScene.Instantiate<Attack>();
+
+            attackInstance._pace = .4f;
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+
+            AddAttackToLane(attackInstance, LANES.MIDDLE);
+
+            _stamina -= 1;
+        }
+
+        if (Input.IsActionJustPressed("RightAttack") && _stamina > 0)
+        {
+            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+            var attackInstance = attackScene.Instantiate<Attack>();
+
+            attackInstance._pace = .4f;
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
+            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+
+            AddAttackToLane(attackInstance, LANES.RIGHT);
+
+            _stamina -= 1;
+        }
+    }
+
+    public void RecoverStamina()
+    {
+        if (_stamina < 3)
+            _stamina += 1;
+    }
+
+    public void DefaultStyle(Area2D area)
+    {
+        (area.GetParent() as Attack)._style = Attack.Style.OFFENSIVE;
+    }
+
+    public void DefensiveStyle(Area2D area)
+    {
+        (area.GetParent() as Attack)._style = Attack.Style.DEFENSIVE;
+    }
+
+    public void CounterStyle(Area2D area)
+    {
+        (area.GetParent() as Attack)._style = Attack.Style.COUNTERING;
     }
 
     public void CollisionWithHeart(Area2D incomingAttack)

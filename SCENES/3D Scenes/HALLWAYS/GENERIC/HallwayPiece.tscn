@@ -69,7 +69,7 @@ albedo_texture = ExtResource("5_4hrp5")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5acft"]
 albedo_texture = ExtResource("6_7me0o")
 
-[node name="HallwayPiece" type="PathFollow3D"]
+[node name="HallwayPiece" type="PathFollow3D" groups=["Piece"]]
 script = ExtResource("1_y304h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

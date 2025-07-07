@@ -1,15 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnjrctxs7ry16"]
+[gd_scene load_steps=12 format=3 uid="uid://bc0j61p1hduja"]
 
 [ext_resource type="Script" uid="uid://df5wsmghi2whr" path="res://CODE/COMBAT/DefenseLanes.cs" id="1_fqdil"]
-[ext_resource type="PackedScene" uid="uid://bmetjfliwcsnp" path="res://SCENES/Battle System/Jab Types/SimpleJab.tscn" id="2_f046k"]
+[ext_resource type="Curve2D" uid="uid://d25xd7btt6pdw" path="res://SCENES/Battle System/DefenseLaneCurve.tres" id="2_g6rlh"]
 [ext_resource type="Texture2D" uid="uid://bpj3dambev85e" path="res://ART/VISUALS/Red.png" id="3_s6grc"]
 [ext_resource type="Texture2D" uid="uid://d1nf4cwg42tn1" path="res://ART/VISUALS/Green.png" id="4_rr2ms"]
-
-[sub_resource type="Curve2D" id="Curve2D_4naxs"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 210, 30, 0, 0, 0, 0, 210, 600)
-}
-point_count = 2
+[ext_resource type="Texture2D" uid="uid://cprxm37hht5ui" path="res://ART/VISUALS/Blue.png" id="5_yd8l4"]
 
 [sub_resource type="Curve2D" id="Curve2D_8migc"]
 _data = {
@@ -29,69 +24,102 @@ albedo_color = Color(0.869934, 0.000667477, 0.880759, 1)
 material = SubResource("StandardMaterial3D_1a845")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcno8"]
-size = Vector2(239, 41)
+size = Vector2(239, 44.1624)
 
-[sub_resource type="Curve2D" id="Curve2D_e5h12"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 10, 30, 0, 0, 0, 0, 10, 600)
-}
-point_count = 2
-
-[node name="DefenseLanes" type="Node2D"]
+[node name="DefenseLanes" type="Node2D" groups=["DefenseLane"]]
 rotation = 3.14159
 script = ExtResource("1_fqdil")
-_JabScene = ExtResource("2_f046k")
 
 [node name="Path2D3" type="Path2D" parent="."]
-curve = SubResource("Curve2D_4naxs")
+position = Vector2(220, 0)
+curve = ExtResource("2_g6rlh")
 
 [node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(110, 0)
+curve = ExtResource("2_g6rlh")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = ExtResource("2_g6rlh")
+
+[node name="Core" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8migc")
 
-[node name="PlayerHeart" type="PathFollow2D" parent="Path2D2"]
+[node name="PlayerHeart" type="PathFollow2D" parent="Core"]
 position = Vector2(110, 30)
 rotates = false
 cubic_interp = false
 
-[node name="PlayerHeart" type="Area2D" parent="Path2D2/PlayerHeart"]
+[node name="PlayerHeart" type="Area2D" parent="Core/PlayerHeart"]
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Path2D2/PlayerHeart/PlayerHeart"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerHeart/PlayerHeart"]
+z_index = -500
 position = Vector2(1.49998, 0)
 scale = Vector2(233, 31.58)
 mesh = SubResource("QuadMesh_ul6xi")
 texture = ExtResource("3_s6grc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PlayerHeart/PlayerHeart"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerHeart/PlayerHeart"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_jifnr")
 
-[node name="PlayerDefense" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(110, 172.5)
-progress = 142.5
+[node name="PlayerDefense" type="PathFollow2D" parent="Core"]
+position = Vector2(110, 144)
+progress = 114.0
 rotates = false
 cubic_interp = false
 
-[node name="PlayerDefense" type="Area2D" parent="Path2D2/PlayerDefense"]
-collision_layer = 4
-collision_mask = 3
+[node name="Area2D" type="Area2D" parent="Core/PlayerDefense"]
+scale = Vector2(1, 1.97)
+collision_layer = 256
+collision_mask = 32
+input_pickable = false
+monitorable = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Path2D2/PlayerDefense/PlayerDefense"]
-position = Vector2(-6.83388, -0.441286)
-scale = Vector2(297.29, 52.4127)
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerDefense/Area2D"]
+position = Vector2(0, -0.337807)
+scale = Vector2(297.29, 42.2782)
 mesh = SubResource("QuadMesh_swdnd")
 texture = ExtResource("4_rr2ms")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PlayerDefense/PlayerDefense"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerDefense/Area2D"]
+position = Vector2(1.52588e-05, -1.2689)
+shape = SubResource("RectangleShape2D_fcno8")
+
+[node name="PlayerCounter" type="PathFollow2D" parent="Core"]
+position = Vector2(110, 309.3)
+progress = 279.3
+rotates = false
+cubic_interp = false
+
+[node name="Area2D" type="Area2D" parent="Core/PlayerCounter"]
+collision_layer = 512
+collision_mask = 32
+input_pickable = false
+monitorable = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerCounter/Area2D"]
+scale = Vector2(297.29, 52.4127)
+mesh = SubResource("QuadMesh_swdnd")
+texture = ExtResource("5_yd8l4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerCounter/Area2D"]
 position = Vector2(0, -0.734985)
 shape = SubResource("RectangleShape2D_fcno8")
 
-[node name="Path2D" type="Path2D" parent="."]
-visible = false
-curve = SubResource("Curve2D_e5h12")
-
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
-[connection signal="area_entered" from="Path2D2/PlayerHeart/PlayerHeart" to="." method="CollisionWithHeart"]
-[connection signal="timeout" from="Timer" to="." method="CreateJabs"]
+[node name="Label" type="Label" parent="."]
+offset_left = -71.0001
+offset_top = 57.9998
+offset_right = 1.99986
+offset_bottom = 80.9998
+rotation = 3.14159
+text = "Stamina: "
+
+[connection signal="area_entered" from="Core/PlayerHeart/PlayerHeart" to="." method="CollisionWithHeart"]
+[connection signal="timeout" from="Timer" to="." method="RecoverStamina"]

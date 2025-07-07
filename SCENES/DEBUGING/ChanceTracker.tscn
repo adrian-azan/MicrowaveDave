@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0x3b67vkh6vb"]
+
+[ext_resource type="Script" uid="uid://bikv08x76kkeg" path="res://CODE/DEBUG TOOLS/ChanceTracker.cs" id="1_rq36m"]
+[ext_resource type="Texture2D" uid="uid://bcwvjkq0miyd6" path="res://ART/VISUALS/Arrow.png" id="2_fupis"]
+[ext_resource type="Texture2D" uid="uid://1vvdf8h78dle" path="res://ART/VISUALS/Controller Outline.png" id="3_1j1ka"]
+
+[node name="ChanceTracker" type="VBoxContainer"]
+visible = false
+offset_left = 167.0
+offset_top = 52.0
+offset_right = 285.0
+offset_bottom = 288.0
+script = ExtResource("1_rq36m")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-14, 12)
+scale = Vector2(0.297, 0.297)
+texture = ExtResource("2_fupis")
+
+[node name="Pace" type="Label" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CheckButton")
+focus_mode = 2
+text = "Pace: "
+metadata/chance = 0
+
+[node name="Desk" type="Label" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Pace")
+focus_neighbor_bottom = NodePath("../Water")
+focus_mode = 2
+text = "Desks: "
+metadata/chance = 0
+
+[node name="Water" type="Label" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Desk")
+focus_neighbor_bottom = NodePath("../Light")
+focus_mode = 2
+text = "Water: "
+metadata/chance = 0
+
+[node name="Light" type="Label" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Water")
+focus_neighbor_bottom = NodePath("../Posters")
+focus_mode = 2
+text = "Light: "
+metadata/chance = 0
+
+[node name="Posters" type="Label" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Light")
+focus_mode = 2
+text = "Posters: "
+metadata/chance = 0
+
+[node name="LightingStyle" type="Label" parent="."]
+visible = false
+layout_mode = 2
+focus_neighbor_top = NodePath("../Light")
+focus_neighbor_bottom = NodePath("../DiscoLight")
+focus_mode = 2
+text = "LightingStyle: "
+metadata/chance = 0
+
+[node name="DiscoLight" type="Label" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LightingStyle")
+focus_neighbor_bottom = NodePath("../ShowTop")
+focus_mode = 2
+text = "Light: "
+metadata/chance = 0
+
+[node name="ShowTop" type="CheckButton" parent="."]
+visible = false
+layout_mode = 2
+focus_neighbor_top = NodePath("../DiscoLight")
+focus_neighbor_bottom = NodePath("../Level")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Show Top"
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Posters")
+focus_neighbor_bottom = NodePath("../CheckButton")
+focus_mode = 2
+text = "Level: Hallway"
+metadata/chance = 0
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Level")
+focus_neighbor_bottom = NodePath("../Pace")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Show Controls"
+
+[node name="Controls" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(496, 368)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("3_1j1ka")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhgvixhfx4f3g"]
+[gd_scene load_steps=9 format=3 uid="uid://dojjmxkmgpdh6"]
 
 [ext_resource type="Script" uid="uid://binuagdarrvjo" path="res://CODE/HALLWAYS/Disco/HallwayDisco.cs" id="1_41mtu"]
 [ext_resource type="PackedScene" uid="uid://c2eew5vje8xc4" path="res://SCENES/3D Scenes/HALLWAYS/DISCO/HallwayPieceDisco.tscn" id="2_fxm5y"]
-[ext_resource type="PackedScene" uid="uid://bq6woi6michm7" path="res://SCENES/Manager.tscn" id="3_hv5jd"]
+[ext_resource type="PackedScene" uid="uid://bq6woi6michm7" path="res://SCENES/3D Scenes/Manager.tscn" id="3_hv5jd"]
 
-[sub_resource type="Curve3D" id="Curve3D_nfwm7"]
+[sub_resource type="Curve3D" id="Curve3D_58nbq"]
 bake_interval = 0.05
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5.25, 12.01, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, -3.09, 0, 0, -0.555, -13.915, 0, 0, 0, 0, 0, -5.115, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -12,13 +12,105 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Animation" id="Animation_k671h"]
+resource_name = "LEVEL_ONE"
+length = 300.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.5, 21.6667, 42.1667, 60.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"PhaseOne"
+}, {
+"args": [],
+"method": &"PhaseTwo"
+}, {
+"args": [],
+"method": &"PhaseThree"
+}, {
+"args": [],
+"method": &"PhaseFour"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lx1gt"]
+resource_name = "TIME_LINE"
+length = 600.0
+loop_mode = 1
+markers = [{
+"color": Color(1, 0, 0, 1),
+"name": &"new_marker",
+"time": 15.0
+}]
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.23333, 28.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"PhaseTwo"
+}, {
+"args": [],
+"method": &"PhaseOne"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cgec"]
+_data = {
+&"LEVEL_ONE": SubResource("Animation_k671h"),
+&"TIME_LINE": SubResource("Animation_lx1gt")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lepgy"]
+size = Vector3(4.15828, 1.34427, 0.290527)
+
 [node name="HallwayDisco" type="Node3D"]
 script = ExtResource("1_41mtu")
 _secondaryColor = 2
 piece = ExtResource("2_fxm5y")
 
 [node name="Path3D" type="Path3D" parent="."]
-curve = SubResource("Curve3D_nfwm7")
+curve = SubResource("Curve3D_58nbq")
+
+[node name="RightLane" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81201, 1.103, -2.4861)
+curve = SubResource("Curve3D_58nbq")
+
+[node name="MiddleLane" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.103, -1.53167)
+curve = SubResource("Curve3D_58nbq")
+
+[node name="LeftLane" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38287, 1.103, -2.6579)
+curve = SubResource("Curve3D_58nbq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6cgec")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32768
+collision_mask = 65535
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10273, 1.60704, -6.12414)
+shape = SubResource("BoxShape3D_lepgy")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 190.0
+offset_bottom = 46.0
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://nvl3a2y8ex8j"]
+
+[ext_resource type="Script" uid="uid://dctsehedgt6vo" path="res://CODE/DEBUG TOOLS/EnemyTracker.cs" id="1_lnrfh"]
+[ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/SimpleStraight.tscn" id="2_im1sq"]
+[ext_resource type="Texture2D" uid="uid://bcwvjkq0miyd6" path="res://ART/VISUALS/Arrow.png" id="2_mwqly"]
+[ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="3_dqwch"]
+[ext_resource type="PackedScene" uid="uid://cm411x4pif1dy" path="res://SCENES/Battle System/Level 1/SimpleBounce.tscn" id="3_mwqly"]
+[ext_resource type="PackedScene" uid="uid://boh2h2txd52qo" path="res://SCENES/Battle System/Level 1/SimpleCrisCross.tscn" id="4_a2dcy"]
+
+[node name="EnemyTracker" type="VBoxContainer"]
+offset_left = 167.0
+offset_top = 52.0
+offset_right = 285.0
+offset_bottom = 288.0
+script = ExtResource("1_lnrfh")
+enemies = Array[PackedScene]([ExtResource("3_mwqly"), ExtResource("2_im1sq"), ExtResource("3_dqwch"), ExtResource("4_a2dcy")])
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-14, 12)
+scale = Vector2(0.297, 0.297)
+texture = ExtResource("2_mwqly")
+
+[node name="EnemyType" type="Label" parent="."]
+layout_mode = 2
+focus_mode = 2
+text = "Enemy: "
+metadata/chance = 0
