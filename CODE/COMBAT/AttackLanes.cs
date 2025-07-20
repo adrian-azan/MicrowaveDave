@@ -9,16 +9,6 @@ public partial class AttackLanes : Lanes
         _lanes = Tools.GetChildren<Path2D>(this);
     }
 
-    public override void _Process(double delta)
-    {
-        float felta = (float)delta;
-    }
-
-    public void CollisionWithHeart(Area2D incomingAttack)
-    {
-        incomingAttack.GetParent().QueueFree();
-    }
-
     public void AttackedByPlayer(Area2D incomingAttack)
     {
         incomingAttack.GetParent().QueueFree();

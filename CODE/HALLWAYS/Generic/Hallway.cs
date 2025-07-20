@@ -59,13 +59,10 @@ public partial class Hallway : Node3D
 
         foreach (Array<Enemy> lane in Lanes)
         {
-            for (int i = 0; i < lane.Count; i++)
-            {
-                if (lane[i].ProgressRatio > .9 - (i * .1) && lane[i].ProgressRatio < .95 - (i * .1))
-                    continue;
+            if (lane.Count == 0 || (lane.First().ProgressRatio > .9 && lane.First().ProgressRatio < .95))
+                continue;
 
-                lane[i].ProgressRatio += felta * lane[i]._pace * _DEBUG_enemyPaceMultiplyer;
-            }
+            lane.First().ProgressRatio += felta * lane.First()._pace * _DEBUG_enemyPaceMultiplyer;
         }
     }
 

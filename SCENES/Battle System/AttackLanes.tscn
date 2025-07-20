@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqkeiphae5300"]
+[gd_scene load_steps=5 format=3 uid="uid://cqkeiphae5300"]
 
 [ext_resource type="Script" uid="uid://bo4ucpir3eh12" path="res://CODE/COMBAT/AttackLanes.cs" id="1_sreci"]
 [ext_resource type="Curve2D" uid="uid://ve8cugoidw0g" path="res://SCENES/Battle System/Jab Types/DEFAULT.tres" id="2_sreci"]
-[ext_resource type="Texture2D" uid="uid://bpj3dambev85e" path="res://ART/VISUALS/Red.png" id="3_6xn0v"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_qegr7"]
+[ext_resource type="Texture2D" uid="uid://dhgdkswdapiv7" path="res://ART/VISUALS/EnemyHealthBar.png" id="3_lrfgh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wphtl"]
-size = Vector2(239, 13)
+size = Vector2(239, 41)
 
 [node name="AttackLanes" type="Node2D" groups=["AttackLane"]]
 script = ExtResource("1_sreci")
@@ -31,30 +29,13 @@ position = Vector2(110.99, 33.74)
 collision_layer = 0
 collision_mask = 32
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="EnemyHeart"]
-position = Vector2(1.49998, 0)
-scale = Vector2(233, 31.58)
-mesh = SubResource("QuadMesh_qegr7")
-texture = ExtResource("3_6xn0v")
+[node name="Sprite2D" type="Sprite2D" parent="EnemyHeart"]
+scale = Vector2(2.5, 2)
+texture = ExtResource("3_lrfgh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHeart"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_wphtl")
-
-[node name="EnemyTarget" type="Area2D" parent="."]
-position = Vector2(110.99, 625.75)
-collision_layer = 0
-collision_mask = 2
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="EnemyTarget"]
-position = Vector2(1.49998, 0)
-scale = Vector2(233, 31.58)
-mesh = SubResource("QuadMesh_qegr7")
-texture = ExtResource("3_6xn0v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTarget"]
-position = Vector2(0, -0.5)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHeart"]
+visible = false
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_wphtl")
 
 [connection signal="area_entered" from="EnemyHeart" to="." method="AttackedByPlayer"]
-[connection signal="area_entered" from="EnemyTarget" to="." method="CollisionWithHeart"]

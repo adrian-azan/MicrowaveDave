@@ -22,5 +22,8 @@ public partial class CustomSignals : Node
     public delegate void SuccesfulAttackSignalEventHandler(int amount);
 
     [Signal]
+    public delegate void SuccesfulAttackEnemySignalEventHandler();
+
+    [Signal]
     public delegate void RecoverStaminaSignalEventHandler();
 }

@@ -42,7 +42,8 @@ public partial class Attack : PathFollow2D
 
     public void ChangeStyle(Area2D collidingAttack)
     {
-        if (collidingAttack.GetCollisionLayerValue(2) && !collidingAttack.IsQueuedForDeletion())
+        if (collidingAttack.GetCollisionLayerValue(2) && GetNode<Area2D>("Area2D").GetCollisionLayerValue(6)
+            && !collidingAttack.IsQueuedForDeletion())
         {
             if (_style == Style.DEFENSIVE)
             {

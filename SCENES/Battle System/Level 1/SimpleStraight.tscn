@@ -10,6 +10,9 @@ material = ExtResource("2_30kbp")
 
 [node name="SimpleStraight" type="PathFollow3D" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+rotation_mode = 0
+loop = false
+tilt_enabled = false
 script = ExtResource("1_yuugn")
 _designatedLane = 1
 
@@ -17,7 +20,7 @@ _designatedLane = 1
 mesh = SubResource("CapsuleMesh_2tw5h")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 9.0
 one_shot = true
 
 [node name="Area3D" type="Area3D" parent="."]

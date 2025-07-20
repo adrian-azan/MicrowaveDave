@@ -26,7 +26,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3.5, 5.76667, 8.1, 11.2333),
+"times": PackedFloat32Array(2.1, 10.6667, 25.3333, 45.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -96,10 +96,6 @@ curve = SubResource("Curve3D_nfwm7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.103, -1.53167)
 curve = SubResource("Curve3D_nfwm7")
 
-[node name="SimpleStraight" parent="MiddleLane" instance=ExtResource("3_1iwh6")]
-transform = Transform3D(-1, 0, -8.74227e-08, 0, 0.999999, 0, 8.74228e-08, 0, -0.999999, 0, 0, 3.24711)
-progress = 42.2911
-
 [node name="LeftLane" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38287, 1.103, -2.6579)
 curve = SubResource("Curve3D_nfwm7")
@@ -115,7 +111,7 @@ collision_layer = 32768
 collision_mask = 65535
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10273, 1.60704, -6.12414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10273, 1.60704, -8.34246)
 shape = SubResource("BoxShape3D_1iwh6")
 
 [node name="Label" type="Label" parent="."]

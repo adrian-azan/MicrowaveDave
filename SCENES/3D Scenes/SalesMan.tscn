@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dc8u75g2vma04"]
+[gd_scene load_steps=81 format=3 uid="uid://vn7exldba451"]
 
 [ext_resource type="Texture2D" uid="uid://crbdpyds6oqjn" path="res://ART/VISUALS/Angry_Bob-sheet.png" id="1_cexoq"]
 [ext_resource type="PackedScene" uid="uid://wtjqydbjrbk8" path="res://ART/MODELS/stylized_vending_machine/scene.gltf" id="2_khux0"]

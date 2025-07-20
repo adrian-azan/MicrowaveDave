@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System;
 using System.Threading.Tasks;
 
 public partial class Enemy : PathFollow3D
@@ -27,7 +26,7 @@ public partial class Enemy : PathFollow3D
     public override void _Ready()
     {
         _attackLanes = GetTree().GetFirstNodeInGroup("AttackLane") as AttackLanes;
-        ProgressRatio = Tools.rng.RandfRange(.50f, .65f);
+        ProgressRatio = Tools.rng.RandfRange(.30f, .45f);
         _pace = Tools.rng.RandfRange(.03f, .05f);
         _state = STATE.IDLE;
 
@@ -59,6 +58,18 @@ public partial class Enemy : PathFollow3D
     {
         _health -= amount;
         AudioManager._Instance.EnemyDeath();
+        AudioManager._Instance.Punch();
+
+        //Get Hit animation
+        var side = new Array() { -1, 1 };
+
+        float sideAngle = Tools.rng.RandfRange(-50, -40);
+        sideAngle = sideAngle * side.PickRandom().AsInt32();
+
+        var tween = CreateTween();
+        tween.SetTrans(Tween.TransitionType.Bounce);
+        tween.TweenProperty(this, "rotation", new Vector3(Mathf.DegToRad(-50), Mathf.DegToRad(sideAngle), 0), .25);
+        tween.TweenProperty(this, "rotation", new Vector3(0, 0, 0), .5);
     }
 
     public void EnterBattle(Area3D area)
