@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3jd26bajpr0v"]
+[gd_scene load_steps=13 format=3 uid="uid://c3jd26bajpr0v"]
 
 [ext_resource type="Script" uid="uid://c6jgrkfblv5oe" path="res://CODE/HALLWAYS/Generic/Hallway.cs" id="1_ufto0"]
 [ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/HallwayPiece.tscn" id="2_ktj3d"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="4_k671h"]
 [ext_resource type="PackedScene" uid="uid://boh2h2txd52qo" path="res://SCENES/Battle System/Level 1/SimpleCrisCross.tscn" id="5_4tegq"]
 [ext_resource type="PackedScene" uid="uid://cm411x4pif1dy" path="res://SCENES/Battle System/Level 1/SimpleBounce.tscn" id="5_k671h"]
+[ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="7_4tegq"]
 
 [sub_resource type="Curve3D" id="Curve3D_nfwm7"]
 closed = true
@@ -117,3 +118,6 @@ shape = SubResource("BoxShape3D_1iwh6")
 [node name="Label" type="Label" parent="."]
 offset_right = 190.0
 offset_bottom = 46.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("7_4tegq")

@@ -85,7 +85,7 @@ public partial class ChanceTracker : VBoxContainer
                     break;
 
                 case "ShowTop":
-                    if (GetNode<HallwayDisco>("../SubViewportContainer/SubViewport/Root/HallwayDisco").Busy())
+                    if (Tools.GetChild<HallwayDisco>(GetNode("../SubViewportContainer/SubViewport")).Busy())
                     {
                         break;
                     }
@@ -147,7 +147,7 @@ public partial class ChanceTracker : VBoxContainer
     {
         _levelTracker++;
         _levelTracker %= 2;
-        var levels = Tools.GetChildren<Hallway>(GetNode("../SubViewportContainer/SubViewport/Root"));
+        var levels = Tools.GetChildren<Hallway>(GetNode("../SubViewportContainer/SubViewport/Node"));
 
         foreach (var level in levels)
         {

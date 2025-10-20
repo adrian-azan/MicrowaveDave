@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccleun8d6k5qw"]
+[gd_scene load_steps=6 format=3 uid="uid://ccleun8d6k5qw"]
 
-[ext_resource type="Script" uid="uid://m8h1vb2ldngo" path="res://CODE/MainScreen.cs" id="1_4c7g7"]
-[ext_resource type="PackedScene" uid="uid://jp2mlfj28jfu" path="res://SCENES/ROOT.tscn" id="2_yn66m"]
+[ext_resource type="Script" uid="uid://dbo6h1yr6np4q" path="res://CODE/DEBUG TOOLS/DEBUG_HallwayManager.cs" id="1_3fenn"]
+[ext_resource type="PackedScene" uid="uid://cweaov8emfthw" path="res://SCENES/LEVEL_1.tscn" id="2_7mnnw"]
+[ext_resource type="PackedScene" uid="uid://dcr6riyitk0fs" path="res://SCENES/LEVEL_2.tscn" id="3_ayx76"]
+[ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="4_3fenn"]
 [ext_resource type="PackedScene" uid="uid://d0x3b67vkh6vb" path="res://SCENES/DEBUGING/ChanceTracker.tscn" id="5_3fenn"]
-[ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="5_5kybu"]
 
 [node name="MainScreen" type="Node2D"]
-script = ExtResource("1_4c7g7")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 70.0
@@ -21,10 +21,15 @@ handle_input_locally = false
 size = Vector2i(1046, 654)
 render_target_update_mode = 4
 
-[node name="Root" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_yn66m")]
+[node name="Node" type="Node" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("1_3fenn")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("5_5kybu")
+[node name="Level_1 Root" parent="SubViewportContainer/SubViewport/Node" instance=ExtResource("2_7mnnw")]
+
+[node name="Level_2" parent="SubViewportContainer/SubViewport/Node" instance=ExtResource("3_ayx76")]
+
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_3fenn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
 
 [node name="ChanceTracker" parent="." instance=ExtResource("5_3fenn")]
 visible = true

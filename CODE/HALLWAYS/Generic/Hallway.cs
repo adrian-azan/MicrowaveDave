@@ -40,8 +40,6 @@ public partial class Hallway : Node3D
         _lanes.Add(GetNode<Path3D>("RightLane"));
 
         CustomSignals._Instance.SuccesfulAttackSignal += DamageEnemy;
-
-        GetNode<AnimationPlayer>("AnimationPlayer").Play("LEVEL_ONE");
     }
 
     public override void _Process(double delta)

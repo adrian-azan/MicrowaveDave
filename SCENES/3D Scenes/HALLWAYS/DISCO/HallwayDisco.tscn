@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dojjmxkmgpdh6"]
+[gd_scene load_steps=10 format=3 uid="uid://dojjmxkmgpdh6"]
 
 [ext_resource type="Script" uid="uid://binuagdarrvjo" path="res://CODE/HALLWAYS/Disco/HallwayDisco.cs" id="1_41mtu"]
 [ext_resource type="PackedScene" uid="uid://c2eew5vje8xc4" path="res://SCENES/3D Scenes/HALLWAYS/DISCO/HallwayPieceDisco.tscn" id="2_fxm5y"]
 [ext_resource type="PackedScene" uid="uid://bbbd8uryg0d3q" path="res://SCENES/3D Scenes/Manager.tscn" id="3_hv5jd"]
+[ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="4_lepgy"]
 
 [sub_resource type="Curve3D" id="Curve3D_58nbq"]
 bake_interval = 0.05
@@ -117,5 +118,8 @@ offset_bottom = 46.0
 [node name="Manager" parent="." instance=ExtResource("3_hv5jd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03029, 1.53674, 0)
 visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_lepgy")
 
 [connection signal="timeout" from="Timer" to="." method="TheBeat"]
