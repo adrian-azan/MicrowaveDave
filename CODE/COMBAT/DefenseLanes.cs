@@ -1,13 +1,23 @@
+using System.Linq;
 using Godot;
+using Godot.Collections;
 
 public partial class DefenseLanes : Lanes
 {
     public int _stamina;
+    public Array<Sprite2D> _staminaIndicators;
+
+    public Timer _staminaRecoveryTimer;
+    
+    [Export]
+    public float _staminaRecoveryRate;
 
     public override void _Ready()
     {
         base._Ready();
         _stamina = 2;
+        _staminaIndicators = new Array<Sprite2D>(GetChildren().Where(node => node is Sprite2D).Cast<Sprite2D>());
+        _staminaRecoveryTimer = GetNode<Timer>("StaminaRecovery");
 
         CustomSignals._Instance.RecoverStaminaSignal += RecoverStamina;
 
@@ -19,7 +29,7 @@ public partial class DefenseLanes : Lanes
     {
         float felta = (float)delta;
 
-        GetNode<Label>("Label").Text = $"Stamina: {_stamina}";
+        GetNode<Label>("Label").Text = $"Stamina: {_staminaRecoveryTimer.WaitTime:0.##}";
 
         if (Input.IsActionJustPressed("LeftAttack") && _stamina > 0)
         {
@@ -62,6 +72,28 @@ public partial class DefenseLanes : Lanes
 
             _stamina -= 1;
         }
+
+        foreach (var staminaIndicator in _staminaIndicators)
+        {
+            staminaIndicator.Visible = false;
+        }
+        
+        for (int i = 0; i < _stamina; i++)
+        {
+            _staminaIndicators[i].Visible = true;
+        }
+
+        _staminaRecoveryTimer = GetNode<Timer>("StaminaRecovery");
+        if (_stamina == 2)
+        {
+            _staminaRecoveryTimer.Paused = true;
+            _staminaRecoveryTimer.SetWaitTime(_staminaRecoveryRate);
+        }
+        else
+        {
+
+            _staminaRecoveryTimer.Paused = false;
+        }
     }
 
     public void RecoverStamina()
@@ -69,7 +101,7 @@ public partial class DefenseLanes : Lanes
         if (_stamina < 2)
             _stamina += 1;
     }
-
+    
     public void DefaultStyle(Area2D area)
     {
         (area.GetParent() as Attack)._style = Attack.Style.OFFENSIVE;

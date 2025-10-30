@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnjrctxs7ry16"]
+[gd_scene load_steps=10 format=3 uid="uid://cnjrctxs7ry16"]
 
 [ext_resource type="Script" uid="uid://df5wsmghi2whr" path="res://CODE/COMBAT/DefenseLanes.cs" id="1_fqdil"]
 [ext_resource type="Curve2D" uid="uid://d25xd7btt6pdw" path="res://SCENES/Battle System/DefenseLaneCurve.tres" id="2_g6rlh"]
 [ext_resource type="Texture2D" uid="uid://cca6vru0b3muy" path="res://ART/VISUALS/DefenseBar.png" id="4_ob0ai"]
 [ext_resource type="Texture2D" uid="uid://de71t5r6uk4tv" path="res://ART/VISUALS/HealthBar.png" id="4_yd8l4"]
 [ext_resource type="Texture2D" uid="uid://bc54rbn2o51ws" path="res://ART/VISUALS/CounterBar.png" id="5_ukdc8"]
+[ext_resource type="Texture2D" uid="uid://cre5x2a0g0cni" path="res://ART/VISUALS/StaminaBar.png" id="6_ob0ai"]
 
 [sub_resource type="Curve2D" id="Curve2D_8migc"]
 _data = {
@@ -20,6 +21,7 @@ size = Vector2(239, 44.1624)
 
 [node name="DefenseLanes" type="Node2D" groups=["DefenseLane"]]
 script = ExtResource("1_fqdil")
+_staminaRecoveryRate = 1.4
 
 [node name="Path2D3" type="Path2D" parent="."]
 position = Vector2(220, 0)
@@ -105,6 +107,22 @@ offset_right = 1.99986
 offset_bottom = 80.9998
 rotation = 3.14159
 text = "Stamina: "
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 146.84)
+texture = ExtResource("6_ob0ai")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 106.85)
+texture = ExtResource("6_ob0ai")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 66.48)
+texture = ExtResource("6_ob0ai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 27.1)
+texture = ExtResource("6_ob0ai")
 
 [connection signal="area_entered" from="Core/PlayerHeart/EnemyTarget" to="." method="CollisionWithHeart"]
 [connection signal="timeout" from="StaminaRecovery" to="." method="RecoverStamina"]

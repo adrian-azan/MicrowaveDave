@@ -2,6 +2,8 @@ using Godot;
 
 public partial class SimpleStraight : Enemy
 {
+    //TODO: Get Timer out of scene tree and just instantiate in enemy classes
+    //so that I can controll the refresh rate easier
     public override void _Ready()
     {
         base._Ready();
@@ -13,6 +15,7 @@ public partial class SimpleStraight : Enemy
     {
         base._Process(delta);
 
+        //TODO: Put this in the enemy class, same with the other enemy scripts
         if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
         {
             AttackPlayer();
@@ -29,4 +32,16 @@ public partial class SimpleStraight : Enemy
         attackInstance.PROGRESS_TWEEN.TweenProperty(attackInstance, "progress_ratio", .05, 1);
         attackInstance.PROGRESS_TWEEN.TweenProperty(attackInstance, "progress_ratio", 1, 3);
     }
+
+    
+    //TODO: Maybe play around with when you hit an enemy, theyre own attack timer resets
+    //Some enemies you can easily get in a loop, others the reset does less and less, and maybe some your building up
+    //an unslaught attack
+    public new void TakeDamage(int amount)
+    {
+        base.TakeDamage(amount);
+        
+        
+    }
+
 }

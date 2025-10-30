@@ -19,6 +19,8 @@ public partial class Enemy : PathFollow3D
 
     protected int _health;
     public float _pace;
+    [Export]
+    private float _attackCoolDown;
 
     protected Tween PROGRESS_TWEEN;
     protected Tween PACE_TWEEN;
@@ -33,6 +35,7 @@ public partial class Enemy : PathFollow3D
         _health = 1000;
 
         Bounce();
+        GetNode<Timer>("Timer").SetWaitTime(_attackCoolDown);
     }
 
     public override void _Process(double delta)

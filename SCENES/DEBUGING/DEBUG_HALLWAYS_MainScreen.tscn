@@ -24,7 +24,7 @@ render_target_update_mode = 4
 [node name="Node" type="Node" parent="SubViewportContainer/SubViewport"]
 script = ExtResource("1_3fenn")
 
-[node name="Level_1 Root" parent="SubViewportContainer/SubViewport/Node" instance=ExtResource("2_7mnnw")]
+[node name="Level_1" parent="SubViewportContainer/SubViewport/Node" instance=ExtResource("2_7mnnw")]
 
 [node name="Level_2" parent="SubViewportContainer/SubViewport/Node" instance=ExtResource("3_ayx76")]
 

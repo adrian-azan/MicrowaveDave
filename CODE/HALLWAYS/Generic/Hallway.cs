@@ -10,12 +10,10 @@ public partial class Hallway : Node3D
     private PackedScene piece;
 
     private Array<PathFollow3D> _pieces;
-
-    [Export]
-    private Array<PackedScene> _availableEnemies;
-
+    
     public Array<Path3D> _lanes;
 
+    [Export]
     public static float _pace;
     public static float _enemyPace;
 
@@ -86,89 +84,5 @@ public partial class Hallway : Node3D
         {
             enemiesInLanes[0].QueueFree();
         }
-    }
-
-    public void TutorialPhaseOne()
-    {
-        _lanes[1].AddChild(_availableEnemies[0].Instantiate<Enemy>());
-
-        GetNode<AnimationPlayer>("AnimationPlayer").Pause();
-    }
-
-    public void TutorialPhaseTwo()
-    {
-        var curve = _availableEnemies[1].Instantiate<Enemy>();
-
-        curve._designatedLane = Lanes.LANES.MIDDLE;
-
-        _lanes[1].AddChild(curve);
-
-        GetNode<AnimationPlayer>("AnimationPlayer").Pause();
-    }
-
-    public void TutorialPhaseFour()
-    {
-        var normal = _availableEnemies[0].Instantiate<Enemy>();
-        var curve = _availableEnemies[1].Instantiate<Enemy>();
-
-        normal._designatedLane = Lanes.LANES.MIDDLE;
-        curve._designatedLane = Lanes.LANES.LEFT;
-
-        _lanes[1].AddChild(normal);
-        _lanes[0].AddChild(curve);
-
-        GetNode<AnimationPlayer>("AnimationPlayer").Pause();
-    }
-
-    public void PhaseOne()
-    {
-        var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
-        simpleStraight._designatedLane = Lanes.LANES.MIDDLE;
-
-        _lanes[1].AddChild(simpleStraight);
-
-        var simpleStraight2 = _availableEnemies[0].Instantiate<Enemy>();
-        simpleStraight2._designatedLane = Lanes.LANES.MIDDLE;
-
-        _lanes[1].AddChild(simpleStraight2);
-    }
-
-    public void PhaseTwo()
-    {
-        var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
-        var simpleStraight_2 = _availableEnemies[0].Instantiate<Enemy>();
-        simpleStraight._designatedLane = Lanes.LANES.MIDDLE;
-        simpleStraight_2._designatedLane = Lanes.LANES.LEFT;
-
-        _lanes[1].AddChild(simpleStraight);
-
-        CreateTween().TweenCallback(Callable.From(() => _lanes[0].AddChild(simpleStraight_2))).SetDelay(10);
-    }
-
-    public void PhaseThree()
-    {
-        var simpleCurve = _availableEnemies[1].Instantiate<Enemy>();
-        var simpleStraight_2 = _availableEnemies[0].Instantiate<Enemy>();
-
-        simpleCurve._designatedLane = Lanes.LANES.MIDDLE;
-        simpleStraight_2._designatedLane = Lanes.LANES.LEFT;
-
-        _lanes[1].AddChild(simpleCurve);
-        _lanes[0].AddChild(simpleStraight_2);
-    }
-
-    public void PhaseFour()
-    {
-        var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
-        var simpleCurve = _availableEnemies[1].Instantiate<Enemy>();
-        var simpleStraight_2 = _availableEnemies[0].Instantiate<Enemy>();
-
-        simpleStraight._designatedLane = Lanes.LANES.MIDDLE;
-        simpleCurve._designatedLane = Lanes.LANES.LEFT;
-        simpleStraight_2._designatedLane = Lanes.LANES.RIGHT;
-
-        _lanes[0].AddChild(simpleCurve);
-        _lanes[1].AddChild(simpleStraight);
-        _lanes[2].AddChild(simpleStraight_2);
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://jp2mlfj28jfu"]
+[gd_scene load_steps=4 format=3 uid="uid://bnppdxil1ffyp"]
 
 [ext_resource type="Script" uid="uid://ba8nbe1pttdt" path="res://CODE/ROOT.cs" id="1_184dk"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="1_p0nm0"]
