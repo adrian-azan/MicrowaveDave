@@ -25,6 +25,8 @@ public partial class Enemy : PathFollow3D
     protected Tween PROGRESS_TWEEN;
     protected Tween PACE_TWEEN;
 
+    public Callable EndTask;
+
     public override void _Ready()
     {
         _attackLanes = GetTree().GetFirstNodeInGroup("AttackLane") as AttackLanes;
@@ -38,18 +40,18 @@ public partial class Enemy : PathFollow3D
         GetNode<Timer>("Timer").SetWaitTime(_attackCoolDown);
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-    }
-
     public override void _ExitTree()
     {
         base._ExitTree();
-
         _attackLanes.ClearLanes(this);
 
+        Logging.PrintTemp("HEY","HEY");
+        CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.EnemyKilled);
+        
         AudioManager._Instance.EnemyDeath();
+
+        if(EndTask.Delegate != null)
+            EndTask.Call();
     }
 
     public bool Dead()

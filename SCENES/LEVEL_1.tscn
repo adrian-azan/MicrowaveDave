@@ -1,14 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://cweaov8emfthw"]
+[gd_scene load_steps=13 format=3 uid="uid://cweaov8emfthw"]
 
 [ext_resource type="Script" uid="uid://naf3f5s6karu" path="res://CODE/Level1_EnemyGenerator.cs" id="1_bk03j"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="2_gkkj8"]
 [ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/SimpleStraight.tscn" id="2_rnmjr"]
 [ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="3_0plv3"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="4_v5jm5"]
+[ext_resource type="Curve3D" uid="uid://7263e2mpc01j" path="res://SCENES/CameraToStoreCurve.tres" id="5_5t61s"]
+[ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="6_0plv3"]
 
 [sub_resource type="Animation" id="Animation_k671h"]
 resource_name = "LEVEL_ONE"
 length = 300.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseTwo",
+"time": 19.266666
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseThree",
+"time": 33.852814
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseFour",
+"time": 49.433266
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseFive",
+"time": 60.8
+}]
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,8 +35,8 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.1, 10.6667, 25.3333, 45.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(5, 20.2, 35.2, 50.2, 62.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"PhaseOne"
@@ -30,7 +49,282 @@ tracks/0/keys = {
 }, {
 "args": [],
 "method": &"PhaseFour"
+}, {
+"args": [],
+"method": &"PhaseFive"
 }]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Hallway")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(11.766666, 35.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.14, 15.0, 0.0, 0.0, 20.0],
+"method": &"SetEnvironment"
+}, {
+"args": [0.14, 30.0, 25.0, 5.0, 40.0],
+"method": &"SetEnvironment"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hallway:_pace")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(20.866667, 31, 43.36667, 49.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.1, 0.14, 0.14, 0.25]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hallway:_deskChance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(9.733334, 28.5, 46.266666, 51.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, 20.0, 45.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hallway:_waterCoolerChance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(29.1, 37.166668, 51.133335, 56.233334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 30.0, 30.0, 50.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hallway:_lightFlickerChance")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(24.566668, 44.8, 52.5),
+"transitions": PackedFloat32Array(1, 0.9659363, 1),
+"update": 0,
+"values": [0.0, 10.0, 10.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hallway:_posterChance")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(21.966667, 33.8, 45, 57.866665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, 20.0, 80.0]
+}
+
+[sub_resource type="Animation" id="Animation_0plv3"]
+resource_name = "LEVEL_ONE_STORE"
+length = 300.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hallway:_pace")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666669, 7.699999, 8.733334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.18, 0.18, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToStore/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(13.099998, 16.533333, 18.133331),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ToStore/PathFollow3D/RemoteTransform3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(13.166666, 16.833332, 18.233334),
+"transitions": PackedFloat32Array(1, 1, 0.18946466),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionalLight3D:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 8.799999, 8.933332, 11.566666, 11.666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0, 0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player:Speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7.533333, 8.566666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hallway")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(8.799999, 9.933332, 11.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"LightsOff"
+}, {
+"args": [],
+"method": &"Clear"
+}, {
+"args": [],
+"method": &"LightsOn"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hallway:_lightFlickerChance")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.099999905, 7.199999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [90.0, 90.0]
+}
+
+[sub_resource type="Animation" id="Animation_rnmjr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hallway:_pace")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hallway:_deskChance")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hallway:_waterCoolerChance")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hallway:_lightFlickerChance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hallway:_posterChance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ToStore/PathFollow3D:progress_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToStore/PathFollow3D/RemoteTransform3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DirectionalLight3D:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_lx1gt"]
@@ -63,6 +357,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6cgec"]
 _data = {
 &"LEVEL_ONE": SubResource("Animation_k671h"),
+&"LEVEL_ONE_STORE": SubResource("Animation_0plv3"),
+&"RESET": SubResource("Animation_rnmjr"),
 &"TIME_LINE": SubResource("Animation_lx1gt")
 }
 
@@ -73,11 +369,19 @@ _availableEnemies = Array[PackedScene]([ExtResource("2_rnmjr"), ExtResource("3_0
 [node name="Hallway" parent="." instance=ExtResource("2_gkkj8")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -1.38427, 1.6015, 6.94366)
+transform = Transform3D(0.9993995, 0, -0.034393273, 0, 1, 0, 0.034393273, 0, 0.9993995, -1.38427, 1.4468191, 6.94366)
+environment = ExtResource("6_0plv3")
 
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(-0.0597767, 0, -0.998212, 0, 1, 0, 0.998212, 0, -0.0597767, -15.4387, -0.211323, 0.567746)
-cull_mask = 1048573
+[node name="ToStore" type="Path3D" parent="."]
+transform = Transform3D(0.99940836, 0, -0.03439358, 0, 1, 0, 0.03439358, 0, 0.99940836, -1.38427, 1.4468191, 6.94366)
+curve = ExtResource("5_5t61s")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="ToStore"]
+transform = Transform3D(0.9999911, 0, 0, 0, 1, 0, 0, 0, 0.9999911, 0, 0, 0)
+rotation_mode = 0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="ToStore/PathFollow3D"]
+remote_path = NodePath("../../../Camera3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92065, 3.0807)
@@ -91,8 +395,17 @@ light_color = Color(0.466629, 0.325109, 0.0810879, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_v5jm5")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
+Speed = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_6cgec")
 }
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.013281595, 0, 0.9999118, 0, 1, 0, -0.9999118, 0, -0.013281595, -2418.4844, -344.56998, 0)
+visible = false
+
+[node name="PhaseAdvanceCoolDown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

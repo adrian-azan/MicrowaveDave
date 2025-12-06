@@ -8,7 +8,7 @@ public partial class SimpleStraight : Enemy
     {
         base._Ready();
 
-        _health = 100;
+        _health = 10;
     }
 
     public override void _Process(double delta)

@@ -12,6 +12,7 @@ material = ExtResource("2_lcoq0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 script = ExtResource("1_lcoq0")
 _designatedLane = 1
+_attackCoolDown = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_2tw5h")

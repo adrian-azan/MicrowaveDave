@@ -29,9 +29,9 @@ public partial class ChanceTracker : VBoxContainer
 
         _environment = GetNode<WorldEnvironment>("../WorldEnvironment");
         _levelTracker = _options.Count - 1;
-        SwitchLevel();
+    //    SwitchLevel();
     }
-
+/*
     public override void _Process(double delta)
     {
         Control currentFocus = GetViewport().GuiGetFocusOwner();
@@ -200,4 +200,5 @@ public partial class ChanceTracker : VBoxContainer
             _options["Level1"][_options["Level1"].Count - 1].FocusNeighborBottom = level.GetPath();
         }
     }
+    */
 }

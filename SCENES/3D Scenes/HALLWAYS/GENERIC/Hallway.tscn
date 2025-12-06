@@ -1,11 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3jd26bajpr0v"]
+[gd_scene load_steps=6 format=3 uid="uid://c3jd26bajpr0v"]
 
 [ext_resource type="Script" uid="uid://c6jgrkfblv5oe" path="res://CODE/HALLWAYS/Generic/Hallway.cs" id="1_ufto0"]
 [ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/HallwayPiece.tscn" id="2_ktj3d"]
-[ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/SimpleStraight.tscn" id="3_1iwh6"]
-[ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="4_k671h"]
-[ext_resource type="PackedScene" uid="uid://boh2h2txd52qo" path="res://SCENES/Battle System/Level 1/SimpleCrisCross.tscn" id="5_4tegq"]
-[ext_resource type="PackedScene" uid="uid://cm411x4pif1dy" path="res://SCENES/Battle System/Level 1/SimpleBounce.tscn" id="5_k671h"]
 [ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="7_4tegq"]
 
 [sub_resource type="Curve3D" id="Curve3D_nfwm7"]
@@ -22,8 +18,7 @@ size = Vector3(4.15828, 1.34427, 0.290527)
 
 [node name="Hallway" type="Node3D"]
 script = ExtResource("1_ufto0")
-piece = ExtResource("2_ktj3d")
-_availableEnemies = Array[PackedScene]([ExtResource("3_1iwh6"), ExtResource("4_k671h"), ExtResource("5_k671h"), ExtResource("5_4tegq")])
+piecePackedScene = ExtResource("2_ktj3d")
 _DEBUG_enemyPaceMultiplyer = 5
 
 [node name="Path3D" type="Path3D" parent="."]
