@@ -10,9 +10,9 @@ public static class Logging
 
 	private static Dictionary<String, float> Timers = new Dictionary<string, float>();
 	
-	public static void PrintTemp(String category, String message)
+	public static void PrintTemp(String message)
 	{
-		GD.PrintRich($"[color=#d5ff00][font_size=12]{category, -20}[/font_size][/color] {message}");
+		GD.PrintRich($"[color=#d5ff00][font_size=12]{message}[/font_size][/color]");
 	}
 	
 	public static void PrintInfo(String category, String message, String timerKey = null)

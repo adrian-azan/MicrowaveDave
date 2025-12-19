@@ -45,7 +45,6 @@ public partial class Enemy : PathFollow3D
         base._ExitTree();
         _attackLanes.ClearLanes(this);
 
-        Logging.PrintTemp("HEY","HEY");
         CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.EnemyKilled);
         
         AudioManager._Instance.EnemyDeath();

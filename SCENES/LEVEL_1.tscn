@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://cweaov8emfthw"]
+[gd_scene load_steps=15 format=3 uid="uid://cweaov8emfthw"]
 
-[ext_resource type="Script" uid="uid://naf3f5s6karu" path="res://CODE/Level1_EnemyGenerator.cs" id="1_bk03j"]
+[ext_resource type="Script" uid="uid://naf3f5s6karu" path="res://CODE/COMBAT/Level1_EnemyGenerator.cs" id="1_bk03j"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="2_gkkj8"]
 [ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/SimpleStraight.tscn" id="2_rnmjr"]
 [ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="3_0plv3"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="4_v5jm5"]
 [ext_resource type="Curve3D" uid="uid://7263e2mpc01j" path="res://SCENES/CameraToStoreCurve.tres" id="5_5t61s"]
 [ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="6_0plv3"]
+[ext_resource type="Script" uid="uid://cmctb5x5n5xkq" path="res://CODE/TOOLS/AnimationPlayerWithEmitter.cs" id="8_kkppn"]
+[ext_resource type="PackedScene" uid="uid://vn7exldba451" path="res://SCENES/3D Scenes/Sales Man/SalesMan.tscn" id="8_mkcsh"]
 
 [sub_resource type="Animation" id="Animation_k671h"]
 resource_name = "LEVEL_ONE"
@@ -26,7 +28,7 @@ markers = [{
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseFive",
-"time": 60.8
+"time": 61.966667
 }]
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -202,17 +204,14 @@ tracks/5/path = NodePath("Hallway")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(8.799999, 9.933332, 11.533333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(8.799999, 9.933332),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"LightsOff"
 }, {
 "args": [],
 "method": &"Clear"
-}, {
-"args": [],
-"method": &"LightsOn"
 }]
 }
 tracks/6/type = "value"
@@ -226,6 +225,43 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [90.0, 90.0]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(8.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"HideLanes"],
+"method": &"EmitSignal"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SalesMan:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(8.966666, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SalesMan")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_rnmjr"]
@@ -326,6 +362,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SalesMan:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_lx1gt"]
 resource_name = "TIME_LINE"
@@ -401,6 +449,7 @@ Speed = 1.0
 libraries = {
 &"": SubResource("AnimationLibrary_6cgec")
 }
+script = ExtResource("8_kkppn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.013281595, 0, 0.9999118, 0, 1, 0, -0.9999118, 0, -0.013281595, -2418.4844, -344.56998, 0)
@@ -409,3 +458,8 @@ visible = false
 [node name="PhaseAdvanceCoolDown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="SalesMan" parent="." instance=ExtResource("8_mkcsh")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 1.3704793, 0.98974335, -3.409013)
+visible = false
+script = null

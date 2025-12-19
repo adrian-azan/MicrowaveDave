@@ -9,7 +9,7 @@ public partial class Hallway : Node3D
     [Export]
     private PackedScene piecePackedScene;
 
-    private Array<PathFollow3D> _pieces;
+    private Array<HallwayPiece> _pieces;
     
     public Array<Path3D> _lanes;
 
@@ -25,8 +25,6 @@ public partial class Hallway : Node3D
     public float _posterChance;
 
     
-    public static float _enemyPace;
-
     [Export]
     public int _DEBUG_enemyPaceMultiplyer = 1;
     
@@ -34,10 +32,10 @@ public partial class Hallway : Node3D
     {
         _pace = .1f;
         float totalPieces = 24;
-        _pieces = new Array<PathFollow3D>();
+        _pieces = new Array<HallwayPiece>();
         for (int i = 0; i < totalPieces; i++)
         {
-            _pieces.Add(piecePackedScene.Instantiate() as PathFollow3D);
+            _pieces.Add(piecePackedScene.Instantiate() as HallwayPiece);
             GetNode("Path3D").AddChild(_pieces[i]);
             _pieces[i].ProgressRatio = (float)i / totalPieces;
         }

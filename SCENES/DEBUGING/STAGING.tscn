@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb4kyada4wa57"]
+
+[ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="1_7jkf8"]
+[ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/HallwayPiece.tscn" id="2_rbbwn"]
+[ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="3_rbbwn"]
+[ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="4_eb1ho"]
+[ext_resource type="PackedScene" uid="uid://vn7exldba451" path="res://SCENES/3D Scenes/Sales Man/SalesMan.tscn" id="5_0apt2"]
+
+[node name="Staging" type="Node3D"]
+
+[node name="Hallway" parent="." instance=ExtResource("1_7jkf8")]
+
+[node name="HallwayPiece" parent="Hallway/Path3D" index="0" instance=ExtResource("2_rbbwn")]
+transform = Transform3D(-1, -4.1898707e-09, -8.7322285e-08, 0, 0.99885046, -0.047926534, 8.742278e-08, -0.047926534, -0.99885046, 0, -0.028278729, -5.760679)
+progress = 33.282734
+
+[node name="HallwayPiece2" parent="Hallway/Path3D" index="1" instance=ExtResource("2_rbbwn")]
+transform = Transform3D(-1, 0, -8.742267e-08, 0, 0.9999988, 0, 8.742278e-08, 0, -0.9999988, 0, 0, -3.9733713)
+progress = 35.07065
+
+[node name="HallwayPiece3" parent="Hallway/Path3D" index="2" instance=ExtResource("2_rbbwn")]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.9999999, 0, 8.742278e-08, 0, -0.9999999, 0, 0, -2.3688407)
+progress = 36.67519
+
+[node name="HallwayPiece4" parent="Hallway/Path3D" index="3" instance=ExtResource("2_rbbwn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.53507954)
+progress = 38.50895
+
+[node name="HallwayPiece5" parent="Hallway/Path3D" index="4" instance=ExtResource("2_rbbwn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.2986971)
+progress = 40.34271
+
+[node name="HallwayPiece6" parent="Hallway/Path3D" index="5" instance=ExtResource("2_rbbwn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 3.1324708)
+progress = 42.176468
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(0.9993995, 0, -0.034393273, 0, 1, 0, 0.034393273, 0, 0.9993995, -1.38427, 1.4468191, 6.94366)
+environment = ExtResource("4_eb1ho")
+
+[node name="Player2" parent="." instance=ExtResource("3_rbbwn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
+Speed = 1.0
+
+[node name="SalesMan" parent="." instance=ExtResource("5_0apt2")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 1.3704793, 0.98974335, -3.409013)
+
+[editable path="Hallway"]

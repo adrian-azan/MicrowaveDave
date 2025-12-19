@@ -6,6 +6,7 @@ public partial class AttackLanes : Lanes
 {
     public override void _Ready()
     {
+        base._Ready();
         _lanes = Tools.GetChildren<Path2D>(this);
     }
 

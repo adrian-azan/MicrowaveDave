@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgd1u8imo28j0"]
+
+[ext_resource type="Script" uid="uid://b8dln40yn5420" path="res://CODE/SALES MAN/Digit.cs" id="1_1pu0f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4uy8u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oweok"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.407843)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_du2uw"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gt7ks"]
+material = SubResource("StandardMaterial3D_du2uw")
+
+[node name="Digit" type="Node3D"]
+script = ExtResource("1_1pu0f")
+
+[node name="Zero" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.0598e-08, -1, 0, 0.7, -4.37114e-08, 0, 0, 0, 0.1, 0, 2, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_4uy8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_oweok")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Zero"]
+transform = Transform3D(-6.24448e-08, 1.42857, 0, -1, -4.37114e-08, 0, 0, 0, 10, 0.0163617, -5.00641e-10, 14.0945)
+light_color = Color(0.704883, 0.576622, 0, 1)
+light_energy = 15.0
+light_specular = 0.05
+light_cull_mask = 4294443008
+distance_fade_begin = 0.2
+distance_fade_length = 5.0
+spot_range = 3.0
+spot_angle = 35.0
+
+[node name="One" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.1, 1.5, 1.2, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_4uy8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_oweok")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="One"]
+transform = Transform3D(-6.24448e-08, 1.42857, 0, -1, -4.37114e-08, 0, 0, 0, 10, 0.229984, 0, 14.0945)
+light_color = Color(0.704883, 0.576622, 0, 1)
+light_energy = 15.0
+light_specular = 0.05
+light_cull_mask = 4294443008
+distance_fade_begin = 0.2
+distance_fade_length = 5.0
+spot_range = 3.0
+spot_angle = 35.0
+
+[node name="Two" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.1, 1.5, -1.2, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_4uy8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_oweok")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Two"]
+transform = Transform3D(-6.24448e-08, 1.42857, 0, -1, -4.37114e-08, 0, 0, 0, 10, 0.348739, 0, 14.0945)
+light_color = Color(0.704883, 0.576622, 0, 1)
+light_energy = 15.0
+light_specular = 0.05
+light_cull_mask = 4294443008
+distance_fade_begin = 0.2
+distance_fade_length = 5.0
+spot_range = 3.0
+spot_angle = 35.0
+
+[node name="Three" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.0598e-08, -1, 0, 0.7, -4.37114e-08, 0, 0, 0, 0.1, 0, -2, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_4uy8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_oweok")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Three"]
+transform = Transform3D(-6.24448e-08, 1.42857, 0, -1, -4.37114e-08, 0, 0, 0, 10, 0.0163617, -5.00641e-10, 14.0945)
+light_color = Color(0.704883, 0.576622, 0, 1)
+light_energy = 15.0
+light_specular = 0.05
+light_cull_mask = 4294443008
+distance_fade_begin = 0.2
+distance_fade_length = 5.0
+spot_range = 3.0
+spot_angle = 35.0
+
+[node name="Four" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.1, -1.5, -1.2, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_4uy8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_oweok")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Four"]
+transform = Transform3D(-6.24448e-08, 1.42857, 0, -1, -4.37114e-08, 0, 0, 0, 10, -0.246841, 0, 14.0945)
+light_color = Color(0.704883, 0.576622, 0, 1)
+light_energy = 15.0
+light_specular = 0.05
+light_cull_mask = 4294443008
+distance_fade_begin = 0.2
+distance_fade_length = 5.0
+spot_range = 3.0
+spot_angle = 35.0
+
+[node name="Five" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.1, -1.5, 1.2, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_4uy8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_oweok")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Five"]
+transform = Transform3D(-6.24448e-08, 1.42857, 0, -1, -4.37114e-08, 0, 0, 0, 10, -0.256151, 0, 14.0945)
+light_color = Color(0.704883, 0.576622, 0, 1)
+light_energy = 15.0
+light_specular = 0.05
+light_cull_mask = 4294443008
+distance_fade_begin = 0.2
+distance_fade_length = 5.0
+spot_range = 3.0
+spot_angle = 35.0
+
+[node name="Six" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.0598e-08, -1, 0, 0.7, -4.37114e-08, 0, 0, 0, 0.1, 0, 0, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_4uy8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_oweok")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="Six"]
+transform = Transform3D(-6.24448e-08, 1.42857, 0, -1, -4.37114e-08, 0, 0, 0, 10, 0.0163617, -5.00641e-10, 14.0945)
+light_color = Color(0.704883, 0.576622, 0, 1)
+light_energy = 15.0
+light_specular = 0.05
+light_cull_mask = 4294443008
+distance_fade_begin = 0.2
+distance_fade_length = 5.0
+spot_range = 3.0
+spot_angle = 35.0
+
+[node name="Back" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.86, 0, 0, 0, -4.37114e-08, -2.375, 0, 1, -1.03815e-07, 0, 0, 0)
+layers = 524288
+mesh = SubResource("PlaneMesh_gt7ks")

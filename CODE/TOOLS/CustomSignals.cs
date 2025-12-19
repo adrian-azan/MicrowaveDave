@@ -28,8 +28,8 @@ public partial class CustomSignals : Node
     public delegate void RecoverStaminaSignalEventHandler();
 
     [Signal]
-    public delegate void EnemyQueueClearedEventHandler();
+    public delegate void EnemyKilledEventHandler();
 
     [Signal]
-    public delegate void EnemyKilledEventHandler();
+    public delegate void HideLanesEventHandler();
 }

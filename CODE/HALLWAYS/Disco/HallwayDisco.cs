@@ -4,7 +4,7 @@ using System.Linq;
 
 public partial class HallwayDisco : Hallway
 {
-    private Array<PathFollow3D> _pieces;
+    private Array<HallwayDiscoPiece> _pieces;
 
     private Array<Array<NeonLightPanel>> _bottomLights;
     private Array<Array<NeonLightPanel>> _topLights;
@@ -15,6 +15,7 @@ public partial class HallwayDisco : Hallway
 
     public static float _discoLightFlickerChance = 0;
 
+    //TODO: Switch this to tools rng
     private RandomNumberGenerator rng = new RandomNumberGenerator();
 
     private Array<Tween> _tweens;
@@ -42,7 +43,7 @@ public partial class HallwayDisco : Hallway
         _theBeat = GetNode<Timer>("Timer");
         _theBeat.Start();
 
-        _pieces = Tools.GetChildren<PathFollow3D>(this);
+        _pieces = Tools.GetChildren<HallwayDiscoPiece>(this);
         _bottomLights = new Array<Array<NeonLightPanel>>();
         _topLights = new Array<Array<NeonLightPanel>>();
         _tweens = new Array<Tween>();
@@ -60,8 +61,8 @@ public partial class HallwayDisco : Hallway
             _topLights.Add(lights.Slice(25, 5));
         }
 
-        GetNode<CustomSignals>("/root/CustomSignals").UpdateLightsSignal += UpdateLights;
-        GetNode<CustomSignals>("/root/CustomSignals").UpdateShowTopSignal += UpdateTop;
+        CustomSignals._Instance.UpdateLightsSignal += UpdateLights;
+        CustomSignals._Instance.UpdateShowTopSignal += UpdateTop;
 
         UpdateLights();
     }
