@@ -31,8 +31,8 @@ public partial class Level1_EnemyGenerator : Node3D
 		_hallway = GetNode<Hallway>("Hallway");
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-	//	_animationPlayer.Play("LEVEL_ONE");
-		_animationPlayer.PlaySectionWithMarkers("LEVEL_ONE", "PhaseFive");
+		_animationPlayer.Play("LEVEL_ONE");
+	//	_animationPlayer.PlaySectionWithMarkers("LEVEL_ONE", "PhaseFive");
 
 		CustomSignals._Instance.SuccessfulAttack += DamageEnemy;
 		CustomSignals._Instance.EnemyKilled += CheckIfPhaseFinishedEarly;
@@ -140,7 +140,6 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseOne()
 	{
-	   GD.PrintRich(String.Format(DEBUG_PhaseString, "1","PhaseOne"));
 		var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
 		simpleStraight._designatedLane = Lanes.LANES.MIDDLE;
 
@@ -150,7 +149,6 @@ public partial class Level1_EnemyGenerator : Node3D
 		simpleStraight2._designatedLane = Lanes.LANES.MIDDLE;
 
 		_hallway._lanes[1].AddChild(simpleStraight2);
-		
 	}
 
 	public void PhaseTwo()

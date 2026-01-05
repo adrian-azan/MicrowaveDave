@@ -4,7 +4,21 @@ using System.Threading.Tasks;
 
 public partial class SimpleBounce : Enemy
 {
+    
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
 
+        if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
+        {
+            AttackPlayer();
+            GetNode<Timer>("Timer").Start();
+        }
+    }
+
+    //TODO: see if I can hook this up to the timer going off
+    //So instead of the check happening in _Process, it could happen in AttackPlayer.
+    //That way not every enemy needs its own process method to do basically the same thing
     public new void AttackPlayer()
     {
         Attack attackInstance = base.AttackPlayer();

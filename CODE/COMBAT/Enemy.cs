@@ -40,18 +40,7 @@ public partial class Enemy : PathFollow3D
         Bounce();
         GetNode<Timer>("Timer").SetWaitTime(_attackCoolDown);
     }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-   
-        if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
-        {
-            AttackPlayer();
-            GetNode<Timer>("Timer").Start();
-        }
-    }
-
+    
     public override void _ExitTree()
     {
         base._ExitTree();

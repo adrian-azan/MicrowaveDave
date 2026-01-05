@@ -9,6 +9,17 @@ public partial class SimpleCurve : Enemy
         _health = 100;
     }
     
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
+        {
+            AttackPlayer();
+            GetNode<Timer>("Timer").Start();
+        }
+    }
+    
     public new void AttackPlayer()
     {
         Attack attackInstance = base.AttackPlayer();
