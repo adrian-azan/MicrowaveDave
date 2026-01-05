@@ -4,21 +4,6 @@ using System.Threading.Tasks;
 
 public partial class SimpleBounce : Enemy
 {
-    public override void _Ready()
-    {
-        base._Ready();
-    }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
-        {
-            AttackPlayer();
-            GetNode<Timer>("Timer").Start();
-        }
-    }
 
     public new void AttackPlayer()
     {

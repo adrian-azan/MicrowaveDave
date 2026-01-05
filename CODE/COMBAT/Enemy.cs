@@ -25,7 +25,8 @@ public partial class Enemy : PathFollow3D
     protected Tween PROGRESS_TWEEN;
     protected Tween PACE_TWEEN;
 
-    public Callable EndTask;
+    //Don't have a use case yet, but could be handy to have enemies with custom end of life methods
+    private Callable EndTask;
 
     public override void _Ready()
     {
@@ -38,6 +39,17 @@ public partial class Enemy : PathFollow3D
 
         Bounce();
         GetNode<Timer>("Timer").SetWaitTime(_attackCoolDown);
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+   
+        if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
+        {
+            AttackPlayer();
+            GetNode<Timer>("Timer").Start();
+        }
     }
 
     public override void _ExitTree()

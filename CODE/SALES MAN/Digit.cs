@@ -2,9 +2,25 @@ using Godot;
 using Godot.Collections;
 public partial class Digit : Node3D
 {
+	/*
+	 * The key represents the symbol that will display.
+	 * For letters, the Ascii value is the key. (48 = A, 49 = B, etc).
+	 * The value is an array of which parts of the display are on or off.
+	 * The index number below represents the lights that will display if the
+	 * value at that index is true.
+	 *
+	 * - 0 -
+	 * |   |
+	 * 5   1
+	 * |-6-|
+	 * 4   2
+	 * |   |
+	 * - 3 -
+	 */
 	Array<Light3D> _lights;
+	private const int LIGHT_ENERGY = 5;
 
-	public static Dictionary<int, Array<bool>> digitToLight = new Dictionary<int, Array<bool>> {
+	private static Dictionary<int, Array<bool>> digitToLight = new Dictionary<int, Array<bool>> {
 		{1, new Array<bool>{false, true, true, false, false, false, false } },
 		{2, new Array<bool>{true, true, false, true, true, false, true } },
 		{3, new Array<bool>{true, true, true, true, false, false, true } },
@@ -23,24 +39,15 @@ public partial class Digit : Node3D
 	{
 		var ticks = GetChildren();
 		_lights = Tools.GetChildren<Light3D>(this);
-
-	   // var test = Tools.GetChildren<Light3D>(this);
-		
-		
-		/*foreach (var light in ticks)
-		{
-			if (light.GetNode("OmniLight3D") != null)
-				_lights.Add(light.GetNode("OmniLight3D") as Light3D);
-		}*/
 	}
 
 	public void SetDigit(int value)
 	{
 		var activeTicks = digitToLight[value];
 
-		for (int i = 0; i < 7; i++)
+		for (int i = 0; i < activeTicks.Count; i++)
 		{
-			_lights[i].LightEnergy = activeTicks[i] ? 5 : 0;
+			_lights[i].LightEnergy = activeTicks[i] ? LIGHT_ENERGY : 0;
 		}
 	}
 }

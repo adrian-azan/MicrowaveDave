@@ -5,17 +5,17 @@ public partial class Player : Node3D
 {
 	private AnimationPlayer _animationPlayer;
 
-	private float _speed;
+	private float _bobbingSpeed;
 	
 	[Export]
-	public float Speed
+	public float BobbingSpeed
 	{
-		get { return _speed;}
+		get { return _bobbingSpeed;}
 		set
 		{
-			_speed = value;
+			_bobbingSpeed = value;
 			if (_animationPlayer == null) return;
-			_animationPlayer.SpeedScale = _speed;
+			_animationPlayer.SpeedScale = _bobbingSpeed;
 		}
 	}
 	public override void _Ready()

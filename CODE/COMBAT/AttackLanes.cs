@@ -14,6 +14,6 @@ public partial class AttackLanes : Lanes
     {
         incomingAttack.GetParent().QueueFree();
 
-        CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.SuccesfulAttackSignal, 25);
+        CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.SuccessfulAttack, 25);
     }
 }

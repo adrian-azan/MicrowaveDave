@@ -34,7 +34,7 @@ public partial class Level1_EnemyGenerator : Node3D
 	//	_animationPlayer.Play("LEVEL_ONE");
 		_animationPlayer.PlaySectionWithMarkers("LEVEL_ONE", "PhaseFive");
 
-		CustomSignals._Instance.SuccesfulAttackSignal += DamageEnemy;
+		CustomSignals._Instance.SuccessfulAttack += DamageEnemy;
 		CustomSignals._Instance.EnemyKilled += CheckIfPhaseFinishedEarly;
 	}
 

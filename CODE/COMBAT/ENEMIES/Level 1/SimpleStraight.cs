@@ -11,18 +11,6 @@ public partial class SimpleStraight : Enemy
         _health = 10;
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        //TODO: Put this in the enemy class, same with the other enemy scripts
-        if (_state == STATE.ATTACKING && GetNode<Timer>("Timer").IsStopped())
-        {
-            AttackPlayer();
-            GetNode<Timer>("Timer").Start();
-        }
-    }
-
     public new void AttackPlayer()
     {
         Attack attackInstance = base.AttackPlayer();

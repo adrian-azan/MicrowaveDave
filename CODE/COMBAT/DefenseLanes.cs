@@ -7,6 +7,7 @@ public partial class DefenseLanes : Lanes
 	public int _stamina;
 	public Array<Sprite2D> _staminaIndicators;
 
+	//TODO: good timer tool candidate
 	public Timer _staminaRecoveryTimer;
 	
 	[Export]
@@ -17,12 +18,14 @@ public partial class DefenseLanes : Lanes
 		base._Ready();
 		_stamina = 2;
 		_staminaIndicators = new Array<Sprite2D>(GetChildren().Where(node => node is Sprite2D).Cast<Sprite2D>());
+		//TODO: Candidate for timer service
 		_staminaRecoveryTimer = GetNode<Timer>("StaminaRecovery");
 
-		CustomSignals._Instance.RecoverStaminaSignal += RecoverStamina;
+		CustomSignals._Instance.RecoverStamina += RecoverStamina;
 
-		GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaEntered += DefensiveStyle;
-		GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaExited += DefaultStyle;
+		var defenseArea = GetNode<Area2D>("Core/PlayerDefense/Area2D");
+		defenseArea.AreaEntered += DefensiveStyle;
+		defenseArea.AreaExited += DefaultStyle;
 	}
 
 	public override void _Process(double delta)
