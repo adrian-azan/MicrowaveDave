@@ -21,8 +21,8 @@ public static class Logging
 	
 	private static string TEMP_SIZE = "12";
 	private static string INFO_SIZE = "12";
-	private static string WARNING_SIZE = "150";
-	private static string ERROR_SIZE = "150";
+	private static string WARNING_SIZE = "14";
+	private static string ERROR_SIZE = "14";
 
 	
 	public static void PrintTemp(String message)
@@ -64,11 +64,11 @@ public static class Logging
 	
 	public static void PrintWarning(String category, String message)
 	{
-		GD.PrintRich($"[color=#{WARNING_COLOR}][size={WARNING_SIZE}]{category,-20}[/size][/color] {message}");
+		GD.PrintRich($"[color=#{WARNING_COLOR}][font_size={WARNING_SIZE}]{category,-20}[/font_size][/color] {message}");
 	}
 	
 	public static void PrintError(String category, String message)
 	{
-		GD.PrintRich($"[color=#{ERROR_COLOR}][size={ERROR_SIZE}]{category,20}[/color][/size=] {message}");
+		GD.PrintRich($"[color=#{ERROR_COLOR}][font_size={ERROR_SIZE}]{category,-20}[/font_size][/color] {message}");
 	}
 }

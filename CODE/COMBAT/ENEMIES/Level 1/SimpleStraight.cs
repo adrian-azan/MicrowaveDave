@@ -41,8 +41,6 @@ public partial class SimpleStraight : Enemy
     public new void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-        
-        
     }
 
 }
