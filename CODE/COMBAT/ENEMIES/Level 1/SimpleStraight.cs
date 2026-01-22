@@ -8,7 +8,7 @@ public partial class SimpleStraight : Enemy
     {
         base._Ready();
 
-        _health = 10;
+        _health = 30;
     }
     
     public override void _Process(double delta)
@@ -20,13 +20,15 @@ public partial class SimpleStraight : Enemy
             AttackPlayer();
             GetNode<Timer>("Timer").Start();
         }
+        
+        
+        GetNode<Label3D>("Health").Text = _health.ToString();
     }
     
     public new void AttackPlayer()
     {
         Attack attackInstance = base.AttackPlayer();
         _attackLanes.SetLaneCurve(_designatedLane, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/DEFAULT.tres"));
-        Logging.PrintTemp("HEY");
         attackInstance.PROGRESS_TWEEN = CreateTween();
         attackInstance.PROGRESS_TWEEN.TweenProperty(attackInstance, "progress_ratio", .05, 1);
         attackInstance.PROGRESS_TWEEN.TweenProperty(attackInstance, "progress_ratio", 1, 3);

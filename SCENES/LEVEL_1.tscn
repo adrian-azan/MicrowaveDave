@@ -29,6 +29,10 @@ markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseFive",
 "time": 61.966667
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"loop",
+"time": 58.7
 }]
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -443,7 +447,6 @@ light_color = Color(0.466629, 0.325109, 0.0810879, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_v5jm5")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
-Speed = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -463,3 +466,9 @@ one_shot = true
 transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 1.3704793, 0.98974335, -3.409013)
 visible = false
 script = null
+
+[node name="Animations" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8622417, 1.0478806, 4.5837383)
+billboard = 1
+text = "asdfsdf"
+font_size = 50

@@ -33,4 +33,9 @@ shape = SubResource("BoxShape3D_h2vks")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="Health" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4587941, 0)
+billboard = 1
+text = "asdfsdf"
+
 [connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

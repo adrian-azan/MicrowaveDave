@@ -32,4 +32,6 @@ shape = SubResource("BoxShape3D_apfny")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="Health" type="Label3D" parent="."]
+
 [connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

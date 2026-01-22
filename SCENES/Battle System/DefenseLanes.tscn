@@ -21,7 +21,7 @@ size = Vector2(239, 44.1624)
 
 [node name="DefenseLanes" type="Node2D" groups=["DefenseLane"]]
 script = ExtResource("1_fqdil")
-_staminaRecoveryRate = 1.4
+_staminaRecoveryRate = 1.0
 
 [node name="Path2D3" type="Path2D" parent="."]
 position = Vector2(220, 0)
@@ -99,14 +99,6 @@ shape = SubResource("RectangleShape2D_fcno8")
 
 [node name="StaminaRecovery" type="Timer" parent="."]
 autostart = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -71.0001
-offset_top = 57.9998
-offset_right = 1.99986
-offset_bottom = 80.9998
-rotation = 3.14159
-text = "Stamina: "
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 position = Vector2(-33.93, 146.84)

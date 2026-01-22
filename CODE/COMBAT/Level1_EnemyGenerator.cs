@@ -32,10 +32,15 @@ public partial class Level1_EnemyGenerator : Node3D
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
 		_animationPlayer.Play("LEVEL_ONE");
-	//	_animationPlayer.PlaySectionWithMarkers("LEVEL_ONE", "PhaseFive");
+	//	_animationPlayer.PlaySectionWithMarkers("LEVEL_ONE", "PhaseFour");
 
 		CustomSignals._Instance.SuccessfulAttack += DamageEnemy;
 		CustomSignals._Instance.EnemyKilled += CheckIfPhaseFinishedEarly;
+	}
+
+	public override void _Process(double delta)
+	{
+		GetNode<Label3D>("Animations").Text = Math.Round(_animationPlayer.CurrentAnimationPosition, 0).ToString();
 	}
 
 	public void CheckIfPhaseFinishedEarly()
@@ -140,6 +145,10 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseOne()
 	{
+		Logging.PrintInfo("Level 1:", "Starting PhaseOne");
+
+		
+		_currentPhase = Phase.ONE;
 		var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
 		simpleStraight._designatedLane = Lanes.LANES.MIDDLE;
 
@@ -153,7 +162,9 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseTwo()
 	{
-		GD.PrintRich(String.Format(DEBUG_PhaseString, "1","PhaseTwo"));
+		_currentPhase = Phase.TWO;
+
+		Logging.PrintInfo("Level 1:", "Starting PhaseTwo");
 
 		var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
 		var simpleStraight_2 = _availableEnemies[0].Instantiate<Enemy>();
@@ -167,7 +178,9 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseThree()
 	{
-		GD.PrintRich(String.Format(DEBUG_PhaseString, "1","PhaseThree"));
+		_currentPhase = Phase.THREE;
+
+		Logging.PrintInfo("Level 1:", "Starting PhaseThree");
 
 		var simpleCurve = _availableEnemies[1].Instantiate<Enemy>();
 		var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
@@ -181,8 +194,10 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseFour()
 	{
-		GD.PrintRich(String.Format(DEBUG_PhaseString, "1","PhaseFour"));
+		_currentPhase = Phase.FOUR;
 
+		Logging.PrintInfo("Level 1:", "Starting PhaseFour");
+		
 		var simpleStraight = _availableEnemies[0].Instantiate<Enemy>();
 		var simpleCurve = _availableEnemies[1].Instantiate<Enemy>();
 
@@ -195,7 +210,17 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseFive()
 	{
-		GD.PrintRich(String.Format(DEBUG_PhaseString, "1","PhaseFive"));
+		if (!_hallway.IsEmpty())
+		{
+			Logging.PrintInfo("Level 1:", "Fights not finished.");
+			_animationPlayer.Stop();
+			_animationPlayer.PlaySectionWithMarkers("LEVEL_ONE","loop");
+			return;
+		}
+		
+		_currentPhase = Phase.FIVE;
+
+		Logging.PrintInfo("Level 1:", "Starting PhaseFive");
 
 		_animationPlayer.Stop(true);
 		_animationPlayer.Play("LEVEL_ONE_STORE");
