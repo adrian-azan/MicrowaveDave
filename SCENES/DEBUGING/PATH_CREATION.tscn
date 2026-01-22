@@ -7,6 +7,6 @@
 curve = ExtResource("1_acgnw")
 
 [node name="Attack" parent="." instance=ExtResource("2_acgnw")]
-position = Vector2(0.91202, 301.14)
-rotation = 0.896055
+position = Vector2(0.91200656, 301.14)
+rotation = 0.8960554
 progress = 301.47

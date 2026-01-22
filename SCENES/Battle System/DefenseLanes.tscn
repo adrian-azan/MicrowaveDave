@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc0j61p1hduja"]
+[gd_scene load_steps=10 format=3 uid="uid://cnjrctxs7ry16"]
 
 [ext_resource type="Script" uid="uid://df5wsmghi2whr" path="res://CODE/COMBAT/DefenseLanes.cs" id="1_fqdil"]
 [ext_resource type="Curve2D" uid="uid://d25xd7btt6pdw" path="res://SCENES/Battle System/DefenseLaneCurve.tres" id="2_g6rlh"]
-[ext_resource type="Texture2D" uid="uid://bpj3dambev85e" path="res://ART/VISUALS/Red.png" id="3_s6grc"]
-[ext_resource type="Texture2D" uid="uid://d1nf4cwg42tn1" path="res://ART/VISUALS/Green.png" id="4_rr2ms"]
-[ext_resource type="Texture2D" uid="uid://cprxm37hht5ui" path="res://ART/VISUALS/Blue.png" id="5_yd8l4"]
+[ext_resource type="Texture2D" uid="uid://cca6vru0b3muy" path="res://ART/VISUALS/DefenseBar.png" id="4_ob0ai"]
+[ext_resource type="Texture2D" uid="uid://de71t5r6uk4tv" path="res://ART/VISUALS/HealthBar.png" id="4_yd8l4"]
+[ext_resource type="Texture2D" uid="uid://bc54rbn2o51ws" path="res://ART/VISUALS/CounterBar.png" id="5_ukdc8"]
+[ext_resource type="Texture2D" uid="uid://cre5x2a0g0cni" path="res://ART/VISUALS/StaminaBar.png" id="6_ob0ai"]
 
 [sub_resource type="Curve2D" id="Curve2D_8migc"]
 _data = {
@@ -12,23 +13,15 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="QuadMesh" id="QuadMesh_ul6xi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jifnr"]
-size = Vector2(239, 13)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1a845"]
-albedo_color = Color(0.869934, 0.000667477, 0.880759, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_swdnd"]
-material = SubResource("StandardMaterial3D_1a845")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ob0ai"]
+size = Vector2(238.5, 50.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcno8"]
 size = Vector2(239, 44.1624)
 
 [node name="DefenseLanes" type="Node2D" groups=["DefenseLane"]]
-rotation = 3.14159
 script = ExtResource("1_fqdil")
+_staminaRecoveryRate = 1.0
 
 [node name="Path2D3" type="Path2D" parent="."]
 position = Vector2(220, 0)
@@ -49,77 +42,79 @@ position = Vector2(110, 30)
 rotates = false
 cubic_interp = false
 
-[node name="PlayerHeart" type="Area2D" parent="Core/PlayerHeart"]
+[node name="EnemyTarget" type="Area2D" parent="Core/PlayerHeart"]
 collision_layer = 0
 collision_mask = 2
-monitorable = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerHeart/PlayerHeart"]
-z_index = -500
-position = Vector2(1.49998, 0)
-scale = Vector2(233, 31.58)
-mesh = SubResource("QuadMesh_ul6xi")
-texture = ExtResource("3_s6grc")
+[node name="Sprite2D" type="Sprite2D" parent="Core/PlayerHeart/EnemyTarget"]
+scale = Vector2(2.5, 2)
+texture = ExtResource("4_yd8l4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerHeart/PlayerHeart"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_jifnr")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerHeart/EnemyTarget"]
+position = Vector2(-0.25, -25.875)
+shape = SubResource("RectangleShape2D_ob0ai")
 
 [node name="PlayerDefense" type="PathFollow2D" parent="Core"]
-position = Vector2(110, 144)
-progress = 114.0
+position = Vector2(110, 115.5)
+progress = 85.5
 rotates = false
 cubic_interp = false
 
 [node name="Area2D" type="Area2D" parent="Core/PlayerDefense"]
-scale = Vector2(1, 1.97)
+scale = Vector2(1, 1.2)
 collision_layer = 256
 collision_mask = 32
 input_pickable = false
 monitorable = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerDefense/Area2D"]
-position = Vector2(0, -0.337807)
-scale = Vector2(297.29, 42.2782)
-mesh = SubResource("QuadMesh_swdnd")
-texture = ExtResource("4_rr2ms")
+[node name="Sprite2D" type="Sprite2D" parent="Core/PlayerDefense/Area2D"]
+scale = Vector2(2.5, 1.66667)
+texture = ExtResource("4_ob0ai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerDefense/Area2D"]
 position = Vector2(1.52588e-05, -1.2689)
 shape = SubResource("RectangleShape2D_fcno8")
 
 [node name="PlayerCounter" type="PathFollow2D" parent="Core"]
-position = Vector2(110, 309.3)
-progress = 279.3
+visible = false
+position = Vector2(110, 286.5)
+progress = 256.5
 rotates = false
 cubic_interp = false
 
 [node name="Area2D" type="Area2D" parent="Core/PlayerCounter"]
+scale = Vector2(1, 0.75)
 collision_layer = 512
 collision_mask = 32
 input_pickable = false
 monitorable = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Core/PlayerCounter/Area2D"]
-scale = Vector2(297.29, 52.4127)
-mesh = SubResource("QuadMesh_swdnd")
-texture = ExtResource("5_yd8l4")
+[node name="Sprite2D" type="Sprite2D" parent="Core/PlayerCounter/Area2D"]
+scale = Vector2(2.5, 2)
+texture = ExtResource("5_ukdc8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core/PlayerCounter/Area2D"]
 position = Vector2(0, -0.734985)
 shape = SubResource("RectangleShape2D_fcno8")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="StaminaRecovery" type="Timer" parent="."]
 autostart = true
 
-[node name="Label" type="Label" parent="."]
-offset_left = -71.0001
-offset_top = 57.9998
-offset_right = 1.99986
-offset_bottom = 80.9998
-rotation = 3.14159
-text = "Stamina: "
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 146.84)
+texture = ExtResource("6_ob0ai")
 
-[connection signal="area_entered" from="Core/PlayerHeart/PlayerHeart" to="." method="CollisionWithHeart"]
-[connection signal="timeout" from="Timer" to="." method="RecoverStamina"]
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 106.85)
+texture = ExtResource("6_ob0ai")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 66.48)
+texture = ExtResource("6_ob0ai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33.93, 27.1)
+texture = ExtResource("6_ob0ai")
+
+[connection signal="area_entered" from="Core/PlayerHeart/EnemyTarget" to="." method="CollisionWithHeart"]
+[connection signal="timeout" from="StaminaRecovery" to="." method="RecoverStamina"]

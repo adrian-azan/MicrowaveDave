@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://60iqgun4ryy0"
+path="res://.godot/imported/Punch 6.mp3-31296b894c44817f3204b528d2f08442.mp3str"
+
+[deps]
+
+source_file="res://ART/SOUND/Punch 6.mp3"
+dest_files=["res://.godot/imported/Punch 6.mp3-31296b894c44817f3204b528d2f08442.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

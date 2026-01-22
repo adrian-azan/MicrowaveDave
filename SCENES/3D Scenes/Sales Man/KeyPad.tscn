@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=3 uid="uid://debffy0y6n5ms"]
+
+[ext_resource type="Script" uid="uid://ccnunajh30rvt" path="res://CODE/SALES MAN/KeyPad.cs" id="1_1tm1e"]
+[ext_resource type="PackedScene" uid="uid://bgd1u8imo28j0" path="res://SCENES/3D Scenes/Sales Man/Digit.tscn" id="1_cuf20"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yey8m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yey8m"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.30692267, 0.3069227, 0.30692264, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cuf20"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tm1e"]
+albedo_color = Color(6.738305e-07, 0.7852009, 0.7866996, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cuf20"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cuf20"]
+radius = 0.1
+height = 2.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1tm1e"]
+
+[node name="KeyPad" type="Node3D"]
+script = ExtResource("1_1tm1e")
+
+[node name="Pad" type="Node3D" parent="."]
+transform = Transform3D(1.23, 0, 0, 0, 0.205, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pad"]
+mesh = SubResource("BoxMesh_yey8m")
+surface_material_override/0 = SubResource("StandardMaterial3D_yey8m")
+
+[node name="Keys" type="Node3D" parent="."]
+
+[node name="one" type="Node3D" parent="Keys"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -0.19086109, -0.12804002, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Keys/one"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0590386, 1.049011, 0)
+mesh = SubResource("BoxMesh_cuf20")
+surface_material_override/0 = SubResource("StandardMaterial3D_1tm1e")
+
+[node name="Label3D" type="Label3D" parent="Keys/one"]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 1.0948268, 1.696723, 0)
+text = "A
+"
+font_size = 120
+
+[node name="Area3D" type="Area3D" parent="Keys/one"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 1.0729766, 1.794405, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/one/Area3D"]
+shape = SubResource("BoxShape3D_cuf20")
+
+[node name="one2" type="Node3D" parent="Keys"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -0.19086109, -0.12804002, -0.328203)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Keys/one2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0590386, 1.049011, 0)
+mesh = SubResource("BoxMesh_cuf20")
+surface_material_override/0 = SubResource("StandardMaterial3D_1tm1e")
+
+[node name="Label3D" type="Label3D" parent="Keys/one2"]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 1.0948268, 1.696723, 0)
+text = "2
+"
+font_size = 120
+
+[node name="Area3D" type="Area3D" parent="Keys/one2"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 1.0729766, 1.794405, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/one2/Area3D"]
+shape = SubResource("BoxShape3D_cuf20")
+
+[node name="one3" type="Node3D" parent="Keys"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0.13153581, -0.12804002, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Keys/one3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0590386, 1.049011, 0)
+mesh = SubResource("BoxMesh_cuf20")
+surface_material_override/0 = SubResource("StandardMaterial3D_1tm1e")
+
+[node name="Label3D" type="Label3D" parent="Keys/one3"]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 1.0948268, 1.696723, 0)
+text = "B
+"
+font_size = 120
+
+[node name="Area3D" type="Area3D" parent="Keys/one3"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 1.0729766, 1.794405, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/one3/Area3D"]
+shape = SubResource("BoxShape3D_cuf20")
+
+[node name="one4" type="Node3D" parent="Keys"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0.13153581, -0.12804002, -0.328203)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Keys/one4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0590386, 1.049011, 0)
+mesh = SubResource("BoxMesh_cuf20")
+surface_material_override/0 = SubResource("StandardMaterial3D_1tm1e")
+
+[node name="Label3D" type="Label3D" parent="Keys/one4"]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 1.0948268, 1.696723, 0)
+text = "1
+"
+font_size = 120
+
+[node name="Area3D" type="Area3D" parent="Keys/one4"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 1.0729766, 1.794405, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/one4/Area3D"]
+shape = SubResource("BoxShape3D_cuf20")
+
+[node name="Digit" parent="." instance=ExtResource("1_cuf20")]
+transform = Transform3D(-4.371139e-09, -0.1, -4.371139e-09, 0, -4.371139e-09, 0.1, -0.1, 4.371139e-09, 1.9106854e-16, -0.35724464, 0.10975665, 0.28288776)
+
+[node name="Digit2" parent="." instance=ExtResource("1_cuf20")]
+transform = Transform3D(-4.371139e-09, -0.1, -4.371139e-09, 0, -4.371139e-09, 0.1, -0.1, 4.371139e-09, 1.9106854e-16, -0.35724464, 0.10975665, -0.12966627)
+
+[node name="Hand" type="Node3D" parent="."]
+transform = Transform3D(0.099939086, 0.009248366, 0, -0.0034899495, 0.26483855, 0, 0, 0, 0.16, 0, 0.54817176, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hand"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_cuf20")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hand/StaticBody3D/CollisionShape3D"]
+transform = Transform3D(1, -7.450581e-09, 0, -9.313226e-10, 1.0000001, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_1tm1e")
+skeleton = NodePath("../../..")

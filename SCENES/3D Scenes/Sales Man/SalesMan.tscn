@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://vn7exldba451"]
+
+[ext_resource type="Texture2D" uid="uid://b3a6i6ntj14ix" path="res://ART/Angry_Bob_005.png" id="1_khux0"]
+[ext_resource type="Script" uid="uid://cjq8ij2m15lv4" path="res://CODE/SALES MAN/SalesMan.cs" id="1_nlndu"]
+[ext_resource type="PackedScene" uid="uid://wtjqydbjrbk8" path="res://ART/MODELS/stylized_vending_machine/scene.gltf" id="2_khux0"]
+[ext_resource type="PackedScene" uid="uid://debffy0y6n5ms" path="res://SCENES/3D Scenes/Sales Man/KeyPad.tscn" id="4_tttiq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wy5hj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_khux0")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlndu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_khux0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="FogMaterial" id="FogMaterial_khux0"]
+
+[node name="SalesMan" type="Node3D"]
+script = ExtResource("1_nlndu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 4.536944, 0.773506, 1.3473978)
+sprite_frames = SubResource("SpriteFrames_wy5hj")
+animation = &"new_animation"
+speed_scale = 2.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 4.536944, 3.4147, 1.3473978)
+sprite_frames = SubResource("SpriteFrames_nlndu")
+speed_scale = 2.0
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_khux0")]
+transform = Transform3D(-4.37114e-10, 0, -0.008, 0, 0.01, 0, 0.01, 0, -3.49691e-10, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0471306, 6.7085543, 2.2627873)
+light_color = Color(0.8703214, 0.85342246, 0, 1)
+light_energy = 10.0
+distance_fade_enabled = true
+distance_fade_length = 2.0
+omni_range = 1.0
+omni_attenuation = -2.355
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0747285, 6.7085543, 2.2627873)
+light_color = Color(0.8703214, 0.85342246, 0, 1)
+light_energy = 10.0
+distance_fade_enabled = true
+distance_fade_length = 2.0
+omni_range = 1.0
+omni_attenuation = -2.355
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.28568834, 0.9583226, 0, -0.9583226, -0.28568834, 4.423863, 5.3899937, 4.8372617)
+light_color = Color(0.9316074, 0.9103195, 0, 1)
+light_energy = 4.0
+light_size = 0.55
+distance_fade_begin = 3.0
+distance_fade_length = 3.0
+spot_range = 12.943
+spot_angle = 17.215824
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.189226, 4.3809986, 3.0620499)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(3.615, 0, 0, 0, 3.615, 0, 0, 0, 3.615, 0.5743313, -2.1052835, 3.9070382)
+size = Vector3(13.264679, 0.15185547, 12.741943)
+shape = 2
+material = SubResource("FogMaterial_khux0")
+
+[node name="KeyPad" parent="." instance=ExtResource("4_tttiq")]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 5.7897663, 2.082573, 1.8058074)

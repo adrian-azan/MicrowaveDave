@@ -5,6 +5,7 @@ public partial class HallwayDiscoPiece : PathFollow3D
 {
     public override void _Ready()
     {
+        
     }
 
     public void SetPiece()

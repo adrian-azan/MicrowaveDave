@@ -12,6 +12,7 @@ size = Vector3(1, 1.6626, 1)
 [node name="SimpleCrisCross" type="PathFollow3D" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 script = ExtResource("1_2cfrv")
+_attackCoolDown = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_2tw5h")

@@ -6,9 +6,9 @@ public partial class SimpleCurve : Enemy
     {
         base._Ready();
 
-        _health = 100;
+        _health = 60;
     }
-
+    
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -18,8 +18,10 @@ public partial class SimpleCurve : Enemy
             AttackPlayer();
             GetNode<Timer>("Timer").Start();
         }
+        
+        GetNode<Label3D>("Health").Text = _health.ToString();
     }
-
+    
     public new void AttackPlayer()
     {
         Attack attackInstance = base.AttackPlayer();

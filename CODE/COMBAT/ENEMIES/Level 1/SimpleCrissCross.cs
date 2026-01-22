@@ -9,7 +9,7 @@ public partial class SimpleCrissCross : Enemy
         base._Ready();
         _health = 100;
     }
-
+    
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -20,7 +20,7 @@ public partial class SimpleCrissCross : Enemy
             GetNode<Timer>("Timer").Start();
         }
     }
-
+    
     public new void AttackPlayer()
     {
         Attack attackInstance = base.AttackPlayer();

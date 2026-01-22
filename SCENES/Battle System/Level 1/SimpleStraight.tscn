@@ -10,8 +10,12 @@ material = ExtResource("2_30kbp")
 
 [node name="SimpleStraight" type="PathFollow3D" groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+rotation_mode = 0
+loop = false
+tilt_enabled = false
 script = ExtResource("1_yuugn")
 _designatedLane = 1
+_attackCoolDown = 7.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_2tw5h")
@@ -30,5 +34,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.809063, 0)
 shape = SubResource("BoxShape3D_apfny")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Health" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5596374, 0)
+billboard = 1
+text = "asdf"
 
 [connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

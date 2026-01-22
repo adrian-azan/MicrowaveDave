@@ -27,6 +27,25 @@ public partial class AudioManager : Node
         audioPlayer.Play();
     }
 
+    public void Punch()
+    {
+        var audioPlayer = AllocateAudioPlayer();
+
+        Array<AudioStream> deathStreams = new Array<AudioStream>();
+
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 1.mp3"));
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 2.mp3"));
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 3.mp3"));
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 4.mp3"));
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 5.mp3"));
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 6.mp3"));
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 7.mp3"));
+        deathStreams.Add(ResourceLoader.Load<AudioStream>("res://ART/SOUND/Punch 8.mp3"));
+
+        audioPlayer.Stream = deathStreams.PickRandom();
+        audioPlayer.Play();
+    }
+
     private AudioStreamPlayer AllocateAudioPlayer()
     {
         AudioStreamPlayer newPlayer = new AudioStreamPlayer();

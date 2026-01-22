@@ -18,6 +18,8 @@ public partial class Lanes : Node2D
         _lanes = new Array<Path2D>(Tools.GetChildren<Path2D>(this)
             .Where(node => node.Name != "Core")
             .ToArray());
+        
+        CustomSignals._Instance.HideLanes += HideLanes;
     }
 
     public Array<Node> EnemiesInLane(LANES lane)
@@ -63,5 +65,17 @@ public partial class Lanes : Node2D
     public int Count()
     {
         return _lanes == null ? 0 : _lanes.Count;
+    }
+
+    public void HideLanes()
+    {
+        var hideableChildren = Tools.GetChildren<Sprite2D>(this);
+
+        foreach (var child in hideableChildren)
+        {
+            Color currentColor = child.SelfModulate;
+            currentColor.A = 0;
+            CreateTween().TweenProperty(child, "self_modulate", currentColor, .1f);
+        }
     }
 }

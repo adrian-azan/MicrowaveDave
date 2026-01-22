@@ -1,95 +1,120 @@
+using System.Linq;
 using Godot;
+using Godot.Collections;
 
 public partial class DefenseLanes : Lanes
 {
-    public int _stamina;
+	public int _stamina;
+	private int _maxStamina;
+	public Array<Sprite2D> _staminaIndicators;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        _stamina = 3;
+	//TODO: good timer tool candidate
+	public Timer _staminaRecoveryTimer;
+	
+	[Export]
+	public float _staminaRecoveryRate;
 
-        CustomSignals._Instance.RecoverStaminaSignal += RecoverStamina;
+	private PackedScene AttackScene;
 
-        GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaEntered += DefensiveStyle;
-        GetNode<Area2D>("Core/PlayerDefense/Area2D").AreaExited += DefaultStyle;
+	public override void _Ready()
+	{
+		base._Ready();
+		_stamina = 2;
+		_maxStamina = 2;
+		_staminaIndicators = new Array<Sprite2D>(GetChildren().Where(node => node is Sprite2D).Cast<Sprite2D>());
+		//TODO: Candidate for timer service
+		_staminaRecoveryTimer = GetNode<Timer>("StaminaRecovery");
+		
+		AttackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
+		
 
-        GetNode<Area2D>("Core/PlayerCounter/Area2D").AreaEntered += CounterStyle;
-        GetNode<Area2D>("Core/PlayerCounter/Area2D").AreaExited += DefaultStyle;
-    }
+		CustomSignals._Instance.RecoverStamina += RecoverStamina;
 
-    public override void _Process(double delta)
-    {
-        float felta = (float)delta;
+		var defenseArea = GetNode<Area2D>("Core/PlayerDefense/Area2D");
+		defenseArea.AreaEntered += DefensiveStyleEventHandler;
+		defenseArea.AreaExited += DefaultStyleEventHandler;
+	}
 
-        GetNode<Label>("Label").Text = $"Stamina: {_stamina}";
+	public override void _Process(double delta)
+	{
+		Attack attackInstance = null;
+		
+		if (Input.IsActionJustPressed("LeftAttack") && _stamina > 0)
+		{
+			attackInstance = AttackScene.Instantiate<Attack>();
+			AddAttackToLane(attackInstance, LANES.LEFT);
+		}
 
-        if (Input.IsActionJustPressed("LeftAttack") && _stamina > 0)
-        {
-            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
-            var attackInstance = attackScene.Instantiate<Attack>();
+		if (Input.IsActionJustPressed("MiddleAttack") && _stamina > 0)
+		{
+			attackInstance = AttackScene.Instantiate<Attack>();
+			AddAttackToLane(attackInstance, LANES.MIDDLE);
+		}
 
-            attackInstance._pace = .4f;
-            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
-            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+		if (Input.IsActionJustPressed("RightAttack") && _stamina > 0)
+		{
+			attackInstance = AttackScene.Instantiate<Attack>();
+			AddAttackToLane(attackInstance, LANES.RIGHT);
+		}
 
-            AddAttackToLane(attackInstance, LANES.LEFT);
 
-            _stamina -= 1;
-        }
+		if (attackInstance != null)
+		{
+			_stamina -= 1;
+			attackInstance._pace = .4f;
+			attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
+			attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+		}
+		
+		CalculateStaminaIndicators();
+	}
 
-        if (Input.IsActionJustPressed("MiddleAttack") && _stamina > 0)
-        {
-            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
-            var attackInstance = attackScene.Instantiate<Attack>();
+	public void RecoverStamina()
+	{
+		if (_stamina < _maxStamina)
+			_stamina += 1;
+	}
 
-            attackInstance._pace = .4f;
-            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
-            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
+	private void CalculateStaminaIndicators()
+	{
+		foreach (var staminaIndicator in _staminaIndicators)
+		{
+			staminaIndicator.Visible = false;
+		}
+		
+		for (int i = 0; i < _stamina; i++)
+		{
+			_staminaIndicators[i].Visible = true;
+		}
 
-            AddAttackToLane(attackInstance, LANES.MIDDLE);
+		//TODO: Another good timer candidate
+		//When we've reached our max, we should no longer recover stamina.
+		//Pausing the timer ensures that when we use our first bit of stamina
+		//Will always start the recovery timer from scratch
+		if (_stamina == _maxStamina)
+		{
+			_staminaRecoveryTimer.Paused = true;
+			_staminaRecoveryTimer.SetWaitTime(_staminaRecoveryRate);
+		}
+		else
+		{
+			_staminaRecoveryTimer.Paused = false;
+		}
+	}
 
-            _stamina -= 1;
-        }
+	
+	private void DefaultStyleEventHandler(Area2D area)
+	{
+		(area.GetParent() as Attack)._style = Attack.Style.OFFENSIVE;
+	}
 
-        if (Input.IsActionJustPressed("RightAttack") && _stamina > 0)
-        {
-            var attackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
-            var attackInstance = attackScene.Instantiate<Attack>();
+	private void DefensiveStyleEventHandler(Area2D area)
+	{
+		(area.GetParent() as Attack)._style = Attack.Style.DEFENSIVE;
+	}
 
-            attackInstance._pace = .4f;
-            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(6, true);
-            attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
-
-            AddAttackToLane(attackInstance, LANES.RIGHT);
-
-            _stamina -= 1;
-        }
-    }
-
-    public void RecoverStamina()
-    {
-        if (_stamina < 3)
-            _stamina += 1;
-    }
-
-    public void DefaultStyle(Area2D area)
-    {
-        (area.GetParent() as Attack)._style = Attack.Style.OFFENSIVE;
-    }
-
-    public void DefensiveStyle(Area2D area)
-    {
-        (area.GetParent() as Attack)._style = Attack.Style.DEFENSIVE;
-    }
-
-    public void CounterStyle(Area2D area)
-    {
-        (area.GetParent() as Attack)._style = Attack.Style.COUNTERING;
-    }
-
-    public void CollisionWithHeart(Area2D incomingAttack)
-    {
-        incomingAttack.GetParent().QueueFree();
-    }
+	private void CollisionWithHeart(Area2D incomingAttack)
+	{
+		incomingAttack.GetParent().QueueFree();
+	}
 }

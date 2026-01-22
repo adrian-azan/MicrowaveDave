@@ -4,7 +4,7 @@ using System.Linq;
 
 public partial class HallwayDisco : Hallway
 {
-    private Array<PathFollow3D> _pieces;
+    private Array<HallwayDiscoPiece> _pieces;
 
     private Array<Array<NeonLightPanel>> _bottomLights;
     private Array<Array<NeonLightPanel>> _topLights;
@@ -14,8 +14,6 @@ public partial class HallwayDisco : Hallway
     public bool _showTop;
 
     public static float _discoLightFlickerChance = 0;
-
-    private RandomNumberGenerator rng = new RandomNumberGenerator();
 
     private Array<Tween> _tweens;
 
@@ -42,7 +40,7 @@ public partial class HallwayDisco : Hallway
         _theBeat = GetNode<Timer>("Timer");
         _theBeat.Start();
 
-        _pieces = Tools.GetChildren<PathFollow3D>(this);
+        _pieces = Tools.GetChildren<HallwayDiscoPiece>(this);
         _bottomLights = new Array<Array<NeonLightPanel>>();
         _topLights = new Array<Array<NeonLightPanel>>();
         _tweens = new Array<Tween>();
@@ -60,8 +58,8 @@ public partial class HallwayDisco : Hallway
             _topLights.Add(lights.Slice(25, 5));
         }
 
-        GetNode<CustomSignals>("/root/CustomSignals").UpdateLightsSignal += UpdateLights;
-        GetNode<CustomSignals>("/root/CustomSignals").UpdateShowTopSignal += UpdateTop;
+        CustomSignals._Instance.UpdateLights += UpdateLights;
+        CustomSignals._Instance.UpdateShowTop += UpdateTop;
 
         UpdateLights();
     }
@@ -106,7 +104,7 @@ public partial class HallwayDisco : Hallway
 
                     light.Visible = true;
                     tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), 0);
-                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), rng.RandfRange(1, 2));
+                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), Tools.rng.RandfRange(1, 2));
                     //tween.TweenProperty(light, "visible", true, 1.5);
 
                     _tweens.Add(tween);
@@ -118,7 +116,7 @@ public partial class HallwayDisco : Hallway
                     tween.SetTrans(Tween.TransitionType.Circ);
 
                     tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), 0);
-                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), rng.RandfRange(1, 2));
+                    tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), Tools.rng.RandfRange(1, 2));
                     tween.TweenProperty(light, "visible", false, 2);
 
                     _tweens.Add(tween);

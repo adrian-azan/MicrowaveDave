@@ -71,7 +71,7 @@ visible = false
 curve = SubResource("Curve3D_d0ig5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.983034, 0.000815063, -0.183411, -0.000815063, 0.999959, 0.00881225, 0.183411, 0.00881225, -0.982995, 0.0106775, -0.000513015, 1.43013)
+transform = Transform3D(-0.98303396, 0.0008150635, -0.18341114, -0.0008150631, 0.999959, 0.0088122515, 0.18341112, 0.008812252, -0.982995, 0.01067748, -0.00051301485, 1.4301318)
 progress = 0.134371
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
@@ -80,7 +80,7 @@ mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.813609, 0.00895528, -0.581339, -0.00895529, 0.999566, 0.0279313, 0.581339, 0.0279312, -0.813179, 0.0491845, -0.00236314, 1.55612)
+transform = Transform3D(-0.8136104, 0.008955277, -0.58133876, -0.008955299, 0.9995655, 0.027931256, 0.58133954, 0.027931208, -0.8131791, 0.04918446, -0.002363138, 1.55612)
 progress = 0.266635
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D2"]
@@ -89,7 +89,7 @@ mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
 
 [node name="PathFollow3D3" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.983034, 0.000815063, -0.183411, -0.000815063, 0.999959, 0.00881225, 0.183411, 0.00881225, -0.982995, 0.0106775, -0.000513015, 1.43013)
+transform = Transform3D(-0.98303396, 0.0008150635, -0.18341114, -0.0008150631, 0.999959, 0.0088122515, 0.18341112, 0.008812252, -0.982995, 0.01067748, -0.00051301485, 1.4301318)
 progress = 0.134371
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D3"]

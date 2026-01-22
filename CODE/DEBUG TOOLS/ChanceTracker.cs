@@ -29,9 +29,9 @@ public partial class ChanceTracker : VBoxContainer
 
         _environment = GetNode<WorldEnvironment>("../WorldEnvironment");
         _levelTracker = _options.Count - 1;
-        SwitchLevel();
+    //    SwitchLevel();
     }
-
+/*
     public override void _Process(double delta)
     {
         Control currentFocus = GetViewport().GuiGetFocusOwner();
@@ -43,6 +43,7 @@ public partial class ChanceTracker : VBoxContainer
         GetNode<Label>("Pace").Text = System.String.Format("Pace: {0}x", System.Math.Round(Hallway._pace * 10, 1));
         GetNode<Label>("LightingStyle").Text = System.String.Format("LightingStyle: {0}", HallwayDisco._lightingStyle);
         GetNode<Label>("DiscoLight").Text = System.String.Format("Disco Light: {0}", HallwayDisco._discoLightFlickerChance);
+       // GetNode<Label>("Level").Text = System.String.Format("Level: {0}", Tools.GetChildren<Hallway>(GetNode("../SubViewportContainer/SubViewport/Node")));
 
         GetNode<Sprite2D>("Sprite2D2").Position = new Vector2(GetNode<Sprite2D>("Sprite2D2").Position.X,
                                                                 currentFocus.Position.Y + currentFocus.Size.Y * .5f);
@@ -85,7 +86,7 @@ public partial class ChanceTracker : VBoxContainer
                     break;
 
                 case "ShowTop":
-                    if (GetNode<HallwayDisco>("../SubViewportContainer/SubViewport/Root/HallwayDisco").Busy())
+                    if (Tools.GetChild<HallwayDisco>(GetNode("../SubViewportContainer/SubViewport")).Busy())
                     {
                         break;
                     }
@@ -147,7 +148,7 @@ public partial class ChanceTracker : VBoxContainer
     {
         _levelTracker++;
         _levelTracker %= 2;
-        var levels = Tools.GetChildren<Hallway>(GetNode("../SubViewportContainer/SubViewport/Root"));
+        var levels = Tools.GetChildren<Hallway>(GetNode("../SubViewportContainer/SubViewport/Node"));
 
         foreach (var level in levels)
         {
@@ -175,7 +176,6 @@ public partial class ChanceTracker : VBoxContainer
 
             _options["Level2"][0].FocusNeighborTop = pace.GetPath();
             _options["Level2"][_options["Level2"].Count - 1].FocusNeighborBottom = level.GetPath();
-            _environment.Environment = ResourceLoader.Load<Environment>("res://ART/DiscoEnvironment.tres");
         }
 
         if (levels[_levelTracker].Name == "Hallway")
@@ -198,7 +198,7 @@ public partial class ChanceTracker : VBoxContainer
 
             _options["Level1"][0].FocusNeighborTop = pace.GetPath();
             _options["Level1"][_options["Level1"].Count - 1].FocusNeighborBottom = level.GetPath();
-            _environment.Environment = ResourceLoader.Load<Environment>("res://ART/WorldEnvironment.tres");
         }
     }
+    */
 }

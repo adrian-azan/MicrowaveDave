@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://jp2mlfj28jfu"]
+[gd_scene load_steps=3 format=3 uid="uid://dcr6riyitk0fs"]
 
-[ext_resource type="Script" uid="uid://ba8nbe1pttdt" path="res://CODE/ROOT.cs" id="1_184dk"]
-[ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="1_p0nm0"]
-[ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="3_3yvfb"]
+[ext_resource type="PackedScene" uid="uid://dojjmxkmgpdh6" path="res://SCENES/3D Scenes/HALLWAYS/DISCO/HallwayDisco.tscn" id="1_a5k8e"]
+[ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="2_gn70w"]
 
-[node name="Root" type="Node3D"]
-script = ExtResource("1_184dk")
+[node name="Level_2" type="Node3D"]
 
-[node name="Hallway" parent="." instance=ExtResource("1_p0nm0")]
+[node name="HallwayDisco" parent="." instance=ExtResource("1_a5k8e")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -1.38427, 1.6015, 6.94366)
@@ -26,5 +24,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85977, -2.11198)
 visible = false
 light_color = Color(0.466629, 0.325109, 0.0810879, 1)
 
-[node name="Player" parent="." instance=ExtResource("3_3yvfb")]
+[node name="Player" parent="." instance=ExtResource("2_gn70w")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
