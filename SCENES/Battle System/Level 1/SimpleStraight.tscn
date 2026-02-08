@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://csmqe4iagh02o"]
+[gd_scene load_steps=6 format=3 uid="uid://csmqe4iagh02o"]
 
 [ext_resource type="Script" uid="uid://ptd01timd6sx" path="res://CODE/COMBAT/ENEMIES/Level 1/SimpleStraight.cs" id="1_yuugn"]
 [ext_resource type="Material" uid="uid://uyk1v83a4ohr" path="res://ART/MATERIALS AND MESHES/Blue.tres" id="2_30kbp"]
+[ext_resource type="PackedScene" uid="uid://6kteoqko3mbb" path="res://SCENES/3D Scenes/Enemies/SimpleStraight.tscn" id="3_30kbp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2tw5h"]
 material = ExtResource("2_30kbp")
@@ -9,7 +10,6 @@ material = ExtResource("2_30kbp")
 [sub_resource type="BoxShape3D" id="BoxShape3D_apfny"]
 
 [node name="SimpleStraight" type="PathFollow3D" groups=["Enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 rotation_mode = 0
 loop = false
 tilt_enabled = false
@@ -18,6 +18,7 @@ _designatedLane = 1
 _attackCoolDown = 7.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_2tw5h")
 
 [node name="Timer" type="Timer" parent="."]
@@ -39,5 +40,8 @@ shape = SubResource("BoxShape3D_apfny")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5596374, 0)
 billboard = 1
 text = "asdf"
+
+[node name="SimpleStraight" parent="." instance=ExtResource("3_30kbp")]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0, 0)
 
 [connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

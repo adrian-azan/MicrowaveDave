@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 public partial class Hallway : Node3D
 {
 	[Export]
-	private PackedScene piecePackedScene;
+	protected PackedScene piecePackedScene;
 
 	private Array<HallwayPiece> _pieces;
 	
@@ -73,7 +73,7 @@ public partial class Hallway : Node3D
 
 		foreach (Array<Enemy> lane in Lanes)
 		{
-			if (lane.Count == 0 || (lane.First().ProgressRatio > .9 && lane.First().ProgressRatio < .95))
+			if (lane.Count == 0 || (lane.First().ProgressRatio > .93 && lane.First().ProgressRatio < .97))
 				continue;
 
 			lane.First().ProgressRatio += felta * lane.First()._pace * _DEBUG_enemyPaceMultiplyer;
