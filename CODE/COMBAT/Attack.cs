@@ -47,6 +47,8 @@ public partial class Attack : PathFollow2D
 		{
 			if (_style == Style.DEFENSIVE)
 			{
+				CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverStamina);
+
 				collidingAttack.GetParent().QueueFree();
 				if (!IsQueuedForDeletion())
 					QueueFree();

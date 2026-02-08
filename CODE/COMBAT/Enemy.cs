@@ -20,7 +20,7 @@ public partial class Enemy : PathFollow3D
     protected int _health;
     public float _pace;
     [Export]
-    private float _attackCoolDown;
+    protected float _attackCoolDown;
 
     protected Tween PROGRESS_TWEEN;
     protected Tween PACE_TWEEN;
@@ -31,8 +31,8 @@ public partial class Enemy : PathFollow3D
     public override void _Ready()
     {
         _attackLanes = GetTree().GetFirstNodeInGroup("AttackLane") as AttackLanes;
-        ProgressRatio = Tools.rng.RandfRange(.30f, .45f);
-        _pace = Tools.rng.RandfRange(.03f, .05f);
+        ProgressRatio = .3f;
+        _pace = .04f;
         _state = STATE.IDLE;
 
         _health = 1000;

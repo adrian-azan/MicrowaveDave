@@ -8,23 +8,30 @@ public partial class HallwayPiece : PathFollow3D
     public float _waterCoolerChance;
     public float _lightFlickerChance;
     public float _posterChance;
+    public float _lightEnergy;
+    public float _lightRange;
 
     private Array<MeshInstance3D> _posters;
     private Node3D _desk;
     private Node3D _waterCooler;
     private AnimationPlayer _animationPlayer;
 
+    private Array<OmniLight3D> _lights;
+
     public override void _Ready()
     {
         _deskChance = 0;
         _waterCoolerChance = 0;
         _lightFlickerChance = 0;
+        _lightEnergy = 8;
+        _lightRange = 3;
         _posterChance = 0;
         
         _posters = Tools.GetChildren<MeshInstance3D>(GetNode("Posters"));
         _desk = GetNode<Node3D>("Desk");
         _waterCooler = GetNode<Node3D>("WaterCooler");
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        _lights = Tools.GetChildren<OmniLight3D>(this);
 
         SetPiece();
     }
@@ -48,6 +55,12 @@ public partial class HallwayPiece : PathFollow3D
         else
         {
             _animationPlayer.Stop();
+        }
+
+        foreach (var light in _lights)
+        {
+            light.LightEnergy = _lightEnergy;
+            light.OmniRange = _lightRange;
         }
     }
 

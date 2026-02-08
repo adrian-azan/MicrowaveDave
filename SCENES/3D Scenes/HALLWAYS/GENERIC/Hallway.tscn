@@ -42,7 +42,7 @@ collision_layer = 32768
 collision_mask = 65535
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10273, 1.60704, -8.34246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10273, 1.60704, -11.704757)
 shape = SubResource("BoxShape3D_1iwh6")
 
 [node name="Label" type="Label" parent="."]

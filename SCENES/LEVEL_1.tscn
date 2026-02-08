@@ -1,14 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://cweaov8emfthw"]
+[gd_scene load_steps=16 format=3 uid="uid://cweaov8emfthw"]
 
 [ext_resource type="Script" uid="uid://naf3f5s6karu" path="res://CODE/COMBAT/Level1_EnemyGenerator.cs" id="1_bk03j"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="2_gkkj8"]
 [ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/SimpleStraight.tscn" id="2_rnmjr"]
 [ext_resource type="PackedScene" uid="uid://vyg3yckmd1pf" path="res://SCENES/Battle System/Level 1/SimpleCurve.tscn" id="3_0plv3"]
+[ext_resource type="PackedScene" uid="uid://cm411x4pif1dy" path="res://SCENES/Battle System/Level 1/SimpleBounce.tscn" id="4_kkppn"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="4_v5jm5"]
 [ext_resource type="Curve3D" uid="uid://7263e2mpc01j" path="res://SCENES/CameraToStoreCurve.tres" id="5_5t61s"]
 [ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="6_0plv3"]
 [ext_resource type="Script" uid="uid://cmctb5x5n5xkq" path="res://CODE/TOOLS/AnimationPlayerWithEmitter.cs" id="8_kkppn"]
-[ext_resource type="PackedScene" uid="uid://vn7exldba451" path="res://SCENES/3D Scenes/Sales Man/SalesMan.tscn" id="8_mkcsh"]
 
 [sub_resource type="Animation" id="Animation_k671h"]
 resource_name = "LEVEL_ONE"
@@ -41,7 +41,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(5, 20.2, 35.2, 50.2, 62.1),
+"times": PackedFloat32Array(5, 52.966667, 90.7, 131.36667, 160.66667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -136,136 +136,6 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 20.0, 20.0, 80.0]
-}
-
-[sub_resource type="Animation" id="Animation_0plv3"]
-resource_name = "LEVEL_ONE_STORE"
-length = 300.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Hallway:_pace")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.16666669, 7.699999, 8.733334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.18, 0.18, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ToStore/PathFollow3D:progress_ratio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(13.099998, 16.533333, 18.133331),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ToStore/PathFollow3D/RemoteTransform3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(13.166666, 16.833332, 18.233334),
-"transitions": PackedFloat32Array(1, 1, 0.18946466),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DirectionalLight3D:light_energy")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 8.799999, 8.933332, 11.566666, 11.666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 1.0, 0.0, 0.0, 1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Player:Speed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 7.533333, 8.566666),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [1.0, 1.0, 0.0]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Hallway")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(8.799999, 9.933332),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"LightsOff"
-}, {
-"args": [],
-"method": &"Clear"
-}]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Hallway:_lightFlickerChance")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.099999905, 7.199999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [90.0, 90.0]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AnimationPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(8.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"HideLanes"],
-"method": &"EmitSignal"
-}]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SalesMan:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(8.966666, 11),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, true]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SalesMan")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
 }
 
 [sub_resource type="Animation" id="Animation_rnmjr"]
@@ -378,6 +248,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Hallway:_lightEnergy")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Hallway:_lightRange")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_lx1gt"]
 resource_name = "TIME_LINE"
@@ -409,14 +303,188 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6cgec"]
 _data = {
 &"LEVEL_ONE": SubResource("Animation_k671h"),
-&"LEVEL_ONE_STORE": SubResource("Animation_0plv3"),
 &"RESET": SubResource("Animation_rnmjr"),
 &"TIME_LINE": SubResource("Animation_lx1gt")
 }
 
+[sub_resource type="Animation" id="Animation_rdgon"]
+resource_name = "LEVEL_ONE"
+length = 1000.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseTwo",
+"time": 38.9
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseThree",
+"time": 98.26667
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseFive",
+"time": 271.1633
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseFour",
+"time": 162.36667
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseSix",
+"time": 368.76666
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseSeven",
+"time": 466.48068
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseEight",
+"time": 555.1885
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseNine",
+"time": 737.8333
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseTen",
+"time": 979.36664
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"loop",
+"time": 969.86664
+}]
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5, 40.4, 99.9, 167.33333, 273.63333, 371.13333, 467.43332, 557.1, 742.1, 981.93335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"PhaseOne"
+}, {
+"args": [],
+"method": &"PhaseTwo"
+}, {
+"args": [],
+"method": &"PhaseThree"
+}, {
+"args": [],
+"method": &"PhaseFour"
+}, {
+"args": [],
+"method": &"PhaseFive"
+}, {
+"args": [],
+"method": &"PhaseSix"
+}, {
+"args": [],
+"method": &"PhaseSeven"
+}, {
+"args": [],
+"method": &"PhaseEight"
+}, {
+"args": [],
+"method": &"PhaseNine"
+}, {
+"args": [],
+"method": &"PhaseTen"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hallway:_pace")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 952.3333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hallway:_deskChance")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 98.066666, 101.8, 952.3333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.05, 80.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hallway:_waterCoolerChance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 42.133335, 45.466667, 955.86664),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 10.0, 90.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hallway:_lightFlickerChance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(384.03333, 942.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hallway:_posterChance")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(172.16667, 930.56665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [90.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hallway:_lightRange")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 932.8333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.0, 2.3]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Hallway:_lightEnergy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 934.13336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, 2.4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o1rwg"]
+_data = {
+&"LEVEL_ONE": SubResource("Animation_rdgon")
+}
+
 [node name="Level_1" type="Node3D"]
 script = ExtResource("1_bk03j")
-_availableEnemies = Array[PackedScene]([ExtResource("2_rnmjr"), ExtResource("3_0plv3")])
+_availableEnemies = Array[PackedScene]([ExtResource("2_rnmjr"), ExtResource("3_0plv3"), ExtResource("4_kkppn")])
 
 [node name="Hallway" parent="." instance=ExtResource("2_gkkj8")]
 
@@ -450,7 +518,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_6cgec")
+&"": SubResource("AnimationLibrary_6cgec"),
+&"Level_1": SubResource("AnimationLibrary_o1rwg")
 }
 script = ExtResource("8_kkppn")
 
@@ -462,13 +531,6 @@ visible = false
 wait_time = 2.0
 one_shot = true
 
-[node name="SalesMan" parent="." instance=ExtResource("8_mkcsh")]
-transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 1.3704793, 0.98974335, -3.409013)
-visible = false
-script = null
-
-[node name="Animations" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8622417, 1.0478806, 4.5837383)
-billboard = 1
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6722399, 0.7795594, 5.798508)
 text = "asdfsdf"
-font_size = 50

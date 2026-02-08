@@ -23,6 +23,10 @@ public partial class Hallway : Node3D
 	public float _lightFlickerChance;
 	[Export]
 	public float _posterChance;
+	[Export] 
+	public float _lightEnergy;
+	[Export]
+	public float _lightRange;
 
 	
 	[Export]
@@ -115,6 +119,8 @@ public partial class Hallway : Node3D
 			piece._lightFlickerChance = _lightFlickerChance;
 			piece._posterChance = _posterChance;
 			piece._waterCoolerChance = _waterCoolerChance;
+			piece._lightEnergy = _lightEnergy;
+			piece._lightRange = _lightRange;
 			piece.SetPiece();
 		}   
 	}

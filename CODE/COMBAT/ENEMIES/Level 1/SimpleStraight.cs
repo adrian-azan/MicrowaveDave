@@ -6,6 +6,7 @@ public partial class SimpleStraight : Enemy
     //so that I can controll the refresh rate easier
     public override void _Ready()
     {
+        _attackCoolDown = 6;
         base._Ready();
 
         _health = 30;

@@ -11,7 +11,6 @@ public partial class DefenseLanes : Lanes
 	//TODO: good timer tool candidate
 	public Timer _staminaRecoveryTimer;
 	
-	[Export]
 	public float _staminaRecoveryRate;
 
 	private PackedScene AttackScene;
@@ -19,9 +18,11 @@ public partial class DefenseLanes : Lanes
 	public override void _Ready()
 	{
 		base._Ready();
-		_stamina = 2;
-		_maxStamina = 2;
 		_staminaIndicators = new Array<Sprite2D>(GetChildren().Where(node => node is Sprite2D).Cast<Sprite2D>());
+		_stamina = 1;
+		_maxStamina = _staminaIndicators.Count;
+		
+		_staminaRecoveryRate = .5f;//2.5f;
 		//TODO: Candidate for timer service
 		_staminaRecoveryTimer = GetNode<Timer>("StaminaRecovery");
 		
