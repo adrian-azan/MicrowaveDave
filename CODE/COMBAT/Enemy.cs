@@ -25,6 +25,8 @@ public partial class Enemy : PathFollow3D
 	protected Tween PROGRESS_TWEEN;
 	protected Tween PACE_TWEEN;
 
+	Dictionary<string, Tween> _tweens = new Dictionary<string, Tween>();
+	
 	//Don't have a use case yet, but could be handy to have enemies with custom end of life methods
 	private Callable EndTask;
 
@@ -75,6 +77,18 @@ public partial class Enemy : PathFollow3D
 		tween.SetTrans(Tween.TransitionType.Bounce);
 		tween.TweenProperty(this, "rotation", new Vector3(Mathf.DegToRad(-50), Mathf.DegToRad(sideAngle), 0), .25);
 		tween.TweenProperty(this, "rotation", new Vector3(0, 0, 0), .5);
+
+
+		if (_tweens.TryGetValue("scale",out _) == false || !_tweens["scale"].IsValid())
+		{
+			_tweens["scale"] = CreateTween();
+			Vector3 currentScale = Scale;
+			Vector3 stretched = new Vector3(currentScale.X, currentScale.Y * 1.3f, currentScale.Z);
+
+			_tweens["scale"].TweenProperty(this, "scale", stretched, .1);
+			_tweens["scale"].TweenProperty(this, "scale", currentScale, .1).SetDelay(.1);
+			
+		}
 	}
 
 	public void EnterBattle(Area3D area)

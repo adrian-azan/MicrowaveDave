@@ -25,15 +25,15 @@ _DEBUG_enemyPaceMultiplyer = 5
 curve = SubResource("Curve3D_nfwm7")
 
 [node name="RightLane" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81201, 0.609, -2.4861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81201, 0.073957026, -2.4861)
 curve = SubResource("Curve3D_nfwm7")
 
 [node name="MiddleLane" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609, -1.53167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.073957026, -1.53167)
 curve = SubResource("Curve3D_nfwm7")
 
 [node name="LeftLane" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38287, 0.609, -2.6579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38287, 0.073957026, -2.6579)
 curve = SubResource("Curve3D_nfwm7")
 
 [node name="Area3D" type="Area3D" parent="."]

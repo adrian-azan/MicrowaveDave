@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://csmqe4iagh02o"]
+[gd_scene load_steps=7 format=3 uid="uid://csmqe4iagh02o"]
 
 [ext_resource type="Script" uid="uid://ptd01timd6sx" path="res://CODE/COMBAT/ENEMIES/Level 1/SimpleStraight.cs" id="1_yuugn"]
 [ext_resource type="Material" uid="uid://uyk1v83a4ohr" path="res://ART/MATERIALS AND MESHES/Blue.tres" id="2_30kbp"]
-[ext_resource type="PackedScene" uid="uid://6kteoqko3mbb" path="res://SCENES/3D Scenes/Enemies/SimpleStraight.tscn" id="3_30kbp"]
+[ext_resource type="Texture2D" uid="uid://sax86mf7dtjo" path="res://ART/VISUALS/Top_1.png" id="2_y0tic"]
+[ext_resource type="Texture2D" uid="uid://dxr5olxnx4qk0" path="res://ART/VISUALS/Pants_1.png" id="3_27qex"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2tw5h"]
 material = ExtResource("2_30kbp")
@@ -17,13 +18,19 @@ script = ExtResource("1_yuugn")
 _designatedLane = 1
 _attackCoolDown = 7.0
 
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D(0.10009574, 0, -0.045616254, 0, 0.11, 0, 0.045616254, 0, 0.10009574, 0, 0.8838024, 0)
+
+[node name="Top" type="Sprite3D" parent="Body"]
+transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 1.6121697, 10.682043, -1.8935974)
+texture = ExtResource("2_y0tic")
+
+[node name="Pants" type="Sprite3D" parent="Body"]
+texture = ExtResource("3_27qex")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_2tw5h")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
-one_shot = true
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.255291, 0)
@@ -39,9 +46,10 @@ shape = SubResource("BoxShape3D_apfny")
 [node name="Health" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5596374, 0)
 billboard = 1
-text = "asdf"
+text = "*"
 
-[node name="SimpleStraight" parent="." instance=ExtResource("3_30kbp")]
-transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0, 0)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
 
 [connection signal="area_entered" from="Area3D" to="." method="EnterBattle"]

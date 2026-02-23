@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://6kteoqko3mbb"]
+
+[ext_resource type="Texture2D" uid="uid://sax86mf7dtjo" path="res://ART/VISUALS/Top_1.png" id="1_1e3j4"]
+[ext_resource type="Texture2D" uid="uid://dxr5olxnx4qk0" path="res://ART/VISUALS/Pants_1.png" id="1_640w5"]
+
+[node name="SimpleStraight" type="Node3D"]
+
+[node name="Top" type="Sprite3D" parent="."]
+transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 1.6121697, 10.682043, -1.8935974)
+texture = ExtResource("1_1e3j4")
+
+[node name="Pants" type="Sprite3D" parent="."]
+texture = ExtResource("1_640w5")
