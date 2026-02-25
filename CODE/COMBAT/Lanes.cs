@@ -1,6 +1,8 @@
+using System;
 using Godot;
 using Godot.Collections;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class Lanes : Node2D
 {
@@ -36,7 +38,8 @@ public partial class Lanes : Node2D
     {
         foreach (var lane in _lanes)
         {
-            foreach (Attack attack in lane.GetChildren())
+            
+            foreach (Attack attack in Tools.GetChildren<Attack>(lane))
             {
                 attack.QueueFree();
             }
@@ -47,7 +50,7 @@ public partial class Lanes : Node2D
     {
         foreach (var lane in _lanes)
         {
-            foreach (Attack attack in lane.GetChildren())
+            foreach (Attack attack in Tools.GetChildren<Attack>(lane))
             {
                 if (attack.Attacker == attacker)
                 {

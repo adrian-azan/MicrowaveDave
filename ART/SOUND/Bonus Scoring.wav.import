@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cekgu4nt5axek"
+path="res://.godot/imported/Bonus Scoring.wav-d98e86e3da6c477295fa112770f8dcdc.sample"
+
+[deps]
+
+source_file="res://ART/SOUND/Bonus Scoring.wav"
+dest_files=["res://.godot/imported/Bonus Scoring.wav-d98e86e3da6c477295fa112770f8dcdc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

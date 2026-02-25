@@ -64,7 +64,6 @@ public partial class Enemy : PathFollow3D
 	public void TakeDamage(int amount)
 	{
 		_health -= amount;
-		AudioManager._Instance.EnemyDeath();
 		AudioManager._Instance.Punch();
 
 		//Get Hit animation

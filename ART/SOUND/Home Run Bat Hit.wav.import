@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://emsgj5ghjc6g"
+path="res://.godot/imported/Home Run Bat Hit.wav-1a8c52b9f4bd8a055fc79819b196a4ea.sample"
+
+[deps]
+
+source_file="res://ART/SOUND/Home Run Bat Hit.wav"
+dest_files=["res://.godot/imported/Home Run Bat Hit.wav-1a8c52b9f4bd8a055fc79819b196a4ea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

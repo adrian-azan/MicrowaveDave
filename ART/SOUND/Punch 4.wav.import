@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bisy5xwplrvju"
+path="res://.godot/imported/Punch 4.wav-d7fa7233513cd46f438567fe6ebc1038.sample"
+
+[deps]
+
+source_file="res://ART/SOUND/Punch 4.wav"
+dest_files=["res://.godot/imported/Punch 4.wav-d7fa7233513cd46f438567fe6ebc1038.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

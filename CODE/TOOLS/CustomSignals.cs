@@ -32,4 +32,7 @@ public partial class CustomSignals : Node
 
 	[Signal]
 	public delegate void HideLanesEventHandler();
+
+	[Signal]
+	public delegate void RemoveAttackFromLaneEventHandler(Attack attack, bool enemyAttack);
 }

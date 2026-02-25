@@ -40,23 +40,72 @@ public partial class Attack : PathFollow2D
 		}
 	}
 
-	public void ChangeStyle(Area2D collidingAttack)
+	public void Blocked()
 	{
-		if (collidingAttack.GetCollisionLayerValue(CollisionMap.ENEMEY_JAB) && GetNode<Area2D>("Area2D").GetCollisionLayerValue(CollisionMap.PLAYER_JAB)
-			&& !collidingAttack.IsQueuedForDeletion())
+		//TODO: make a path that goes behind the attack.
+		// put the attack on that path
+		// delete the path
+		// delete the attack
+	}
+
+	public void ChangeStyle(Area2D collidingAttack2D)
+	{
+		if (collidingAttack2D.GetCollisionLayerValue(CollisionMap.ENEMEY_JAB) && GetNode<Area2D>("Area2D").GetCollisionLayerValue(CollisionMap.PLAYER_JAB)
+			&& !collidingAttack2D.IsQueuedForDeletion())
 		{
 			if (_style == Style.DEFENSIVE)
 			{
 				CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverStamina);
+				
+				AudioManager._Instance.Block();
+				CreateTween().TweenProperty(this, "scale", Scale * 1.3f, .1);
+				CreateTween().TweenProperty(this, "scale", Scale, .1).SetDelay(.1);
 
-				collidingAttack.GetParent().QueueFree();
-				if (!IsQueuedForDeletion())
-					QueueFree();
+				Path2D blowBackPath = new Path2D();
+				GetParent().AddChild(blowBackPath);
+				Curve2D actualPath = new Curve2D();
+				actualPath.AddPoint(Position);
+				actualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-100, 100), -100));
+				blowBackPath.Curve = actualPath;
+				CallDeferred(MethodName.Reparent, blowBackPath);
+		
+				GetNode<Area2D>("Area2D").CollisionLayer = 0;
+
+				_pace *= 4f;
+				ProgressRatio = 0;
+				
+				CreateTween().TweenCallback(Callable.From(() => GetParent().QueueFree())).SetDelay(5);
+
+				
+				//TODO: This enemy blowback logic is not working as expected
+				if (collidingAttack2D.GetParent() is Attack)
+				{
+					Attack collidingAttack = collidingAttack2D.GetParent() as Attack;
+
+					collidingAttack2D.CollisionLayer = 0;
+
+					Path2D enemyBlowBackPath = new Path2D();
+					collidingAttack.GetParent().AddChild(enemyBlowBackPath);
+					Curve2D enemyActualPath = new Curve2D();
+					enemyActualPath.AddPoint(collidingAttack.GlobalPosition);
+					enemyActualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-100, 100), -2000));
+					enemyBlowBackPath.Curve = enemyActualPath;
+					//collidingAttack._pace ;
+					collidingAttack.ProgressRatio = 0;
+
+					collidingAttack.CallDeferred(MethodName.Reparent, enemyBlowBackPath);
+					collidingAttack.CreateTween().TweenCallback(Callable.From(() => GetParent().QueueFree()))
+						.SetDelay(5);
+
+				}
+				//collidingAttack2D.GetParent().QueueFree();
+				//if (!IsQueuedForDeletion())
+				//	QueueFree();
 			}
 
 			if (_style == Style.COUNTERING)
 			{
-				collidingAttack.GetParent().QueueFree();
+				collidingAttack2D.GetParent().QueueFree();
 				CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.SuccessfulAttack, 10);
 				CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverStamina);
 			}
@@ -67,5 +116,27 @@ public partial class Attack : PathFollow2D
 					QueueFree();
 			}
 		}
+	}
+
+	private void EndLife()
+	{
+		CreateTween().TweenProperty(this, "scale", Scale * 1.3f, .1);
+		CreateTween().TweenProperty(this, "scale", Scale, .1).SetDelay(.1);
+
+		Path2D blowBackPath = new Path2D();
+		GetParent().AddChild(blowBackPath);
+		Curve2D actualPath = new Curve2D();
+		actualPath.AddPoint(Position);
+		actualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-100, 100), -100));
+		blowBackPath.Curve = actualPath;
+		CallDeferred(MethodName.Reparent, blowBackPath);
+		
+		GetNode<Area2D>("Area2D").CollisionLayer = 0;
+
+		_pace *= 1.8f;
+		ProgressRatio = 0;
+			
+
+		CreateTween().TweenCallback(Callable.From(() => GetParent().QueueFree())).SetDelay(5);
 	}
 }

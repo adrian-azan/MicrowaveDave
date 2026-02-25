@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xp8bg86pj8vv"
+path="res://.godot/imported/Captain Falcon 11.wav-e16244b7c492bf53f95e59b5ba4e3a43.sample"
+
+[deps]
+
+source_file="res://ART/SOUND/Captain Falcon 11.wav"
+dest_files=["res://.godot/imported/Captain Falcon 11.wav-e16244b7c492bf53f95e59b5ba4e3a43.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -10,6 +10,7 @@ radius = 6.1133
 [sub_resource type="SphereMesh" id="SphereMesh_cfotg"]
 
 [node name="Attack" type="PathFollow2D"]
+position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
 loop = false
 script = ExtResource("1_ggykg")

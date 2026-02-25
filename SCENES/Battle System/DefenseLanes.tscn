@@ -21,7 +21,6 @@ size = Vector2(239, 44.1624)
 
 [node name="DefenseLanes" type="Node2D" groups=["DefenseLane"]]
 script = ExtResource("1_fqdil")
-_staminaRecoveryRate = 1.0
 
 [node name="Path2D3" type="Path2D" parent="."]
 position = Vector2(220, 0)
