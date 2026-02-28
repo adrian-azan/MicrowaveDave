@@ -38,7 +38,6 @@ public partial class Lanes : Node2D
     {
         foreach (var lane in _lanes)
         {
-            
             foreach (Attack attack in Tools.GetChildren<Attack>(lane))
             {
                 attack.QueueFree();

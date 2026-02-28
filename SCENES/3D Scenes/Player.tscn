@@ -80,7 +80,7 @@ mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.8136104, 0.008955277, -0.58133876, -0.008955299, 0.9995655, 0.027931256, 0.58133954, 0.027931208, -0.8131791, 0.04918446, -0.002363138, 1.55612)
+transform = Transform3D(-0.81361085, 0.008955272, -0.58133876, -0.0089553045, 0.99956495, 0.027931256, 0.5813399, 0.027931191, -0.8131791, 0.04918446, -0.002363138, 1.55612)
 progress = 0.266635
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D2"]
@@ -96,3 +96,5 @@ progress = 0.134371
 transform = Transform3D(0.02, 0, 0, 0, -0.0130526, -0.0495722, 0, 0.0991445, -0.00652631, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

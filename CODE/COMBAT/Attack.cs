@@ -65,7 +65,7 @@ public partial class Attack : PathFollow2D
 				GetParent().AddChild(blowBackPath);
 				Curve2D actualPath = new Curve2D();
 				actualPath.AddPoint(Position);
-				actualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-100, 100), -100));
+				actualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-500, 500), 1000));
 				blowBackPath.Curve = actualPath;
 				CallDeferred(MethodName.Reparent, blowBackPath);
 		
@@ -75,32 +75,8 @@ public partial class Attack : PathFollow2D
 				ProgressRatio = 0;
 				
 				CreateTween().TweenCallback(Callable.From(() => GetParent().QueueFree())).SetDelay(5);
-
-				
-				//TODO: This enemy blowback logic is not working as expected
-				if (collidingAttack2D.GetParent() is Attack)
-				{
-					Attack collidingAttack = collidingAttack2D.GetParent() as Attack;
-
-					collidingAttack2D.CollisionLayer = 0;
-
-					Path2D enemyBlowBackPath = new Path2D();
-					collidingAttack.GetParent().AddChild(enemyBlowBackPath);
-					Curve2D enemyActualPath = new Curve2D();
-					enemyActualPath.AddPoint(collidingAttack.GlobalPosition);
-					enemyActualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-100, 100), -2000));
-					enemyBlowBackPath.Curve = enemyActualPath;
-					//collidingAttack._pace ;
-					collidingAttack.ProgressRatio = 0;
-
-					collidingAttack.CallDeferred(MethodName.Reparent, enemyBlowBackPath);
-					collidingAttack.CreateTween().TweenCallback(Callable.From(() => GetParent().QueueFree()))
-						.SetDelay(5);
-
-				}
-				//collidingAttack2D.GetParent().QueueFree();
-				//if (!IsQueuedForDeletion())
-				//	QueueFree();
+			
+				collidingAttack2D.GetParent().QueueFree();
 			}
 
 			if (_style == Style.COUNTERING)

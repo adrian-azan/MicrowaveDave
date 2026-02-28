@@ -1,17 +1,20 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwc5w70x6t7bx"]
+[gd_scene load_steps=20 format=3 uid="uid://dwc5w70x6t7bx"]
 
 [ext_resource type="Script" uid="uid://ghja167poi2h" path="res://CODE/HALLWAYS/Generic/HallwayPiece.cs" id="1_y304h"]
+[ext_resource type="Material" uid="uid://pna15dj7q4fc" path="res://ART/MATERIALS AND MESHES/Level1_floor.tres" id="2_lu6k1"]
 [ext_resource type="PackedScene" uid="uid://b4vc6nfe4xvog" path="res://ART/MODELS/office_desk/scene.gltf" id="2_qgvok"]
+[ext_resource type="Material" uid="uid://decbvacmgc0ee" path="res://ART/MATERIALS AND MESHES/Level1_wall.tres" id="3_b0ej4"]
 [ext_resource type="PackedScene" uid="uid://tyfdi7biyedg" path="res://ART/MODELS/water_cooler_8mb/scene.gltf" id="3_lu6k1"]
 [ext_resource type="Texture2D" uid="uid://cys1x2h1bial6" path="res://ART/VISUALS/Poster1.jpg" id="4_b0ej4"]
 [ext_resource type="Texture2D" uid="uid://cixaaqgewm507" path="res://ART/VISUALS/Poster3.jpg" id="5_4hrp5"]
 [ext_resource type="Texture2D" uid="uid://dmes22d1jwrk2" path="res://ART/VISUALS/Poster2.jpg" id="6_7me0o"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0affl"]
-albedo_color = Color(0.393086, 0.393086, 0.393085, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_b0ej4"]
+lightmap_size_hint = Vector2i(14, 21)
+material = ExtResource("2_lu6k1")
 
 [sub_resource type="BoxMesh" id="BoxMesh_xlkat"]
-material = SubResource("StandardMaterial3D_0affl")
+material = ExtResource("3_b0ej4")
 
 [sub_resource type="Animation" id="Animation_0dbe5"]
 resource_name = "Flicker"
@@ -171,16 +174,16 @@ albedo_texture = ExtResource("6_7me0o")
 script = ExtResource("1_y304h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.937471, 0, 0, 0, 0.3, 0, 0, 0, 2, -0.46571374, 0, 0)
-mesh = SubResource("BoxMesh_xlkat")
+transform = Transform3D(5.782, 0, 0, 0, 0.3, 0, 0, 0, 2, -0.46571374, 0, 0)
+mesh = SubResource("BoxMesh_b0ej4")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 4.13, 0, 0, 0, 2, -3.6799068, 1.29314, 0)
+transform = Transform3D(0.4, 0, 0, 0, 4.635, 0, 0, 0, 1.825, -3.68, 2.113, 0)
 mesh = SubResource("BoxMesh_xlkat")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="MeshInstance3D2"]
 process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.28113, 0, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 6.281129, 0, 2.294378)
 layers = 2
 aabb = AABB(-6.74344, -0.524651, -0.422642, 13.4869, 1.0493, 0.845284)
 
@@ -215,15 +218,16 @@ libraries = {
 
 [node name="Posters" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.323907, 0, 0)
+visible = false
 
 [node name="Poster1" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0948992, 1.9286, -0.51201)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0948992, 4.299706, -0.51201)
 material_override = SubResource("StandardMaterial3D_a66lt")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
 
 [node name="Poster5" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 2.71479, -0.732567)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 3.08343, -0.732567)
 material_override = SubResource("StandardMaterial3D_a66lt")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
@@ -235,31 +239,31 @@ mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
 
 [node name="Poster3" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0189233, 2.68846, 0.69204)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0189233, 3.405175, 0.69204)
 material_override = SubResource("StandardMaterial3D_5acft")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
 
 [node name="Poster4" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.10177, 2.34817, -0.0353112)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.10177, 4.908187, -0.0353112)
 material_override = SubResource("StandardMaterial3D_5acft")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
 
 [node name="Poster6" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 1.18168, -0.51201)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.14644, 1.3507855, -0.51201)
 material_override = SubResource("StandardMaterial3D_a66lt")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
 
 [node name="Poster7" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.1222372, 1.96788, -0.732567)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.1222372, 1.96788, -0.37858927)
 material_override = SubResource("StandardMaterial3D_a66lt")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
 
 [node name="Poster8" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0662751, 1.16915, 0.489499)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0662751, 3.2400126, 0.07830444)
 material_override = SubResource("StandardMaterial3D_srjd2")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
@@ -271,7 +275,67 @@ mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")
 
 [node name="Poster10" type="MeshInstance3D" parent="Posters"]
-transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0822272, 1.60125, -0.0353112)
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0822272, 1.60125, 0.08355286)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster11" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -1.989571, 5.3367043, 0.7908207)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster12" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.041112, 4.120428, 0.5702637)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster13" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.041112, 2.9530683, 1.7923297)
+material_override = SubResource("StandardMaterial3D_srjd2")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster14" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -1.9135951, 4.442173, 1.9948707)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster15" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -1.9964417, 5.945185, 1.2675195)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster16" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.041112, 2.3877838, 0.7908207)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster17" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0169091, 3.0048783, 0.9242414)
+material_override = SubResource("StandardMaterial3D_a66lt")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster18" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -1.9609469, 4.277011, 1.3811351)
+material_override = SubResource("StandardMaterial3D_srjd2")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster19" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -1.9874853, 2.9785483, 1.9948707)
+material_override = SubResource("StandardMaterial3D_5acft")
+mesh = SubResource("PlaneMesh_nm40y")
+skeleton = NodePath("../..")
+
+[node name="Poster20" type="MeshInstance3D" parent="Posters"]
+transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -1.976899, 2.6382484, 1.3863835)
 material_override = SubResource("StandardMaterial3D_5acft")
 mesh = SubResource("PlaneMesh_nm40y")
 skeleton = NodePath("../..")

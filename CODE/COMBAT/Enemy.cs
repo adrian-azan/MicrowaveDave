@@ -42,16 +42,35 @@ public partial class Enemy : PathFollow3D
 		Bounce();
 		GetNode<Timer>("Timer").SetWaitTime(_attackCoolDown);
 	}
-	
-	public override void _ExitTree()
+
+
+	public void Die()
 	{
-		base._ExitTree();
 		_attackLanes.ClearLanes(this);
-
 		CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.EnemyKilled);
-		
 		AudioManager._Instance.EnemyDeath();
+		
+		Path3D deathPath = new Path3D();
+		deathPath.Curve = ResourceLoader.Load<Curve3D>("res://SCENES/Battle System/EnemyDeathCurve.tres");
+		deathPath.Curve.SetPointPosition(0, GlobalPosition);
+		
+		deathPath.Rotation = new Vector3(0, Tools.rng.RandfRange(0f, 40f), 0);
+		
+		GetTree().Root.AddChild(deathPath);
 
+		ProgressRatio = 0;
+		CreateTween().TweenProperty(this, "progress_ratio", 1, 1);
+		CreateTween().TweenProperty(this, "rotation", new Vector3(1800,1800,0), 4);
+		CallDeferred(MethodName.Reparent, deathPath);
+
+		CreateTween().TweenCallback(Callable.From(() =>
+		{
+			QueueFree();
+			deathPath.QueueFree();
+		} )).SetDelay(5);
+
+		GetNode<Timer>("Timer").Paused = true;
+		
 		if(EndTask.Delegate != null)
 			EndTask.Call();
 	}

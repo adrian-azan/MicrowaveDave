@@ -73,6 +73,7 @@ public partial class AudioManager : Node
 	private AudioStreamPlayer AllocateAudioPlayer()
 	{
 		AudioStreamPlayer newPlayer = new AudioStreamPlayer();
+		newPlayer.VolumeDb += 20;
 		newPlayer.Finished += newPlayer.QueueFree;
 
 		_players.Add(newPlayer);

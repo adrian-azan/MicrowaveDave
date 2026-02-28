@@ -37,8 +37,8 @@ public partial class Level1_EnemyGenerator : Node3D
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
 		_animationPlayer.Play("Level_1/LEVEL_ONE");
-		_animationPlayer.Seek(8, true);
-		_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE", "PhaseSix");
+		//_animationPlayer.Seek(8, true);
+		//_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE", "PhaseEight");
 	
 		CustomSignals._Instance.SuccessfulAttack += DamageEnemy;
 		CustomSignals._Instance.EnemyKilled += CheckIfPhaseFinishedEarly;
@@ -127,7 +127,7 @@ public partial class Level1_EnemyGenerator : Node3D
 
 		if (enemiesInLanes[0].Dead())
 		{
-			enemiesInLanes[0].QueueFree();
+			enemiesInLanes[0].Die();
 			enemiesInLanes.RemoveAt(0);
 		}
 	}
@@ -275,7 +275,7 @@ public partial class Level1_EnemyGenerator : Node3D
 		straight._designatedLane = Lanes.LANES.LEFT;
 		straight2._designatedLane = Lanes.LANES.RIGHT;
 		
-		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.MIDDLE].AddChild(curve))).SetDelay(20);
+		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.MIDDLE].AddChild(curve))).SetDelay(10);
 		_hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(straight);
 		_hallway._lanes[(int)Lanes.LANES.RIGHT].AddChild(straight2);
 	}
@@ -292,7 +292,7 @@ public partial class Level1_EnemyGenerator : Node3D
 		curve2._designatedLane = Lanes.LANES.RIGHT;
 		
 		_hallway._lanes[(int)Lanes.LANES.RIGHT].AddChild(curve2);
-		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(curve))).SetDelay(.5);
+		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(curve))).SetDelay(1);
 	}
 	
 	public void PhaseTen()

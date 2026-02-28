@@ -35,14 +35,16 @@ public partial class Hallway : Node3D
 	public override void _Ready()
 	{
 		_pace = .1f;
-		float totalPieces = 24;
+		float totalPieces = 32;
 		_pieces = new Array<HallwayPiece>();
+
 		for (int i = 0; i < totalPieces; i++)
 		{
 			_pieces.Add(piecePackedScene.Instantiate() as HallwayPiece);
 			GetNode("Path3D").AddChild(_pieces[i]);
 			_pieces[i].ProgressRatio = (float)i / totalPieces;
 		}
+		Clear();
 
 		_lanes = new Array<Path3D>();
 		_lanes.Add(GetNode<Path3D>("LeftLane"));
@@ -64,6 +66,8 @@ public partial class Hallway : Node3D
 			piece._lightFlickerChance = _lightFlickerChance;
 			piece._posterChance = _posterChance;
 			piece._waterCoolerChance = _waterCoolerChance;
+			piece._lightEnergy = _lightEnergy;
+			piece._lightRange = _lightRange;
 		}
 
 		Array<Array<Enemy>> Lanes = new Array<Array<Enemy>>();
