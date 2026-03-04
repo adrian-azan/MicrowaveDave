@@ -115,5 +115,13 @@ texture = ExtResource("6_ob0ai")
 position = Vector2(-33.93, 27.1)
 texture = ExtResource("6_ob0ai")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -59.0
+offset_top = 69.0
+offset_right = -2.0
+offset_bottom = 92.0
+rotation = 3.1415927
+text = "asdfsdf"
+
 [connection signal="area_entered" from="Core/PlayerHeart/EnemyTarget" to="." method="CollisionWithHeart"]
 [connection signal="timeout" from="StaminaRecovery" to="." method="RecoverStamina"]

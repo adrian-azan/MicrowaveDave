@@ -12,6 +12,7 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	private enum Phase
 	{
+		ZERO,
 		ONE,
 		TWO,
 		THREE,
@@ -42,11 +43,31 @@ public partial class Level1_EnemyGenerator : Node3D
 	
 		CustomSignals._Instance.SuccessfulAttack += DamageEnemy;
 		CustomSignals._Instance.EnemyKilled += CheckIfPhaseFinishedEarly;
+		CustomSignals._Instance.Reset += Reset;
+		CustomSignals._Instance.Stop += Stop;
 	}
 
 	public override void _Process(double delta)
 	{
-		GetNode<Label3D>("Label3D").Text = Math.Round(_animationPlayer.CurrentAnimationPosition, 0).ToString();
+		if (_animationPlayer.CurrentAnimation != string.Empty)
+		{
+			GetNode<Label3D>("Label3D").Text = double.Round(_animationPlayer.CurrentAnimationPosition).ToString();
+			GetNode<Label3D>("Label3D2").Text = _currentPhase.ToString();
+		}
+	}
+
+	public void Stop()
+	{
+		_animationPlayer.Stop();
+	}
+	
+	public void Reset()
+	{
+		_hallway.Clear();
+
+		_currentPhase = Phase.ZERO;
+		_animationPlayer.Seek(0);
+		_animationPlayer.Play();
 	}
 
 	public void CheckIfPhaseFinishedEarly()
@@ -75,12 +96,15 @@ public partial class Level1_EnemyGenerator : Node3D
 		if (coolDown.TimeLeft > 0.1)
 			return;
 		coolDown.Start();
-	
+		
 		
 		_currentPhase++;
 		Logging.PrintInfo("Advancing Phase",$"_currentPhase {_currentPhase}");
 		switch (_currentPhase)
 		{
+			case Phase.ONE:
+				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE", "PhaseOne");
+				break;
 			case Phase.TWO:
 				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE", "PhaseTwo");
 				break;
@@ -310,6 +334,6 @@ public partial class Level1_EnemyGenerator : Node3D
 		Logging.PrintInfo("Level 1:", "Starting PhaseTen");
 
 		_animationPlayer.Stop(true);
-		_animationPlayer.Play("LEVEL_ONE_STORE");
+		//_animationPlayer.Play("LEVEL_ONE_STORE");
 	}
 }

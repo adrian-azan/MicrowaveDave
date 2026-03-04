@@ -44,12 +44,12 @@ public partial class Hallway : Node3D
 			GetNode("Path3D").AddChild(_pieces[i]);
 			_pieces[i].ProgressRatio = (float)i / totalPieces;
 		}
-		Clear();
-
 		_lanes = new Array<Path3D>();
 		_lanes.Add(GetNode<Path3D>("LeftLane"));
 		_lanes.Add(GetNode<Path3D>("MiddleLane"));
 		_lanes.Add(GetNode<Path3D>("RightLane"));
+		
+		Clear();
 	}
 
 	public override void _Process(double delta)
@@ -126,6 +126,14 @@ public partial class Hallway : Node3D
 			piece._lightEnergy = _lightEnergy;
 			piece._lightRange = _lightRange;
 			piece.SetPiece();
-		}   
+		}
+
+		foreach (var lane in _lanes)
+		{
+			foreach (var enemy in Tools.GetChildren<Enemy>(lane))
+			{
+				enemy.QueueFree();
+			}
+		}
 	}
 }

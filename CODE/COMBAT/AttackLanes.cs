@@ -8,6 +8,7 @@ public partial class AttackLanes : Lanes
 	{
 		base._Ready();
 		_lanes = Tools.GetChildren<Path2D>(this);
+		CustomSignals._Instance.Reset += Reset;
 	}
 
 	public void AttackedByPlayer(Area2D incomingAttack)
@@ -15,5 +16,16 @@ public partial class AttackLanes : Lanes
 		incomingAttack.GetParent().QueueFree();
 
 		CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.SuccessfulAttack, 10);
+	}
+
+	public void Reset()
+	{
+		foreach (var lane in _lanes)
+		{
+			foreach (var attack in Tools.GetChildren<Attack>(lane))
+			{
+				attack.QueueFree();
+			}
+		}
 	}
 }

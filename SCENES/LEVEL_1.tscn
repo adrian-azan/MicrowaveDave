@@ -124,6 +124,10 @@ markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"loop",
 "time": 969.86664
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseOne",
+"time": 3.8420365
 }]
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -299,5 +303,13 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6722399, 0.7795594, 5.798508)
-text = "asdfsdf"
+transform = Transform3D(0.79724693, 0, -0.6036533, 0, 1, 0, 0.6036533, 0, 0.79724693, 1.2291398, 1.9519987, 3.9223433)
+visible = false
+text = "aa"
+font_size = 372
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(0.79724693, 0, -0.6036533, 0, 1, 0, 0.6036533, 0, 0.79724693, 1.2291398, 3.7005682, 3.6019168)
+visible = false
+text = "aa"
+font_size = 372

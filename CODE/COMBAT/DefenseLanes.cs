@@ -6,6 +6,7 @@ public partial class DefenseLanes : Lanes
 {
 	public int _stamina;
 	private int _maxStamina;
+	private int _health;
 	public Array<Sprite2D> _staminaIndicators;
 
 	//TODO: good timer tool candidate
@@ -19,26 +20,41 @@ public partial class DefenseLanes : Lanes
 	{
 		base._Ready();
 		_staminaIndicators = new Array<Sprite2D>(GetChildren().Where(node => node is Sprite2D).Cast<Sprite2D>());
-		_stamina = 1;
-		_maxStamina = _staminaIndicators.Count;
-		
-		_staminaRecoveryRate = .5f;//2.5f;
 		//TODO: Candidate for timer service
 		_staminaRecoveryTimer = GetNode<Timer>("StaminaRecovery");
+		
+		Reset();
+		
 		
 		AttackScene = ResourceLoader.Load<PackedScene>(Constants.ATTACK_SCENE);
 		
 
 		CustomSignals._Instance.RecoverStamina += RecoverStamina;
-
+		CustomSignals._Instance.Reset += Reset;
+		
 		var defenseArea = GetNode<Area2D>("Core/PlayerDefense/Area2D");
 		defenseArea.AreaEntered += DefensiveStyleEventHandler;
 		defenseArea.AreaExited += DefaultStyleEventHandler;
+		
+		
+	}
+
+	public void Reset()
+	{
+		_stamina = 1;
+		_maxStamina = 2;
+		_health = 1;
+		_staminaRecoveryRate = .5f;
 	}
 
 	public override void _Process(double delta)
 	{
+		if (_health <= 0)
+			return;
+		
 		Attack attackInstance = null;
+		
+		GetNode<Label>("Label").Text = $"{_health}";
 		
 		if (Input.IsActionJustPressed("LeftAttack") && _stamina > 0)
 		{
@@ -117,5 +133,14 @@ public partial class DefenseLanes : Lanes
 	private void CollisionWithHeart(Area2D incomingAttack)
 	{
 		incomingAttack.GetParent().QueueFree();
+		_health -= 1;
+
+		if (_health <= 0 && GetNodeOrNull("../GameOver") == null)
+		{
+			GameOver gameOverScreen = ResourceLoader.Load<PackedScene>("res://SCENES/GameOver.tscn").Instantiate() as GameOver;
+			
+			AddSibling(gameOverScreen);
+			gameOverScreen.Show();
+		}
 	}
 }

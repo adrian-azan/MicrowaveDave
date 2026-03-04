@@ -6,4 +6,7 @@
   <ItemGroup>
     <Folder Include="SCENES\3D Scenes\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CODE\GameOver.cs.uid" />
+  </ItemGroup>
 </Project>
