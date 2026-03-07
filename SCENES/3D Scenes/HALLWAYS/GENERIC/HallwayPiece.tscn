@@ -217,8 +217,7 @@ libraries = {
 }
 
 [node name="Posters" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.323907, 0, 0)
-visible = false
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, -1.969, 0.155, -0.465)
 
 [node name="Poster1" type="MeshInstance3D" parent="Posters"]
 transform = Transform3D(-1.75283e-08, 0.62, -2.71011e-08, 0, -2.71011e-08, -0.62, -0.401, -2.71011e-08, 1.18463e-15, -2.0948992, 4.299706, -0.51201)

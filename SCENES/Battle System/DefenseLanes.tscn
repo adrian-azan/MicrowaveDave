@@ -121,6 +121,8 @@ offset_top = 69.0
 offset_right = -2.0
 offset_bottom = 92.0
 rotation = 3.1415927
+scale = Vector2(1.055, 1.055)
+theme_override_font_sizes/font_size = 41
 text = "asdfsdf"
 
 [connection signal="area_entered" from="Core/PlayerHeart/EnemyTarget" to="." method="CollisionWithHeart"]

@@ -16,6 +16,7 @@ _designatedLane = 1
 _attackCoolDown = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89301044, 0)
 mesh = SubResource("CapsuleMesh_2tw5h")
 
 [node name="Timer" type="Timer" parent="."]

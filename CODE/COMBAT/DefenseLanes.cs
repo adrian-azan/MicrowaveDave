@@ -43,8 +43,8 @@ public partial class DefenseLanes : Lanes
 	{
 		_stamina = 1;
 		_maxStamina = 2;
-		_health = 1;
-		_staminaRecoveryRate = .5f;
+		_health = 3;
+		_staminaRecoveryRate = 1f;
 	}
 
 	public override void _Process(double delta)
