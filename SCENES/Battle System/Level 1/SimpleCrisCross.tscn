@@ -15,6 +15,7 @@ script = ExtResource("1_2cfrv")
 _attackCoolDown = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8613916, 0)
 mesh = SubResource("CapsuleMesh_2tw5h")
 
 [node name="Timer" type="Timer" parent="."]

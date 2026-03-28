@@ -15,10 +15,11 @@ _designatedLane = 1
 _attackCoolDown = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7953465, 0)
 mesh = SubResource("CapsuleMesh_2tw5h")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 6.0
 one_shot = true
 
 [node name="Area3D" type="Area3D" parent="."]

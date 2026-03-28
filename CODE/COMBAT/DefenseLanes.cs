@@ -8,11 +8,9 @@ public partial class DefenseLanes : Lanes
 	private int _maxStamina;
 	private int _health;
 	public Array<Sprite2D> _staminaIndicators;
-
-	//TODO: good timer tool candidate
-	public Timer _staminaRecoveryTimer;
 	
-	public float _staminaRecoveryRate;
+	
+	public static float _staminaRecoveryRate;
 
 	private PackedScene AttackScene;
 
@@ -21,7 +19,6 @@ public partial class DefenseLanes : Lanes
 		base._Ready();
 		_staminaIndicators = new Array<Sprite2D>(GetChildren().Where(node => node is Sprite2D).Cast<Sprite2D>());
 		//TODO: Candidate for timer service
-		_staminaRecoveryTimer = GetNode<Timer>("StaminaRecovery");
 		
 		Reset();
 		
@@ -83,12 +80,13 @@ public partial class DefenseLanes : Lanes
 			attackInstance.GetNode<Area2D>("Area2D").SetCollisionLayerValue(2, false);
 		}
 		
+		if (_stamina < _maxStamina - Count())
+			RecoverStamina();
 		CalculateStaminaIndicators();
 	}
 
 	public void RecoverStamina()
 	{
-		if (_stamina < _maxStamina)
 			_stamina += 1;
 	}
 
@@ -102,20 +100,6 @@ public partial class DefenseLanes : Lanes
 		for (int i = 0; i < _stamina; i++)
 		{
 			_staminaIndicators[i].Visible = true;
-		}
-
-		//TODO: Another good timer candidate
-		//When we've reached our max, we should no longer recover stamina.
-		//Pausing the timer ensures that when we use our first bit of stamina
-		//Will always start the recovery timer from scratch
-		if (_stamina == _maxStamina)
-		{
-			_staminaRecoveryTimer.Paused = true;
-			_staminaRecoveryTimer.SetWaitTime(_staminaRecoveryRate);
-		}
-		else
-		{
-			_staminaRecoveryTimer.Paused = false;
 		}
 	}
 

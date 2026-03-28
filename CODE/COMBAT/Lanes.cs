@@ -66,7 +66,12 @@ public partial class Lanes : Node2D
 
     public int Count()
     {
-        return _lanes == null ? 0 : _lanes.Count;
+        int attacksInLanes = 0;
+        foreach (Path2D path in _lanes)
+        {
+            attacksInLanes += Tools.GetChildren<Attack>(path).Count();
+        }
+        return attacksInLanes;
     }
 
     public void HideLanes()

@@ -96,9 +96,6 @@ texture = ExtResource("5_ukdc8")
 position = Vector2(0, -0.734985)
 shape = SubResource("RectangleShape2D_fcno8")
 
-[node name="StaminaRecovery" type="Timer" parent="."]
-autostart = true
-
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 position = Vector2(-33.93, 146.84)
 texture = ExtResource("6_ob0ai")
@@ -126,4 +123,3 @@ theme_override_font_sizes/font_size = 41
 text = "asdfsdf"
 
 [connection signal="area_entered" from="Core/PlayerHeart/EnemyTarget" to="." method="CollisionWithHeart"]
-[connection signal="timeout" from="StaminaRecovery" to="." method="RecoverStamina"]

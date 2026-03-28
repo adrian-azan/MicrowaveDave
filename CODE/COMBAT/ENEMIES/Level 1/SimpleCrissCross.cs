@@ -6,8 +6,9 @@ public partial class SimpleCrissCross : Enemy
 {
     public override void _Ready()
     {
+        _attackCoolDown = 4;
         base._Ready();
-        _health = 100;
+        _health = 30;
     }
     
     public override void _Process(double delta)
@@ -22,10 +23,13 @@ public partial class SimpleCrissCross : Enemy
     }
     
     public new void AttackPlayer()
-    {
+    { 
         Attack attackInstance = base.AttackPlayer();
 
-        _attackLanes.SetLaneCurve(AttackLanes.LANES.LEFT, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/SimpleCrissCross.tres"));
+        if (_designatedLane == Lanes.LANES.LEFT)
+            _attackLanes.SetLaneCurve(_designatedLane, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/SimpleCrissCross_left.tres"));
+        else if (_designatedLane == Lanes.LANES.RIGHT)
+            _attackLanes.SetLaneCurve(_designatedLane, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/SimpleCrissCross_right.tres"));
 
         attackInstance.PROGRESS_TWEEN = CreateTween();
 

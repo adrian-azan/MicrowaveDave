@@ -55,16 +55,16 @@ public partial class Attack : PathFollow2D
 		{
 			if (_style == Style.DEFENSIVE)
 			{
-				CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverStamina);
-				
 				AudioManager._Instance.Block();
 				CreateTween().TweenProperty(this, "scale", Scale * 1.3f, .1);
 				CreateTween().TweenProperty(this, "scale", Scale, .1).SetDelay(.1);
 
-				Path2D blowBackPath = new Path2D();
-				GetParent().AddChild(blowBackPath);
+				VisiblePath2D blowBackPath = new VisiblePath2D();
+				blowBackPath.icon = ResourceLoader.Load<Texture2D>("res://ART/VISUALS/Arrow.png");
+				
+				GetParent().GetParent().AddChild(blowBackPath);
 				Curve2D actualPath = new Curve2D();
-				actualPath.AddPoint(Position);
+				actualPath.AddPoint(new Vector2((GetParent() as Path2D).Position.X, Position.Y));
 				actualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-500, 500), 1000));
 				blowBackPath.Curve = actualPath;
 				CallDeferred(MethodName.Reparent, blowBackPath);
@@ -89,30 +89,13 @@ public partial class Attack : PathFollow2D
 			if (_style == Style.OFFENSIVE)
 			{
 				if (!IsQueuedForDeletion())
-					QueueFree();
+				{
+					Visible = false;
+					GetNode<Area2D>("Area2D").SetDeferred("monitorable", false);
+					GetNode<Area2D>("Area2D").SetDeferred("monitoring", false);
+					CreateTween().TweenCallback(Callable.From(() => QueueFree())).SetDelay(DefenseLanes._staminaRecoveryRate);
+				}
 			}
 		}
-	}
-
-	private void EndLife()
-	{
-		CreateTween().TweenProperty(this, "scale", Scale * 1.3f, .1);
-		CreateTween().TweenProperty(this, "scale", Scale, .1).SetDelay(.1);
-
-		Path2D blowBackPath = new Path2D();
-		GetParent().AddChild(blowBackPath);
-		Curve2D actualPath = new Curve2D();
-		actualPath.AddPoint(Position);
-		actualPath.AddPoint(new Vector2(Tools.rng.RandfRange(-100, 100), -100));
-		blowBackPath.Curve = actualPath;
-		CallDeferred(MethodName.Reparent, blowBackPath);
-		
-		GetNode<Area2D>("Area2D").CollisionLayer = 0;
-
-		_pace *= 1.8f;
-		ProgressRatio = 0;
-			
-
-		CreateTween().TweenCallback(Callable.From(() => GetParent().QueueFree())).SetDelay(5);
 	}
 }

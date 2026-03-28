@@ -4,6 +4,14 @@ using System.Threading.Tasks;
 
 public partial class SimpleBounce : Enemy
 {
+
+    public override void _Ready()
+    {
+        _attackCoolDown = 5;
+        base._Ready();
+        _health = 50;
+
+    }
     
     public override void _Process(double delta)
     {
@@ -23,7 +31,7 @@ public partial class SimpleBounce : Enemy
     {
         Attack attackInstance = base.AttackPlayer();
 
-        _attackLanes.SetLaneCurve(AttackLanes.LANES.MIDDLE, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/DEFAULT.tres"));
+        _attackLanes.SetLaneCurve(_designatedLane, ResourceLoader.Load<Curve2D>("res://SCENES/Battle System/Jab Types/DEFAULT.tres"));
 
         attackInstance.PACE_TWEEN = CreateTween();
 

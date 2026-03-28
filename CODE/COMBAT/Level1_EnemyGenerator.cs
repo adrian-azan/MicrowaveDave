@@ -23,6 +23,11 @@ public partial class Level1_EnemyGenerator : Node3D
 		EIGHT,
 		NINE,
 		TEN,
+		ELEVEN,
+		TWELVE,
+		THIRTEEN,
+		FOURTEEN,
+		FIFTEEN,
 		NONE
 	};
 	
@@ -37,9 +42,9 @@ public partial class Level1_EnemyGenerator : Node3D
 		_hallway = GetNode<Hallway>("Hallway");
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-		_animationPlayer.Play("Level_1/LEVEL_ONE");
+		_animationPlayer.Play("Level_1/LEVEL_ONE_2");
 		//_animationPlayer.Seek(8, true);
-		//_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE", "PhaseEight");
+	//	_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseFourteen");
 	
 		CustomSignals._Instance.SuccessfulAttack += DamageEnemy;
 		CustomSignals._Instance.EnemyKilled += CheckIfPhaseFinishedEarly;
@@ -132,6 +137,21 @@ public partial class Level1_EnemyGenerator : Node3D
 			case Phase.TEN:
 				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE", "PhaseTen");
 				break;
+			case Phase.ELEVEN:
+				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseEleven");
+				break;
+			case Phase.TWELVE:
+				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseTwelve");
+				break;
+			case Phase.THIRTEEN:
+				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseThirteen");
+				break;
+			case Phase.FOURTEEN:
+				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseFourteen");
+				break;
+			case Phase.FIFTEEN:
+				_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseFifteen");
+				break;
 		}
 	}
 	
@@ -142,7 +162,7 @@ public partial class Level1_EnemyGenerator : Node3D
 		enemiesInLanes.Add(_hallway._lanes[0].GetChildCount() > 0 ? _hallway._lanes[0].GetChild<Enemy>(0) : null);
 		enemiesInLanes.Add(_hallway._lanes[2].GetChildCount() > 0 ? _hallway._lanes[2].GetChild<Enemy>(0) : null);
 
-		enemiesInLanes = new Array<Enemy>(enemiesInLanes.Where(enemy => enemy != null));
+		enemiesInLanes = new Array<Enemy>(enemiesInLanes.Where(enemy => enemy != null && enemy.ProgressRatio >= .9f));
 
 		if (enemiesInLanes.Count == 0)
 			return;
@@ -335,5 +355,58 @@ public partial class Level1_EnemyGenerator : Node3D
 
 		_animationPlayer.Stop(true);
 		//_animationPlayer.Play("LEVEL_ONE_STORE");
+	}
+
+	public void PhaseEleven()
+	{
+		Logging.PrintInfo("Level 1:", "Starting PhaseEleven");
+		_currentPhase = Phase.ELEVEN;
+
+		var bounce = _availableEnemies[2].Instantiate<Enemy>();
+		
+		bounce._designatedLane = Lanes.LANES.MIDDLE;
+		
+		_hallway._lanes[(int)Lanes.LANES.MIDDLE].AddChild(bounce);
+	}
+
+	private void PhaseTwelve()
+	{
+		_currentPhase = Phase.TWELVE;
+		var bounce = _availableEnemies[2].Instantiate<Enemy>();
+		var straight = _availableEnemies[0].Instantiate<Enemy>();
+		
+		bounce._designatedLane = Lanes.LANES.LEFT;
+		straight._designatedLane = Lanes.LANES.MIDDLE;
+		
+		_hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(bounce);
+		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.MIDDLE].AddChild(straight))).SetDelay(5);
+	}
+
+	private void PhaseThirteen()
+	{
+		_currentPhase = Phase.THIRTEEN;
+		var crisCross = _availableEnemies[3].Instantiate<Enemy>();
+	
+		crisCross._designatedLane = Lanes.LANES.RIGHT;
+	
+		_hallway._lanes[(int)Lanes.LANES.RIGHT].AddChild(crisCross);
+	}
+
+	private void PhaseFourteen()
+	{
+		_currentPhase = Phase.FOURTEEN;
+		var crisCross = _availableEnemies[3].Instantiate<Enemy>();
+		var crisCross2 = _availableEnemies[3].Instantiate<Enemy>();
+	
+		crisCross._designatedLane = Lanes.LANES.RIGHT;
+		crisCross2._designatedLane = Lanes.LANES.LEFT;
+	
+		_hallway._lanes[(int)Lanes.LANES.RIGHT].AddChild(crisCross);
+		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(crisCross2))).SetDelay(1);
+	}
+
+	private void PhaseFifteen()
+	{
+		
 	}
 }
