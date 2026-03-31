@@ -1,6 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dik1k7swwhj46"]
+[gd_scene load_steps=15 format=3 uid="uid://dik1k7swwhj46"]
 
 [ext_resource type="Script" uid="uid://bqf4ga76nty75" path="res://CODE/Player.cs" id="1_jnmn6"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_xnp2b"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_eb54a"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_1ejl3"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_hqj1b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14wnp"]
 albedo_color = Color(0.309305, 0.305548, 4.81308e-08, 1)
@@ -55,44 +59,91 @@ point_count = 4
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_upicb"]
 
-[node name="Player" type="Node3D"]
+[sub_resource type="Resource" id="Resource_myap6"]
+script = ExtResource("4_1ejl3")
+
+[sub_resource type="Resource" id="Resource_mnan8"]
+script = ExtResource("5_hqj1b")
+metadata/_custom_type_script = "uid://b8hhnqsugykly"
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" type="Node3D" parent="."]
 script = ExtResource("1_jnmn6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_jpjkl")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
 &"": SubResource("AnimationLibrary_5wevu")
 }
 
-[node name="Path3D" type="Path3D" parent="."]
+[node name="Path3D" type="Path3D" parent="Player"]
 visible = false
 curve = SubResource("Curve3D_d0ig5")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Player/Path3D"]
 transform = Transform3D(-0.98303396, 0.0008150635, -0.18341114, -0.0008150631, 0.999959, 0.0088122515, 0.18341112, 0.008812252, -0.982995, 0.01067748, -0.00051301485, 1.4301318)
 progress = 0.134371
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Path3D/PathFollow3D"]
 transform = Transform3D(0.02, 0, 0, 0, -0.0130526, -0.0495722, 0, 0.0991445, -0.00652631, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
 
-[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.813611, 0.00895527, -0.58133876, -0.008955305, 0.9995647, 0.027931256, 0.58133996, 0.027931185, -0.8131791, 0.04918446, -0.002363138, 1.55612)
+[node name="PathFollow3D2" type="PathFollow3D" parent="Player/Path3D"]
+transform = Transform3D(-0.813611, 0.008955262, -0.58133876, -0.008955305, 0.99956375, 0.027931256, 0.58133996, 0.02793116, -0.8131791, 0.04918446, -0.002363138, 1.55612)
 progress = 0.266635
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Path3D/PathFollow3D2"]
 transform = Transform3D(0.02, 0, 0, 0, -0.0130526, -0.0495722, 0, 0.0991445, -0.00652631, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
 
-[node name="PathFollow3D3" type="PathFollow3D" parent="Path3D"]
+[node name="PathFollow3D3" type="PathFollow3D" parent="Player/Path3D"]
 transform = Transform3D(-0.98303396, 0.0008150635, -0.18341114, -0.0008150631, 0.999959, 0.0088122515, 0.18341112, 0.008812252, -0.982995, 0.01067748, -0.00051301485, 1.4301318)
 progress = 0.134371
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D3"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Path3D/PathFollow3D3"]
 transform = Transform3D(0.02, 0, 0, 0, -0.0130526, -0.0495722, 0, 0.0991445, -0.00652631, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_upicb")
 skeleton = NodePath("../../..")
+
+[node name="PlayerCamera" type="Node3D" parent="."]
+
+[node name="CameraFocus" type="Node3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.343304)
+
+[node name="PhantomCamera3D" type="Node3D" parent="PlayerCamera" node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.99572647, 0.012592621, -0.09149019, 0, 0.99066037, 0.13635348, 0.092352755, -0.13577078, 0.9864265, -1.3565931, 2.0218143, 3.2831774)
+script = ExtResource("3_eb54a")
+priority = 1
+look_at_mode = 2
+look_at_target = NodePath("../CameraFocus")
+tween_resource = SubResource("Resource_myap6")
+camera_3d_resource = SubResource("Resource_mnan8")
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="PhantomCamera3D2" type="Node3D" parent="PlayerCamera" node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.9918841, -0.0062917713, 0.12699012, -4.6566134e-10, 0.998775, 0.04948464, -0.12714593, -0.049083035, 0.9906688, 1.7174616, 0.6692486, 2.0548668)
+script = ExtResource("3_eb54a")
+look_at_mode = 2
+look_at_target = NodePath("../CameraFocus")
+tween_resource = SubResource("Resource_myap6")
+camera_3d_resource = SubResource("Resource_mnan8")
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCamera"]
+transform = Transform3D(0.99572635, 0.012592619, -0.091490194, 0, 0.99066025, 0.1363535, 0.09235275, -0.13577077, 0.98642653, -1.3565931, 2.0218143, 3.2831774)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="PlayerCamera/Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_xnp2b")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cweaov8emfthw"]
+[gd_scene load_steps=15 format=3 uid="uid://cweaov8emfthw"]
 
 [ext_resource type="Script" uid="uid://naf3f5s6karu" path="res://CODE/COMBAT/Level1_EnemyGenerator.cs" id="1_bk03j"]
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="2_gkkj8"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cm411x4pif1dy" path="res://SCENES/Battle System/Level 1/SimpleBounce.tscn" id="4_kkppn"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="4_v5jm5"]
 [ext_resource type="PackedScene" uid="uid://boh2h2txd52qo" path="res://SCENES/Battle System/Level 1/SimpleCrisCross.tscn" id="5_7vg3v"]
-[ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="6_0plv3"]
-[ext_resource type="Curve3D" uid="uid://dm8na0gdtan0i" path="res://SCENES/Battle System/EnemyDeathCurve.tres" id="8_7vg3v"]
 [ext_resource type="Script" uid="uid://cmctb5x5n5xkq" path="res://CODE/TOOLS/AnimationPlayerWithEmitter.cs" id="8_kkppn"]
 
 [sub_resource type="Animation" id="Animation_rnmjr"]
@@ -136,10 +134,6 @@ resource_name = "LEVEL_ONE"
 length = 1000.0
 markers = [{
 "color": Color(1, 1, 1, 1),
-"name": &"PhaseTwo",
-"time": 38.9
-}, {
-"color": Color(1, 1, 1, 1),
 "name": &"PhaseThree",
 "time": 98.26667
 }, {
@@ -177,7 +171,11 @@ markers = [{
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseOne",
-"time": 3.8420365
+"time": 19.033333
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseTwo",
+"time": 52.166668
 }]
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -186,7 +184,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(5, 40.4, 99.9, 167.33333, 273.63333, 371.13333, 467.43332, 557.1, 742.1, 981.93335),
+"times": PackedFloat32Array(22.4, 55.566666, 99.9, 167.33333, 273.63333, 371.13333, 467.43332, 557.1, 742.1, 981.93335),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -230,7 +228,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(-2.6333334, 404.66666, 739.7, 952.3333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.08, 0.25, 0.6, 0.0]
+"values": [0.08, 0.15, 0.3, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -287,10 +285,10 @@ tracks/6/path = NodePath("Hallway:_lightRange")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 891.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [8.0]
+"values": [3.0, 5.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -309,10 +307,6 @@ tracks/7/keys = {
 resource_name = "LEVEL_ONE_2"
 length = 1000.0
 markers = [{
-"color": Color(1, 1, 1, 1),
-"name": &"PhaseFive",
-"time": 271.1633
-}, {
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseSix",
 "time": 368.76666
@@ -335,19 +329,23 @@ markers = [{
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseEleven",
-"time": 3.8420365
+"time": 17.166666
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseTwelve",
-"time": 51.466667
+"time": 66.066666
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseThirteen",
-"time": 132.83333
+"time": 145.53334
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"PhaseFourteen",
-"time": 199.26666
+"time": 213.23334
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"PhaseFifteen",
+"time": 271.1633
 }]
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -356,8 +354,8 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(7.3333335, 56.5, 137.63333, 204.13333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(22.566668, 71.73334, 152.86667, 219.36667, 277.93332),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"PhaseEleven"
@@ -370,6 +368,9 @@ tracks/0/keys = {
 }, {
 "args": [],
 "method": &"PhaseFourteen"
+}, {
+"args": [],
+"method": &"PhaseFifteen"
 }]
 }
 tracks/1/type = "value"
@@ -382,7 +383,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(-3.1666667, 269.46667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.2, 0.4]
+"values": [0.05, 0.2]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -442,7 +443,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 273.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [6.0, 8.0]
+"values": [3.0, 5.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -451,10 +452,10 @@ tracks/7/path = NodePath("Hallway:_lightEnergy")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.033333335, 269.43332),
+"times": PackedFloat32Array(1.8, 270),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.0, 4.0]
+"values": [1.0, 4.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o1rwg"]
@@ -476,10 +477,6 @@ _lightFlickerChance = 20.0
 _lightEnergy = 1.0
 _lightRange = 6.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.7489557, 0, -0.66262007, 0, 1, 0, 0.66262007, 0, 0.7489557, -2.791541, 1.982, 6.139199)
-environment = ExtResource("6_0plv3")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92065, 3.0807)
 visible = false
@@ -492,14 +489,6 @@ light_color = Color(0.466629, 0.325109, 0.0810879, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_v5jm5")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
-
-[node name="Path3D2" type="Path3D" parent="Player"]
-transform = Transform3D(0.078459084, 0, 0.9969173, 0, 1, 0, -0.9969173, 0, 0.078459084, 0, 0, 0)
-curve = ExtResource("8_7vg3v")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Player/Path3D2"]
-transform = Transform3D(-0.99258393, -0.090036735, 0.081638664, 0.117713556, -0.5449916, 0.83013177, -0.030250182, 0.83358556, 0.55155146, 1.1590157, 1.2734314, -9.881446)
-progress = 14.764143
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -515,15 +504,3 @@ visible = false
 [node name="PhaseAdvanceCoolDown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(0.79724693, 0, -0.6036533, 0, 1, 0, 0.6036533, 0, 0.79724693, 1.2291398, 1.9519987, 3.9223433)
-visible = false
-text = "aa"
-font_size = 372
-
-[node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(0.79724693, 0, -0.6036533, 0, 1, 0, 0.6036533, 0, 0.79724693, 1.2291398, 3.7005682, 3.6019168)
-visible = false
-text = "aa"
-font_size = 372

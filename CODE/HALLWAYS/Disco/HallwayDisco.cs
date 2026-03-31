@@ -102,6 +102,19 @@ public partial class HallwayDisco : Hallway
 		}
 	}
 
+	public void Start()
+	{
+		int delay = 0;
+		foreach (Node3D piece in _pieces.OrderByDescending(x => x.ProgressRatio))
+		{
+			piece.Visible = false;
+			CreateTween().TweenCallback(Callable.From(() => piece.Visible = true)).SetDelay(.5);
+		}
+
+		CreateTween().TweenCallback(Callable.From(() => UpdateTop(true))).SetDelay(3);
+		AudioManager._Instance.PlaySong("res://ART/SOUND/SONGS/Midnight Generation - Don_t Wait Up (Official Music Video).mp3");
+	}
+
 	public bool Busy()
 	{
 		return _tweens.Count > 0;
@@ -142,7 +155,7 @@ public partial class HallwayDisco : Hallway
 
 					light.Visible = true;
 					tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), 0);
-					tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), Tools.rng.RandfRange(1, 2));
+					tween.TweenProperty(light, "position", new Vector3(light.Position.X, 4, light.Position.Z), Tools.rng.RandfRange(1, 2));
 					//tween.TweenProperty(light, "visible", true, 1.5);
 
 					_tweens.Add(tween);
@@ -153,7 +166,7 @@ public partial class HallwayDisco : Hallway
 					var tween = GetTree().CreateTween();
 					tween.SetTrans(Tween.TransitionType.Circ);
 
-					tween.TweenProperty(light, "position", new Vector3(light.Position.X, 3, light.Position.Z), 0);
+					tween.TweenProperty(light, "position", new Vector3(light.Position.X, 4, light.Position.Z), 0);
 					tween.TweenProperty(light, "position", new Vector3(light.Position.X, 15, light.Position.Z), Tools.rng.RandfRange(1, 2));
 					tween.TweenProperty(light, "visible", false, 2);
 

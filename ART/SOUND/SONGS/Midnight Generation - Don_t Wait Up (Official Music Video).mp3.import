@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhc4acp3727t5"
+path="res://.godot/imported/Midnight Generation - Don_t Wait Up (Official Music Video).mp3-89bdb4608c497ae98d0c5929e9ae6708.mp3str"
+
+[deps]
+
+source_file="res://ART/SOUND/SONGS/Midnight Generation - Don_t Wait Up (Official Music Video).mp3"
+dest_files=["res://.godot/imported/Midnight Generation - Don_t Wait Up (Official Music Video).mp3-89bdb4608c497ae98d0c5929e9ae6708.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

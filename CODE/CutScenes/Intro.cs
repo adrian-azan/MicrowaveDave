@@ -5,6 +5,13 @@ public partial class Intro : Node3D
 {
     public int skip = 0;
 
+    public override void _Ready()
+    {
+        var animationPlayer =  GetNode<AnimationPlayer>("AnimationPlayer");
+        animationPlayer.Play("INTRO");
+        
+    }
+
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("Skip"))

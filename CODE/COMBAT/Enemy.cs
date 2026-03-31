@@ -29,6 +29,8 @@ public partial class Enemy : PathFollow3D
 	
 	//Don't have a use case yet, but could be handy to have enemies with custom end of life methods
 	private Callable EndTask;
+	
+	AudioStreamPlayer _audioPlayer;
 
 	public override void _Ready()
 	{
@@ -46,6 +48,9 @@ public partial class Enemy : PathFollow3D
 
 	public void Die()
 	{
+		if (_audioPlayer != null)
+			_audioPlayer.Stop();
+		
 		_attackLanes.ClearLanes(this);
 		CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.EnemyKilled);
 		AudioManager._Instance.EnemyDeath();
@@ -73,6 +78,13 @@ public partial class Enemy : PathFollow3D
 		
 		if(EndTask.Delegate != null)
 			EndTask.Call();
+	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();	
+		if (_audioPlayer != null)
+			_audioPlayer.Stop();
 	}
 
 	public bool Dead()
@@ -112,6 +124,7 @@ public partial class Enemy : PathFollow3D
 	public void EnterBattle(Area3D area)
 	{
 		_state = STATE.ATTACKING;
+		_audioPlayer = AudioManager._Instance.EnemyStart();
 	}
 
 	public Attack AttackPlayer()

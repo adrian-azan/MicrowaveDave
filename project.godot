@@ -23,6 +23,7 @@ buses/default_bus_layout=""
 
 CustomSignals="*res://CODE/TOOLS/CustomSignals.cs"
 AudioManager="*res://CODE/TOOLS/AudioManager.cs"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -31,6 +32,10 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="MicrowaveDave"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 

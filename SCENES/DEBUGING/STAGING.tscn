@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c3jd26bajpr0v" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/Hallway.tscn" id="1_7jkf8"]
 [ext_resource type="PackedScene" uid="uid://dwc5w70x6t7bx" path="res://SCENES/3D Scenes/HALLWAYS/GENERIC/HallwayPiece.tscn" id="2_rbbwn"]
+[ext_resource type="Environment" uid="uid://cluilkb3w3ujy" path="res://ART/NormalEnvironment.tres" id="3_5vhk0"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="3_rbbwn"]
-[ext_resource type="Environment" uid="uid://b4ls4sf2pjklx" path="res://ART/WorldEnvironment.tres" id="4_eb1ho"]
 [ext_resource type="Curve3D" uid="uid://dm8na0gdtan0i" path="res://SCENES/Battle System/EnemyDeathCurve.tres" id="6_5vhk0"]
 [ext_resource type="PackedScene" uid="uid://csmqe4iagh02o" path="res://SCENES/Battle System/Level 1/SimpleStraight.tscn" id="6_npqiu"]
 
@@ -12,52 +12,46 @@
 [node name="Hallway" parent="." instance=ExtResource("1_7jkf8")]
 
 [node name="HallwayPiece" parent="Hallway/Path3D" index="0" instance=ExtResource("2_rbbwn")]
-transform = Transform3D(-1, -4.1898707e-09, -8.7322285e-08, 0, 0.99885046, -0.047926534, 8.742278e-08, -0.047926534, -0.99885046, 0, -0.028278729, -5.760679)
-visible = false
-progress = 33.282734
+transform = Transform3D(-1, 0, -8.7422585e-08, 0, 0.9999978, 0, 8.742278e-08, 0, -0.9999978, 0, 0, 0.70630264)
+progress = 110.644226
 
 [node name="HallwayPiece2" parent="Hallway/Path3D" index="1" instance=ExtResource("2_rbbwn")]
-transform = Transform3D(-1, 0, -8.742267e-08, 0, 0.9999988, 0, 8.742278e-08, 0, -0.9999988, 0, 0, -3.9733713)
-visible = false
-progress = 35.07065
+transform = Transform3D(-1, 0, -8.742262e-08, 0, 0.9999982, 0, 8.742278e-08, 0, -0.9999982, 0, 0, -1.243237)
+progress = 108.6947
 
 [node name="HallwayPiece3" parent="Hallway/Path3D" index="2" instance=ExtResource("2_rbbwn")]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.9999999, 0, 8.742278e-08, 0, -0.9999999, 0, 0, -2.3688407)
-visible = false
-progress = 36.67519
+transform = Transform3D(-1, 0, -8.7422485e-08, 0, 0.99999666, 0, 8.742278e-08, 0, -0.99999666, 0, 0, 2.7025366)
+progress = 112.64044
 
 [node name="HallwayPiece4" parent="Hallway/Path3D" index="3" instance=ExtResource("2_rbbwn")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.53507954)
-progress = 38.50895
-
-[node name="SpotLight3D" parent="Hallway/Path3D/HallwayPiece4" index="2"]
-light_energy = 1.0
-omni_range = 3.0
-
-[node name="SpotLight3D2" parent="Hallway/Path3D/HallwayPiece4" index="3"]
-light_energy = 1.0
-omni_range = 3.0
-
-[node name="SpotLight3D3" parent="Hallway/Path3D/HallwayPiece4" index="4"]
-light_energy = 1.0
-omni_range = 3.0
+transform = Transform3D(-1, 0, -8.742275e-08, 0, 0.9999997, 0, 8.742278e-08, 0, -0.9999997, 0, 0, 4.453591)
+progress = 114.39151
 
 [node name="HallwayPiece5" parent="Hallway/Path3D" index="4" instance=ExtResource("2_rbbwn")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.2986971)
-visible = false
-progress = 40.34271
+transform = Transform3D(-1, 0, -8.742275e-08, 0, 0.9999997, 0, 8.742278e-08, 0, -0.9999997, 0, 0, 6.2397156)
+progress = 116.177605
 
 [node name="HallwayPiece6" parent="Hallway/Path3D" index="5" instance=ExtResource("2_rbbwn")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 3.1324708)
-visible = false
-progress = 42.176468
+transform = Transform3D(-1, 0, -8.742275e-08, 0, 0.9999997, 0, 8.742278e-08, 0, -0.9999997, 0, 0, 8.200802)
+progress = 1.4008484
 
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(0.74894905, 0, -0.66261417, 0, 1, 0, 0.66261417, 0, 0.74894905, -3.494, 1.982, 6.534)
-environment = ExtResource("4_eb1ho")
+[node name="WorldEnvironment" parent="Hallway" index="6"]
+environment = ExtResource("3_5vhk0")
 
 [node name="Player2" parent="." instance=ExtResource("3_rbbwn")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.541873, 0.952001, 5.35294)
+
+[node name="PathFollow3D2" parent="Player2/Player/Path3D" index="1"]
+transform = Transform3D(-0.813611, 0.008955261, -0.58133876, -0.008955305, 0.9995637, 0.027931256, 0.58133996, 0.027931157, -0.8131791, 0.04918446, -0.002363138, 1.55612)
+
+[node name="PhantomCamera3D" parent="Player2/PlayerCamera" index="1"]
+transform = Transform3D(0.9881381, 0.01696639, -0.15262868, 0, 0.99387825, 0.11048062, 0.15356886, -0.10917014, 0.98208845, -2.2539868, 1.6315536, 3.1599636)
+
+[node name="PhantomCamera3D2" parent="Player2/PlayerCamera" index="2"]
+transform = Transform3D(0.96747786, -0.0045032697, 0.25291502, -4.6566123e-10, 0.99984163, 0.017802637, -0.25295514, -0.017223664, 0.9673246, 3.5030627, 0.24657989, 2.0548668)
+
+[node name="Camera3D" parent="Player2/PlayerCamera" index="3"]
+transform = Transform3D(0.98813796, 0.01696639, -0.15262873, 0, 0.99387825, 0.110480666, 0.15356885, -0.10917014, 0.98208886, -1.6688664, 1.7677778, 6.932922)
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(0.64944804, 0, 0.76040596, 0, 1, 0, -0.76040596, 0, 0.64944804, 0, 0, 0)
@@ -65,5 +59,8 @@ curve = ExtResource("6_5vhk0")
 
 [node name="SimpleStraight" parent="Path3D" instance=ExtResource("6_npqiu")]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.02498923, 0.69916433, -0.71452415, 0.024437109, 0.714961, 0.69873714, 0.999389, 0, -0.03495188, -7.846123, 4.490305, 0)
+
 [editable path="Hallway"]
-[editable path="Hallway/Path3D/HallwayPiece4"]
+[editable path="Player2"]

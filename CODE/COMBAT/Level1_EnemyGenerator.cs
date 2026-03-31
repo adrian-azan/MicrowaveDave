@@ -42,9 +42,9 @@ public partial class Level1_EnemyGenerator : Node3D
 		_hallway = GetNode<Hallway>("Hallway");
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-		_animationPlayer.Play("Level_1/LEVEL_ONE_2");
+		_animationPlayer.Play("Level_1/LEVEL_ONE");
 		//_animationPlayer.Seek(8, true);
-	//	_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseFourteen");
+		//_animationPlayer.PlaySectionWithMarkers("Level_1/LEVEL_ONE_2", "PhaseFifteen");
 	
 		CustomSignals._Instance.SuccessfulAttack += DamageEnemy;
 		CustomSignals._Instance.EnemyKilled += CheckIfPhaseFinishedEarly;
@@ -54,11 +54,7 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public override void _Process(double delta)
 	{
-		if (_animationPlayer.CurrentAnimation != string.Empty)
-		{
-			GetNode<Label3D>("Label3D").Text = double.Round(_animationPlayer.CurrentAnimationPosition).ToString();
-			GetNode<Label3D>("Label3D2").Text = _currentPhase.ToString();
-		}
+
 	}
 
 	public void Stop()
@@ -220,6 +216,7 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseTwo()
 	{
+	
 		Logging.PrintInfo("Level 1:", "Starting PhaseTwo");
 		_currentPhase = Phase.TWO;
 
@@ -245,11 +242,12 @@ public partial class Level1_EnemyGenerator : Node3D
 		simpleStraight._designatedLane = Lanes.LANES.LEFT;
 
 		_hallway._lanes[(int)Lanes.LANES.RIGHT].AddChild(simpleStraight2);
-		_hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(simpleStraight);
+		CreateTween().TweenCallback(Callable.From( () => _hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(simpleStraight))).SetDelay(.2);
 	}
 
 	public void PhaseFour()
 	{
+		CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverHealth, 1);
 		Logging.PrintInfo("Level 1:", "Starting PhaseFour");
 		_currentPhase = Phase.FOUR;
 		
@@ -263,7 +261,7 @@ public partial class Level1_EnemyGenerator : Node3D
 
 		_hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(simpleStraight1);
 		_hallway._lanes[(int)Lanes.LANES.RIGHT].AddChild(simpleStraight);
-		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.MIDDLE].AddChild(simpleStraight2))).SetDelay(20);
+		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.MIDDLE].AddChild(simpleStraight2))).SetDelay(13);
 	}
 
 	public void PhaseFive()
@@ -293,6 +291,7 @@ public partial class Level1_EnemyGenerator : Node3D
 
 	public void PhaseSeven()
 	{
+		CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverHealth, 1);
 		Logging.PrintInfo("Level 1:", "Starting PhaseSeven");
 		_currentPhase = Phase.SEVEN;
 
@@ -353,12 +352,18 @@ public partial class Level1_EnemyGenerator : Node3D
 
 		Logging.PrintInfo("Level 1:", "Starting PhaseTen");
 
-		_animationPlayer.Stop(true);
+		 _animationPlayer.Stop(true);
+		 _animationPlayer.Play("Level_1/LEVEL_ONE_2");
+		
+		 CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.IncreaseHealth, 1);
+		 
 		//_animationPlayer.Play("LEVEL_ONE_STORE");
 	}
 
 	public void PhaseEleven()
 	{
+		CustomSignals._Instance.EmitSignal(CustomSignals.SignalName.RecoverHealth, 10);
+
 		Logging.PrintInfo("Level 1:", "Starting PhaseEleven");
 		_currentPhase = Phase.ELEVEN;
 
@@ -406,6 +411,30 @@ public partial class Level1_EnemyGenerator : Node3D
 	}
 
 	private void PhaseFifteen()
+	{
+		_currentPhase = Phase.FIFTEEN;
+		var bounce = _availableEnemies[2].Instantiate<Enemy>();
+		var bounce2 = _availableEnemies[2].Instantiate<Enemy>();
+	
+		bounce._designatedLane = Lanes.LANES.RIGHT;
+		bounce2._designatedLane = Lanes.LANES.LEFT;
+	
+		_hallway._lanes[(int)Lanes.LANES.RIGHT].AddChild(bounce);
+		CreateTween().TweenCallback(Callable.From(() => _hallway._lanes[(int)Lanes.LANES.LEFT].AddChild(bounce2))).SetDelay(2.2);
+	}
+
+	private void BossFightIntro()
+	{
+		
+	}
+
+	private void BossFightLevelTransition()
+	{
+		
+		
+	}
+
+	private void BossFightPhaseOne()
 	{
 		
 	}

@@ -7,6 +7,7 @@ public partial class DefenseLanes : Lanes
 	public int _stamina;
 	private int _maxStamina;
 	private int _health;
+	private int _maxHealth;
 	public Array<Sprite2D> _staminaIndicators;
 	
 	
@@ -28,6 +29,9 @@ public partial class DefenseLanes : Lanes
 
 		CustomSignals._Instance.RecoverStamina += RecoverStamina;
 		CustomSignals._Instance.Reset += Reset;
+		CustomSignals._Instance.RecoverHealth += RecoverHealth;
+		CustomSignals._Instance.IncreaseHealth += IncreaseHealth;
+		
 		
 		var defenseArea = GetNode<Area2D>("Core/PlayerDefense/Area2D");
 		defenseArea.AreaEntered += DefensiveStyleEventHandler;
@@ -41,6 +45,7 @@ public partial class DefenseLanes : Lanes
 		_stamina = 1;
 		_maxStamina = 2;
 		_health = 3;
+		_maxHealth = 3;
 		_staminaRecoveryRate = 1f;
 	}
 
@@ -88,6 +93,18 @@ public partial class DefenseLanes : Lanes
 	public void RecoverStamina()
 	{
 			_stamina += 1;
+	}
+
+	private void RecoverHealth(int amount)
+	{
+		_health += amount;
+		_health = int.Clamp(_health, 0, _maxHealth);
+	}
+	
+	private void IncreaseHealth(int amount)
+	{
+		_maxHealth += amount;
+		_health = _maxHealth;
 	}
 
 	private void CalculateStaminaIndicators()

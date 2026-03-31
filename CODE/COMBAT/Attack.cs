@@ -59,8 +59,7 @@ public partial class Attack : PathFollow2D
 				CreateTween().TweenProperty(this, "scale", Scale * 1.3f, .1);
 				CreateTween().TweenProperty(this, "scale", Scale, .1).SetDelay(.1);
 
-				VisiblePath2D blowBackPath = new VisiblePath2D();
-				blowBackPath.icon = ResourceLoader.Load<Texture2D>("res://ART/VISUALS/Arrow.png");
+				Path2D blowBackPath = new Path2D();
 				
 				GetParent().GetParent().AddChild(blowBackPath);
 				Curve2D actualPath = new Curve2D();

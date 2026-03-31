@@ -1,0 +1,234 @@
+[gd_scene load_steps=16 format=3 uid="uid://4kh45qo25r3n"]
+
+[ext_resource type="Script" uid="uid://ghja167poi2h" path="res://CODE/HALLWAYS/Generic/HallwayPiece.cs" id="1_30v4g"]
+[ext_resource type="Material" uid="uid://pna15dj7q4fc" path="res://ART/MATERIALS AND MESHES/Level1_floor.tres" id="2_tflx1"]
+[ext_resource type="PackedScene" uid="uid://tyfdi7biyedg" path="res://ART/MODELS/water_cooler_8mb/scene.gltf" id="5_aoify"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0ej4"]
+lightmap_size_hint = Vector2i(14, 21)
+material = ExtResource("2_tflx1")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f0ana"]
+load_path = "res://.godot/imported/Level1_wall_albedo.png-36015c78b3518dee6253c89f81919e58.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pqkbl"]
+load_path = "res://.godot/imported/Level1_wall_heightmap.png-d490c7b5ca19c19b3fbdd82788c0b21f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yjutk"]
+load_path = "res://.godot/imported/Level1_wall_normal.png-9accee38427c9f3113eca09f2f8efa9e.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rum6q"]
+load_path = "res://.godot/imported/Level1_wall_orm.png-ba968af95a82d7d08da8c238ea27ac32.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0ana"]
+albedo_texture = SubResource("CompressedTexture2D_f0ana")
+roughness_texture = SubResource("CompressedTexture2D_rum6q")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_yjutk")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = SubResource("CompressedTexture2D_pqkbl")
+uv1_scale = Vector3(3.455, 5.585, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_30v4g"]
+material = SubResource("StandardMaterial3D_f0ana")
+size = Vector3(1, 1, 0.37)
+
+[sub_resource type="Animation" id="Animation_0dbe5"]
+resource_name = "Flicker"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_lu6k1"]
+resource_name = "Off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_y304h"]
+resource_name = "On"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qgvok"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0mfn"]
+_data = {
+&"Flicker": SubResource("Animation_0dbe5"),
+&"Off": SubResource("Animation_lu6k1"),
+&"On": SubResource("Animation_y304h"),
+&"RESET": SubResource("Animation_qgvok")
+}
+
+[node name="HallwayPiece" type="PathFollow3D" groups=["Piece"]]
+script = ExtResource("1_30v4g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.782, 0, 0, 0, 0.3, 0, 0, 0, 2, -0.46571374, 0, 0)
+mesh = SubResource("BoxMesh_b0ej4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 4.635, 0, 0, 0, 1.825, -3.68, 2.113, -1.1477973)
+mesh = SubResource("BoxMesh_30v4g")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 2.3199708, 0, 0, 0, 7.5345683, -3.569188, 3.2554297, 0.033596992)
+mesh = SubResource("BoxMesh_30v4g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 4.635, 0, 0, 0, 1.825, -3.68, 2.113, 1.2019107)
+mesh = SubResource("BoxMesh_30v4g")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="MeshInstance3D2"]
+process_mode = 4
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 6.281129, 0, 2.294378)
+layers = 2
+aabb = AABB(-6.74344, -0.524651, -0.422642, 13.4869, 1.0493, 0.845284)
+
+[node name="SpotLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.4526124, 2.02105, 0)
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
+light_energy = 2.5
+omni_range = 0.918
+
+[node name="SpotLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.6794122, 2.02105, 0)
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
+light_energy = 2.6
+omni_range = 0.918
+
+[node name="SpotLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.5248522, 2.02105, 0)
+light_color = Color(0.984186, 0.941792, 0.824593, 1)
+light_energy = 2.5
+omni_range = 0.918
+
+[node name="WaterCooler" parent="." instance=ExtResource("5_aoify")]
+transform = Transform3D(-4.37114e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, -4.37114e-10, 2.27136, -0.0414876, 0.466255)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n0mfn")
+}
+
+[connection signal="screen_exited" from="MeshInstance3D2/VisibleOnScreenNotifier3D" to="." method="SetPiece"]

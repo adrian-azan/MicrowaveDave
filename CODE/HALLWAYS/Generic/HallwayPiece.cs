@@ -23,8 +23,8 @@ public partial class HallwayPiece : PathFollow3D
 		_deskChance = 0;
 		_waterCoolerChance = 0;
 		_lightFlickerChance = 0;
-		_lightEnergy = 8;
-		_lightRange = 3;
+		_lightEnergy = 0;
+		_lightRange = 0;
 		_posterChance = 0;
 		
 		_posters = Tools.GetChildren<MeshInstance3D>(GetNode("Posters"));

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbo6h1yr6np4q" path="res://CODE/DEBUG TOOLS/DEBUG_HallwayManager.cs" id="1_3fenn"]
 [ext_resource type="PackedScene" uid="uid://cweaov8emfthw" path="res://SCENES/LEVEL_1.tscn" id="2_7mnnw"]
-[ext_resource type="PackedScene" uid="uid://dcr6riyitk0fs" path="res://SCENES/LEVEL_2.tscn" id="3_ayx76"]
+[ext_resource type="PackedScene" uid="uid://dcr6riyitk0fs" path="res://SCENES/LEVEL_1_2.tscn" id="3_ayx76"]
 [ext_resource type="PackedScene" uid="uid://dik1k7swwhj46" path="res://SCENES/3D Scenes/Player.tscn" id="4_3fenn"]
 [ext_resource type="PackedScene" uid="uid://d0x3b67vkh6vb" path="res://SCENES/DEBUGING/ChanceTracker.tscn" id="5_3fenn"]
 

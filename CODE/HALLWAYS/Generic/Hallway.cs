@@ -35,7 +35,7 @@ public partial class Hallway : Node3D
 	public override void _Ready()
 	{
 		_pace = .1f;
-		float totalPieces = 32;
+		float totalPieces = 64;
 		_pieces = new Array<HallwayPiece>();
 
 		for (int i = 0; i < totalPieces; i++)
@@ -77,7 +77,7 @@ public partial class Hallway : Node3D
 
 		foreach (Array<Enemy> lane in Lanes)
 		{
-			if (lane.Count == 0 || (lane.First().ProgressRatio > .93 && lane.First().ProgressRatio < .97))
+			if (lane.Count == 0 || (lane.First().ProgressRatio > .97 && lane.First().ProgressRatio < .99))
 				continue;
 
 			lane.First().ProgressRatio += felta * lane.First()._pace * _DEBUG_enemyPaceMultiplyer;
@@ -117,6 +117,8 @@ public partial class Hallway : Node3D
 		_waterCoolerChance = 0;
 		_lightFlickerChance = 0;
 		_posterChance = 0;
+		_lightEnergy = 0;
+		_lightRange = 0;
 		foreach (HallwayPiece piece in _pieces)
 		{
 			piece._deskChance = _deskChance;
@@ -131,7 +133,7 @@ public partial class Hallway : Node3D
 		foreach (var lane in _lanes)
 		{
 			foreach (var enemy in Tools.GetChildren<Enemy>(lane))
-			{
+			{ 
 				enemy.QueueFree();
 			}
 		}

@@ -13,6 +13,9 @@ public partial class CustomSignals : Node
 	}
 
 	[Signal]
+	public delegate void SwapLevelEventHandler(LevelLoader.LEVEL level);
+	
+	[Signal]
 	public delegate void UpdateLightsEventHandler();
 
 	[Signal]
@@ -26,6 +29,11 @@ public partial class CustomSignals : Node
 
 	[Signal]
 	public delegate void RecoverStaminaEventHandler();
+	[Signal]
+	public delegate void RecoverHealthEventHandler(int amount);
+	
+	[Signal]
+	public delegate void IncreaseHealthEventHandler(int amount);
 
 	[Signal]
 	public delegate void EnemyKilledEventHandler();

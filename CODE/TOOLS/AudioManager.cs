@@ -14,6 +14,34 @@ public partial class AudioManager : Node
 		_Instance = this;
 	}
 
+	public void PlaySong(string songPath)
+	{
+		AudioStreamPlayer player = AllocateAudioPlayer();
+		player.Stream =
+			ResourceLoader.Load<AudioStreamMP3>(songPath);
+		player.Play();
+		player.Seek(73);
+		player.VolumeDb = 0;
+	}
+
+	public AudioStreamPlayer EnemyStart()
+	{
+		AudioStreamPlayer audioPlayer = AllocateAudioPlayer();
+		AudioStreamPlayer audioPlayer2 = AllocateAudioPlayer();
+		
+		audioPlayer.Stream = ResourceLoader.Load<AudioStreamWav>("res://ART/SOUND/Employee Monologues/ThankGoodnessYourHere.wav");
+		audioPlayer.Play();
+
+		var possibleMonolagues = new Array<AudioStream>();
+		possibleMonolagues.Add(ResourceLoader.Load<AudioStreamWav>("res://ART/SOUND/Employee Monologues/AlertsNotSetUp.wav"));
+		possibleMonolagues.Add(ResourceLoader.Load<AudioStreamWav>("res://ART/SOUND/Employee Monologues/IDeletedAllTheJiraTickets.wav"));
+		possibleMonolagues.Add(ResourceLoader.Load<AudioStreamWav>("res://ART/SOUND/Employee Monologues/PublishingProductionSecrets.wav"));
+		audioPlayer2.Stream = possibleMonolagues.PickRandom();
+		audioPlayer.Finished += () => audioPlayer2.Play();
+
+		return audioPlayer2;
+	}
+	
 	public void EnemyDeath()
 	{
 		var gruntAudioPlayer = AllocateAudioPlayer();
